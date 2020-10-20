@@ -1,0 +1,18 @@
+/*
+Theme name: Motocross Enduro Parts
+Description: Custom Theme
+*/
+
+/*
+	Source post-css styles are located in resources/css/
+	The compiled bundle is saved to `dist/css/bundle-${fingerprint}.css`
+	(dist/manifest.json provides the exact path mapping).
+	
+	DEVELOPMENT.md file contains instructions how to get the compilation
+	process up & running.
+
+	If you need to make a quick fix, feel free to add CSS
+	below this comment -- it's loaded after the compiled bundle. 
+*/
+
+p {  }

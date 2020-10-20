@@ -1,0 +1,18 @@
+# /themes/mytheme/
+vendor*
+
+node_modules*
+
+dist/
+assets/
+
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+drone.json
+package-lock.json
+resources/assets/images/sprite*.*

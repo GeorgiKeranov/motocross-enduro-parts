@@ -1,0 +1,20 @@
+$font-family-sans-serif		: Arial, Helvetica, sans-serif;
+$font-family-serif			: Times, 'Times New Roman', serif;
+
+$font-size-base				: 14px;
+$line-height-base			: 1.3;
+
+$shell-max-width			: 1200px;
+$shell-gutter				: 10px;
+
+$responsive-xxs				: 374px;
+$responsive-xs				: 767px;
+$responsive-ios				: 812px;
+$responsive-sm				: 1023px;
+$responsive-md				: 1200px;
+
+$breakpoint-mobile-portrait : @media (max-width: $responsive-xxs);
+$breakpoint-mobile			: @media (max-width: $responsive-xs), screen and (max-width: $responsive-ios) and (orientation: landscape);
+$breakpoint-tablet-portrait	: @media (max-width: $responsive-sm);
+$breakpoint-small-desktop	: @media (max-width: $responsive-md);
+$retina						: @media (min-resolution: 2dppx);

@@ -1,0 +1,98 @@
+/* ------------------------------------------------------------ *\
+	Form Elements
+\* ------------------------------------------------------------ */
+
+input::placeholder { color: inherit; opacity: 1; }
+textarea::placeholder { color: inherit; opacity: 1; }
+
+input:-webkit-autofill { -webkit-text-fill-color: inherit; -webkit-box-shadow: 0 0 0 1000px #fff inset; }
+
+.field {}
+.textarea {}
+.select {}
+.radio {}
+.checkbox {}
+
+/* ------------------------------------------------------------ *\
+	Button
+\* ------------------------------------------------------------ */
+
+.btn { display: inline-block; vertical-align: middle; text-align: center; cursor: pointer; text-decoration: none; appearance: none; }
+
+/*  Button Block  */
+
+.btn-block { display: block; padding-left: 0; padding-right: 0; }
+
+/* ------------------------------------------------------------ *\
+	Wrapper
+\* ------------------------------------------------------------ */
+
+.wrapper { min-height: 100vh; }
+
+/* ------------------------------------------------------------ *\
+	Shell
+\* ------------------------------------------------------------ */
+
+.shell { max-width: calc($shell-max-width + $shell-gutter * 2); padding-left: $shell-gutter; padding-right: $shell-gutter; margin: auto; }
+
+.shell--fluid { max-width: none; }
+
+/* ------------------------------------------------------------ *\
+	Container
+\* ------------------------------------------------------------ */
+
+.container {}
+
+/* ------------------------------------------------------------ *\
+	Header
+\* ------------------------------------------------------------ */
+
+.header {}
+
+/* ------------------------------------------------------------ *\
+	Main
+\* ------------------------------------------------------------ */
+
+.main {}
+
+/* ------------------------------------------------------------ *\
+	Content
+\* ------------------------------------------------------------ */
+
+.content {}
+
+/* ------------------------------------------------------------ *\
+	Sidebar
+\* ------------------------------------------------------------ */
+
+.sidebar {}
+
+/* ------------------------------------------------------------ *\
+	Widget
+\* ------------------------------------------------------------ */
+
+.widgets { list-style: none outside none; }
+
+.widget { margin-bottom: 15px; }
+.widget ul { list-style: none outside none; margin: 0; }
+.widget li { padding: 5px 0; }
+
+.widget-title { padding-bottom: 5px; border-bottom: 1px solid #000; margin-bottom: 12px; }
+
+.widget_categories .screen-reader-text { display: none; }
+.widget_categories .post-form { width: 100%; padding: 5px; }
+
+.widget_calendar table { width: 100%; border-spacing: 0; border-collapse: collapse; text-align: center; }
+.widget_calendar td,
+.widget_calendar th { padding: 5px; border: 1px solid #000; }
+.widget_calendar caption { padding: 12px; font-weight: bold; }
+.widget_calendar tfoot { font-weight: bold; }
+
+.widget_rss .rsswidget { vertical-align: middle; }
+.widget_rss .rsswidget img { float: left; margin: 5px 8px 0 0; }
+
+/* ------------------------------------------------------------ *\
+	Footer
+\* ------------------------------------------------------------ */
+
+.footer {}
