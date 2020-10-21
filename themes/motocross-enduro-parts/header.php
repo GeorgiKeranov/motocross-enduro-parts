@@ -12,7 +12,35 @@
 <body <?php body_class(); ?>>
 <div class="wrapper">
 	<header class="header">
-		<h3>Example Title</h3>
+		<div class="shell">
+			<div class="header__inner">
+				<div class="header__logo">
+					<a href="<?php echo home_url('/') ?>" class="logo"></a>
+				</div><!-- /.header__logo -->
 
-		<a href="#" class="logo"></a><!-- /.logo -->
+				<div class="header__body">
+					<div class="header__nav">
+						<nav class="nav">
+							<ul>
+								<li>
+									<a href="#">Части</a>
+								</li>
+
+								<li>
+									<a href="#">Контакти</a>
+								</li>
+							</ul>
+						</nav><!-- /.nav -->
+					</div><!-- /.header__nav -->
+
+					<div class="header__shopping-cart">
+						<a href="#">
+							<i class="ico-shopping-cart"></i>
+
+							<span>5</span>
+						</a>
+					</div><!-- /.header__shopping-cart -->
+				</div><!-- /.header__body -->
+			</div><!-- /.header__inner -->
+		</div><!-- /.shell -->
 	</header><!-- /.header -->

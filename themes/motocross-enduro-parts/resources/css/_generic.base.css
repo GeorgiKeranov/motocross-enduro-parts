@@ -2,9 +2,9 @@
 	Base
 \* ------------------------------------------------------------ */
 
-body { min-width: 320px; background: #6af2ba; font-family: $font-family-sans-serif; font-size: $font-size-base; line-height: $line-height-base; color: #000; }
+body { min-width: 320px; font-family: $font-family-sans-serif; font-size: $font-size-base; line-height: $line-height-base; color: #000; }
 
-a { color: inherit; text-decoration: underline; }
+a { color: inherit; text-decoration: none; }
 
 a:hover,
 a[href^="tel"] { text-decoration: none; }
