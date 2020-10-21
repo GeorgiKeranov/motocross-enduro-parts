@@ -11,7 +11,7 @@ const argv = require('yargs').argv;
  * Prepare the configuration.
  */
 const config = {
-	host: 'localhost',
+	host: 'gkeranov.com',
 	port: 3000,
 	open: 'external',
 	files: [
@@ -36,7 +36,7 @@ const config = {
 			fn: (snippet, match) => `${snippet}${match}`
 		}
 	},
-	proxy: 'localhost',
+	proxy: 'gkeranov.com',
 	reloadThrottle: 100
 };
 
