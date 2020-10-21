@@ -1,0 +1,11 @@
+
+# /
+/languages
+/upgrade
+/debug.log
+
+# /themes/
+/themes/default*
+
+# /uploads/
+/uploads/cache

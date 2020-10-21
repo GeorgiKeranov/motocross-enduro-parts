@@ -8,8 +8,6 @@
 			</div><!-- /.page__image -->
 		<?php endif; ?>
 
-		<?php crb_the_title( '<h2 class="page__title pagetitle">', '</h2>' ); ?>
-
 		<div class="page__entry">
 			<?php
 			the_content();
