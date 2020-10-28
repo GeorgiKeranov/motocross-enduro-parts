@@ -23,9 +23,9 @@
 					</div><!-- /.footer__text -->
 
 					<div class="footer__contacts">
-						<a href="tel:0898767873"><i class="ico-phone"></i> 0898767873</a>
+						<a class="icotext-phone" href="tel:0898767873"><i class="ico-phone"></i> 0898767873</a>
 
-						<a href="mailto:moto_parts_bg@gmail.com"><i class="ico-mail"></i> moto_parts_bg@gmail.com</a>
+						<a class="icotext-mail" href="mailto:moto_parts_bg@gmail.com"><i class="ico-mail"></i> moto_parts_bg@gmail.com</a>
 					</div><!-- /.footer__contacts -->
 				</div><!-- /.footer__body-flex -->
 			</div><!-- /.shell -->

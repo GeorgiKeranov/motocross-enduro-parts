@@ -1,0 +1,41 @@
+/* ------------------------------------------------------------ *\
+	Icon With Text
+\* ------------------------------------------------------------ */
+
+[class^="icotext"] { font-size: 20px; display: flex; align-items: center; font-weight: 700; margin-bottom: 20px; cursor: pointer; }
+[class^="icotext"] i { margin-right: 10px; transition: .5s; }
+
+.icotext-phone:hover i { animation: phone-ring-animation 1s infinite ease-in-out; transform-origin: 50% 50%;  }
+.icotext-mail:hover i { transform: rotate(180deg); }
+
+@-webkit-keyframes phone-ring-animation {
+    0% {
+        -webkit-transform:rotate(0) scale(1) skew(1deg)
+    }
+
+    10% {
+        -webkit-transform:rotate(-25deg) scale(1) skew(1deg)
+    }
+
+    20% {
+        -webkit-transform:rotate(25deg) scale(1) skew(1deg)
+    }
+
+    30% {
+        -webkit-transform:rotate(-25deg) scale(1) skew(1deg)
+    }
+
+    40% {
+        -webkit-transform:rotate(25deg) scale(1) skew(1deg)
+    }
+
+    50% {
+        -webkit-transform:rotate(0) scale(1) skew(1deg)
+    }
+
+    100% {
+        -webkit-transform:rotate(0) scale(1) skew(1deg)
+    }
+}
+
+

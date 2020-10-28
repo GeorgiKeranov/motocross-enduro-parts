@@ -25,3 +25,23 @@ form select { border: 1px solid #000; border-radius: 20px; padding: 10px 20px; f
 
 .form-make-filter { display: flex; justify-content: center; align-items: center; margin: 0 -10px; }
 .form-make-filter select { width: 33.3%; margin: 0 10px; }
+
+/* ------------------------------------------------------------ *\
+	Form Contact
+\* ------------------------------------------------------------ */
+
+.form-contact.wpforms-container-full { margin-bottom: 0; }
+
+.form-contact.wpforms-container-full .wpforms-form .wpforms-field-label { display: none; }
+.form-contact.wpforms-container-full .wpforms-form .wpforms-title { font-weight: 700; }
+
+.form-contact.wpforms-container-full .wpforms-form input,
+.form-contact.wpforms-container-full .wpforms-form textarea { width: 100% !important; max-width: 100% !important; padding: 15px 20px !important; height: auto !important; border: 1px solid #e5e5e5 !important; border-radius: 5px !important; font-size: 18px !important; }
+
+.form-contact.wpforms-container-full .wpforms-form textarea { min-height: 150px }
+
+.form-contact.wpforms-container-full .wpforms-form input::placeholder,
+.form-contact.wpforms-container-full .wpforms-form textarea::placeholder { color: #757575; }
+
+.form-contact.wpforms-container-full .wpforms-form button[type=submit] { border: 2px solid #e7a161; border-radius: 4px; padding: 10px 30px; font-size: 22px; background-color: #e7a161; color: #fff; font-weight: 700; transition: .5s; }
+.form-contact.wpforms-container-full .wpforms-form button[type=submit]:hover { border: 2px solid #e7a161; background-color: #fff; color: #e7a161; }
