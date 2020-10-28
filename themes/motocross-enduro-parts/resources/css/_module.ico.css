@@ -1,0 +1,14 @@
+/* ------------------------------------------------------------ *\
+	Icons
+\* ------------------------------------------------------------ */
+
+[class^="ico-"] { display: block; background-size: contain; background-repeat: no-repeat; background-position: center }
+
+.ico-shopping-cart { background-image: url(../images/icon-shopping-cart.svg); width: 35px; height: 35px; }
+.ico-shopping-cart { position: relative; display: block; transition: opacity .5s; }
+.ico-shopping-cart:hover { opacity: .5; }
+.ico-shopping-cart span { position: absolute; top: -5px; left: 80%; background-color: #c51313; width: 20px; height: 20px; text-align: center; border-radius: 50%; line-height: 20px; }
+
+.ico-phone { display: inline-block; background-image: url(../images/icon-phone.png); width: 45px; height: 45px; }
+
+.ico-mail { display: inline-block; background-image: url(../images/icon-mail.svg); width: 45px; height: 45px; }

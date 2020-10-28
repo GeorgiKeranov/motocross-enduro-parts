@@ -1,0 +1,17 @@
+/* ------------------------------------------------------------ *\
+	Section Search Parts
+\* ------------------------------------------------------------ */
+
+.section-search-parts { position: relative; color: #fff; text-align: center; padding: 50px 0; }
+
+.section-search-parts .section__overlay { position: absolute; left: 0; top: 0; right: 0; bottom: 0; background-position: top center; background-repeat: no-repeat; z-index: -1; background-size: cover; background-attachment: fixed; }
+.section-search-parts .section__overlay .section__overlay-black { position: absolute; left: 0; top: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.4); }
+
+.section-search-parts .section__inner { position: relative; padding: 50px 20px; background-color: rgba(0, 0, 0, 0.7); border-radius: 20px; }
+.section-search-parts .section__heading { border-bottom: 1px solid #fff; margin-bottom: 30px; }
+.section-search-parts .section__separator { margin: 30px 0; }
+.section-search-parts .section__search-filters { max-width: 1000px; margin: 0 auto; }
+
+.section-search-parts h1 { color: #e7a161; margin-bottom: 20px; }
+.section-search-parts h3 { color: #e7a161; }
+

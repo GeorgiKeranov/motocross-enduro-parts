@@ -2,13 +2,10 @@
 	Header
 \* ------------------------------------------------------------ */
 
-.header { background-color: #000; color: #fff; padding: 20px; }
+.header { position: fixed; top: 0; left: 0; right: 0; background-color: #000; color: #fff; padding: 20px; z-index: 999; }
+.admin-bar .header { margin-top: 32px; }
 
 .header .header__inner { display: flex; justify-content: space-between; align-items: center; }
 .header .header__body { display: flex; align-items: center; }
 
 .header .header__shopping-cart { margin-left: 60px; }
-.header .header__shopping-cart a { position: relative; display: block; transition: opacity .5s; }
-.header .header__shopping-cart a:hover { opacity: .5; }
-.header .header__shopping-cart span { position: absolute; top: -5px; left: 80%; background-color: #c51313; width: 20px; height: 20px; text-align: center; border-radius: 50%; line-height: 20px; }
-

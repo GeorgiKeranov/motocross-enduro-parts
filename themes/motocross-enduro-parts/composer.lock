@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1f86e8abdb959e1ea6bae2f51f5adfdb",
+    "content-hash": "239465fe2a811948e0851bd15008a898",
     "packages": [
         {
             "name": "erusev/parsedown",
@@ -51,6 +51,43 @@
                 "parser"
             ],
             "time": "2018-03-08T01:11:30+00:00"
+        },
+        {
+            "name": "htmlburger/carbon-common",
+            "version": "1.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://bitbucket.org/htmlburger/carbon-common.git",
+                "reference": "7ba0bb77e3c52125d1b9d5af744b38eb75f07882"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://bitbucket.org/htmlburger/carbon-common/get/7ba0bb77e3c52125d1b9d5af744b38eb75f07882.zip",
+                "reference": "7ba0bb77e3c52125d1b9d5af744b38eb75f07882",
+                "shasum": ""
+            },
+            "require": {
+                "erusev/parsedown": "^1.6"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "carbon-common.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "htmlburger",
+                    "email": "info@htmlburger.com"
+                }
+            ],
+            "description": "A collection of common utility functions, useful for building WordPress themes and plugins.",
+            "homepage": "https://bitbucket.org/htmlburger/carbon-common",
+            "time": "2020-08-14T13:09:46+00:00"
         },
         {
             "name": "htmlburger/carbon-fields",

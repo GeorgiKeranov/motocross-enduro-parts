@@ -1,0 +1,49 @@
+/* ------------------------------------------------------------ *\
+	Footer
+\* ------------------------------------------------------------ */
+
+.footer { color: #fff; }
+
+.footer .footer__body { padding: 100px 0; background: linear-gradient(135deg, #1A1A1A, #3D3935); }
+.footer .footer__body-flex { display: flex; justify-content: space-between; align-items: center; }
+
+.footer .footer__text p { font-size: 18px; margin-bottom: 10px; text-align: center; }
+
+.footer .footer__contacts > a { font-size: 20px; display: flex; align-items: center; font-weight: 700; margin-bottom: 20px; cursor: pointer; }
+.footer .footer__contacts > a i { margin-right: 10px; transition: .5s; }
+
+.footer .footer__contacts > a[href^="tel:"]:hover i { animation: phone-ring-animation 1s infinite ease-in-out; transform-origin: 50% 50%;  }
+.footer .footer__contacts > a[href^="mailto:"]:hover i { transform: rotate(180deg); }
+
+.footer .footer__copyright { padding: 25px 0; background-color: #000; text-align: center; }
+.footer .footer__copyright p { font-size: 20px; }
+
+@-webkit-keyframes phone-ring-animation {
+    0% {
+        -webkit-transform:rotate(0) scale(1) skew(1deg)
+    }
+
+    10% {
+        -webkit-transform:rotate(-25deg) scale(1) skew(1deg)
+    }
+
+    20% {
+        -webkit-transform:rotate(25deg) scale(1) skew(1deg)
+    }
+
+    30% {
+        -webkit-transform:rotate(-25deg) scale(1) skew(1deg)
+    }
+
+    40% {
+        -webkit-transform:rotate(25deg) scale(1) skew(1deg)
+    }
+
+    50% {
+        -webkit-transform:rotate(0) scale(1) skew(1deg)
+    }
+
+    100% {
+        -webkit-transform:rotate(0) scale(1) skew(1deg)
+    }
+}

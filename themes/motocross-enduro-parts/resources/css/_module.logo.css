@@ -1,0 +1,7 @@
+/* ------------------------------------------------------------ *\
+	Logo
+\* ------------------------------------------------------------ */
+
+.logo { display: block; width: 180px; height: 60px; background: url(../images/logo.png) center/contain no-repeat; }
+
+.logo-alt { display: block; width: 250px; height: 250px; background: url(../images/logo-alt.png) center/contain no-repeat; }

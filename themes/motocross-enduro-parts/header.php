@@ -34,9 +34,7 @@
 					</div><!-- /.header__nav -->
 
 					<div class="header__shopping-cart">
-						<a href="#">
-							<i class="ico-shopping-cart"></i>
-
+						<a class="ico-shopping-cart" href="#">
 							<span>5</span>
 						</a>
 					</div><!-- /.header__shopping-cart -->
