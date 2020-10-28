@@ -19,19 +19,15 @@
 				</div><!-- /.header__logo -->
 
 				<div class="header__body">
-					<div class="header__nav">
-						<nav class="nav">
-							<ul>
-								<li>
-									<a href="#">Части</a>
-								</li>
-
-								<li>
-									<a href="#">Контакти</a>
-								</li>
-							</ul>
-						</nav><!-- /.nav -->
-					</div><!-- /.header__nav -->
+					<?php if ( has_nav_menu( 'header-menu' ) ) : ?>
+						<div class="header__nav">
+							<?php wp_nav_menu( array(
+								'theme_location' => 'header-menu',
+								'container' => 'nav',
+								'container_class' => 'nav'
+							) ) ?>
+						</div><!-- /.header__nav -->
+					<?php endif; ?>
 
 					<div class="header__shopping-cart">
 						<a class="ico-shopping-cart" href="#">

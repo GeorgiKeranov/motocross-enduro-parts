@@ -84,11 +84,11 @@ if ( ! function_exists( 'crb_setup_theme' ) ) {
 		// add_theme_support( 'post-formats', array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' ) );
 
 		# Register Theme Menu Locations
-		/*
+		
 		register_nav_menus( array(
-			'main-menu' => __( 'Main Menu', 'crb' ),
+			'header-menu' => __( 'Header Menu', 'crb' ),
 		) );
-		*/
+		
 
 		# Attach custom shortcodes
 		include_once( CRB_THEME_DIR . 'options/shortcodes.php' );

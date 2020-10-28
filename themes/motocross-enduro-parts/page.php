@@ -12,8 +12,6 @@
 			<?php
 			the_content();
 
-			theme_pagination( 'custom' );
-
 			edit_post_link( __( 'Edit this entry.', 'crb' ), '<p>', '</p>' );
 			?>
 		</div><!-- /.page__entry -->
