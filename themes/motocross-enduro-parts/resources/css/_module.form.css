@@ -45,3 +45,5 @@ form select { border: 1px solid #000; border-radius: 20px; padding: 10px 20px; f
 
 .form-contact.wpforms-container-full .wpforms-form button[type=submit] { border: 2px solid #e7a161; border-radius: 4px; padding: 10px 30px; font-size: 22px; background-color: #e7a161; color: #fff; font-weight: 700; transition: .5s; }
 .form-contact.wpforms-container-full .wpforms-form button[type=submit]:hover { border: 2px solid #e7a161; background-color: #fff; color: #e7a161; }
+
+.form-contact .wpforms-confirmation-container-full p { font-size: 23px; }
