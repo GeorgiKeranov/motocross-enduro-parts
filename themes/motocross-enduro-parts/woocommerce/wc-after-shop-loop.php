@@ -1,0 +1,1 @@
+</div><!-- /.woocommerce__shop -->

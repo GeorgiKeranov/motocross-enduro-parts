@@ -1,0 +1,27 @@
+/* ------------------------------------------------------------ *\
+	Woocommerce
+\* ------------------------------------------------------------ */
+
+.woocommerce .widget_price_filter .price_slider_wrapper .ui-widget-content { height: 9px; position: relative; padding: 0 2px; border: 1px solid #d0d0d0; cursor: pointer; background-color: transparent; }
+
+.woocommerce .widget_price_filter .ui-slider .ui-slider-handle { background-color: #e7a161; }
+.woocommerce .widget_price_filter .ui-slider .ui-slider-range { background-color: #e7a161; position: absolute; top: 2px; bottom: 2px; height: auto; z-index: 1; }
+
+.woocommerce .widget_price_filter .price_slider_amount .button { background-color: #e7a161; border: 2px solid #e7a161; color: #fff; transition: .5s; }
+.woocommerce .widget_price_filter .price_slider_amount .button:hover { background-color: #fff; color: #e7a161; }
+
+/* ------------------------------------------------------------ *\
+	Woocommerce Products Header
+\* ------------------------------------------------------------ */
+
+.woocommerce-products-header { background-color: #f5f5f5; margin-bottom: 30px; }
+
+.woocommerce-products-header h1 { display: none; }
+
+/* ------------------------------------------------------------ *\
+	Woocommerce Columns
+\* ------------------------------------------------------------ */
+
+.woocommerce-columns .woocommerce__columns { display: flex; }
+.woocommerce-columns .woocommerce__sidebar { width: 28%; order: -1; padding-right: 2%; border-right: 1px solid #f1f1f1; }
+.woocommerce-columns .woocommerce__shop { width: 72%; padding-left: 2%; }

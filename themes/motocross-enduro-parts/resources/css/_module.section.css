@@ -15,6 +15,25 @@
 .section-search-parts h1 { color: #e7a161; margin-bottom: 20px; }
 .section-search-parts h3 { color: #e7a161; }
 
+/* Section Search Parts Alt */
+.section-search-parts--alt { padding: 0; }
+
+.section-search-parts--alt .section__search-filters { max-width: 700px; }
+
+.section-search-parts--alt .section__inner { background: transparent; padding: 10px 0 20px; }
+
+.section-search-parts--alt form input, 
+.section-search-parts--alt form select { padding: 5px 15px; font-size: 18px; border-color: #ddd; transition: .3s ease; }
+
+.section-search-parts--alt form input:hover,
+.section-search-parts--alt form input:focus,
+.section-search-parts--alt form select:hover,
+.section-search-parts--alt form select:focus { border-color: #adabab; }
+
+.section-search-parts--alt form select[disabled] { border-color: #ddd; }
+
+.section-search-parts--alt form select { background-size: 30px 30px; }
+
 /* ------------------------------------------------------------ *\
 	Section Intro
 \* ------------------------------------------------------------ */

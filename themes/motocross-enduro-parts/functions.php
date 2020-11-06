@@ -71,7 +71,9 @@ if ( ! function_exists( 'crb_setup_theme' ) ) {
 		include_once( $autoload_dir );
 		\Carbon_Fields\Carbon_Fields::boot();
 
-		add_action('carbon_fields_register_fields', 'crb_attach_theme_options');
+		# Add Actions
+		add_action( 'carbon_fields_register_fields', 'crb_attach_theme_options' );
+		add_action( 'widgets_init', 'crb_register_custom_sidebars' );
 
 		# Theme supports
 		add_theme_support( 'automatic-feed-links' );
@@ -79,6 +81,10 @@ if ( ! function_exists( 'crb_setup_theme' ) ) {
 		add_theme_support( 'title-tag' );
 		add_theme_support( 'menus' );
 		add_theme_support( 'html5', array( 'gallery' ) );
+		add_theme_support( 'woocommerce' );
+		add_theme_support( 'wc-product-gallery-zoom' );
+		add_theme_support( 'wc-product-gallery-lightbox' );
+		add_theme_support( 'wc-product-gallery-slider' );
 
 		# Manually select Post Formats to be supported - http://codex.wordpress.org/Post_Formats
 		// add_theme_support( 'post-formats', array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' ) );
@@ -89,6 +95,9 @@ if ( ! function_exists( 'crb_setup_theme' ) ) {
 			'header-menu' => __( 'Header Menu', 'crb' ),
 		) );
 		
+
+		# Include woocommerce settings
+		include_once( CRB_THEME_DIR . 'woocommerce/woocommerce-config.php' );
 
 		# Attach custom shortcodes
 		include_once( CRB_THEME_DIR . 'options/shortcodes.php' );
@@ -101,6 +110,22 @@ if ( ! function_exists( 'crb_setup_theme' ) ) {
 		} );
 	}
 }
+
+/**
+ * Add custom sidebars.
+ */
+function crb_register_custom_sidebars() {
+	# WooCommerce Sidebar
+    register_sidebar( array(
+        'name'          => __( 'WooCommerce Sidebar', 'crb' ),
+        'id'            => 'woocommerce-sidebar',
+        'before_widget' => '<li id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</li>',
+        'before_title'  => '<h2 class="widgettitle">',
+        'after_title'   => '</h2>',
+    ) );
+}
+
 
 function crb_attach_theme_options() {
 	include_once(CRB_THEME_DIR . 'options/theme-options.php');

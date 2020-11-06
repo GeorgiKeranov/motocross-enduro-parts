@@ -68,30 +68,6 @@ input:-webkit-autofill { -webkit-text-fill-color: inherit; -webkit-box-shadow: 0
 .sidebar {}
 
 /* ------------------------------------------------------------ *\
-	Widget
-\* ------------------------------------------------------------ */
-
-.widgets { list-style: none outside none; }
-
-.widget { margin-bottom: 15px; }
-.widget ul { list-style: none outside none; margin: 0; }
-.widget li { padding: 5px 0; }
-
-.widget-title { padding-bottom: 5px; border-bottom: 1px solid #000; margin-bottom: 12px; }
-
-.widget_categories .screen-reader-text { display: none; }
-.widget_categories .post-form { width: 100%; padding: 5px; }
-
-.widget_calendar table { width: 100%; border-spacing: 0; border-collapse: collapse; text-align: center; }
-.widget_calendar td,
-.widget_calendar th { padding: 5px; border: 1px solid #000; }
-.widget_calendar caption { padding: 12px; font-weight: bold; }
-.widget_calendar tfoot { font-weight: bold; }
-
-.widget_rss .rsswidget { vertical-align: middle; }
-.widget_rss .rsswidget img { float: left; margin: 5px 8px 0 0; }
-
-/* ------------------------------------------------------------ *\
 	Footer
 \* ------------------------------------------------------------ */
 
