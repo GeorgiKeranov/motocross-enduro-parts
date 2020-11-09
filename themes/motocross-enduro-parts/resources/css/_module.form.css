@@ -7,9 +7,11 @@
 [class^="form"] button { color: #000; }
 
 [class^="form"] input,
-[class^="form"] select { border: 1px solid #000; border-radius: 20px; padding: 10px 20px; font-size: 25px; }
+[class^="form"] select { border: 1px solid #000; border-radius: 20px; font-size: 25px; }
 
-[class^="form"] select { -webkit-appearance: none; -moz-appearance: none; text-indent: 1px; text-overflow: ''; background-image: url(../images/select-down-arrow.svg); background-repeat: no-repeat; background-size: 50px 50px; background-position: right 10px center; }
+[class^="form"] input { padding: 10px 20px; }
+
+[class^="form"] select { padding: 10px 60px 10px 20px; appearance: none; text-indent: 1px; text-overflow: ''; background-image: url(../images/select-down-arrow.svg); background-repeat: no-repeat; background-size: 50px 50px; background-position: right 10px center; }
 [class^="form"] select::-ms-expand { display: none; }
 
 /* ------------------------------------------------------------ *\

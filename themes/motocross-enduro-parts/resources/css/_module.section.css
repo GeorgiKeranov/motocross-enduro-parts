@@ -22,8 +22,11 @@
 
 .section-search-parts--alt .section__inner { background: transparent; padding: 10px 0 20px; }
 
+.section-search-parts--alt form input { padding: 5px 15px; }
+.section-search-parts--alt form select { padding: 5px 40px 5px 15px; background-size: 30px 30px; }
+
 .section-search-parts--alt form input, 
-.section-search-parts--alt form select { padding: 5px 15px; font-size: 18px; border-color: #ddd; transition: .3s ease; }
+.section-search-parts--alt form select { font-size: 18px; border-radius: 8px; border-color: #ddd; transition: .3s ease; }
 
 .section-search-parts--alt form input:hover,
 .section-search-parts--alt form input:focus,
@@ -32,7 +35,6 @@
 
 .section-search-parts--alt form select[disabled] { border-color: #ddd; }
 
-.section-search-parts--alt form select { background-size: 30px 30px; }
 
 /* ------------------------------------------------------------ *\
 	Section Intro
