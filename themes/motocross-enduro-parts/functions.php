@@ -82,7 +82,6 @@ if ( ! function_exists( 'crb_setup_theme' ) ) {
 		add_theme_support( 'menus' );
 		add_theme_support( 'html5', array( 'gallery' ) );
 		add_theme_support( 'woocommerce' );
-		add_theme_support( 'wc-product-gallery-zoom' );
 		add_theme_support( 'wc-product-gallery-lightbox' );
 		add_theme_support( 'wc-product-gallery-slider' );
 
