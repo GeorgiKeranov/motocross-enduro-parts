@@ -98,19 +98,16 @@ function crb_add_on_hover_shop_loop_image() {
     $images_ids = wc_get_product()->get_gallery_image_ids(); 
 
     if ( !isset( $images_ids ) ) {
-    	echo wp_get_attachment_image( wc_get_product()->get_image_id(), 'medium' );
     	return;
     }
 
     if ( !is_array( $images_ids ) ) {
-    	echo wp_get_attachment_image( wc_get_product()->get_image_id(), 'medium' );
     	return;
     }
 
     if ( !array_key_exists( 1, $images_ids ) ) {
-    	echo wp_get_attachment_image( wc_get_product()->get_image_id(), 'medium' );
     	return;
     }
 
-    echo wp_get_attachment_image( $images_ids[0] );
+    echo wp_get_attachment_image( $images_ids[0], 'woocommerce_thumbnail' );
 }

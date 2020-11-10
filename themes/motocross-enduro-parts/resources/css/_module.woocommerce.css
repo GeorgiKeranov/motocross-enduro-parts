@@ -55,7 +55,8 @@
 .woocommerce ul.products li.product .woocommerce-loop-product__link:hover h2 { opacity: .5; color: #e7a161; }
 
 .woocommerce .woocommerce-product-images { position: relative; }
-/*.woocommerce ul.products li.product a img:nth-child(2) { display: none; }*/
+.woocommerce ul.products li.product .woocommerce-loop-product__link img + img { position: absolute; left: 0; right: 0; bottom: 0; top: 0; opacity: 0; transition: .3s; }
+.woocommerce ul.products li.product .woocommerce-loop-product__link:hover img + img { opacity: 1; }
 
 /* ------------------------------------------------------------ *\
 	Woocommerce Products Header
