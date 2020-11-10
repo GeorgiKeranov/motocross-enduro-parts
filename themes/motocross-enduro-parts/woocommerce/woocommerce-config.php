@@ -13,14 +13,6 @@ remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wra
  */
 add_action( 'woocommerce_before_main_content', 'crb_woocommerce_before_main_content', 10 );
 
-add_action( 'woocommerce_before_shop_loop', 'crb_woocommerce_before_shop_loop', 5 );
-add_action( 'woocommerce_after_shop_loop', 'crb_woocommerce_after_after_shop_loop', 10 );
-
-add_action( 'woocommerce_no_products_found', 'crb_woocommerce_before_shop_loop', 5 );
-add_action( 'woocommerce_no_products_found', 'crb_woocommerce_after_after_shop_loop', 20 );
-
-add_action( 'woocommerce_archive_description', 'crb_woocommerce_archive_description', 20 );
-
 add_action( 'woocommerce_before_shop_loop_item_title', 'crb_start_product_images_wrapper', 0 );
 add_action( 'woocommerce_before_shop_loop_item_title', 'crb_add_on_hover_shop_loop_image', 10 );
 add_action( 'woocommerce_before_shop_loop_item_title', 'crb_end_product_images_wrapper', 20 );
@@ -30,27 +22,14 @@ add_action( 'woocommerce_before_shop_loop_item_title', 'crb_end_product_images_w
  */
 add_filter( 'woocommerce_sale_flash', 'crb_woocommerce_sale_flash', 20, 3 );
 add_filter( 'woocommerce_get_script_data', 'crb_change_js_view_cart_button', 10, 2 ); 
+add_filter( 'woocommerce_is_sold_individually', 'crb_remove_all_quantity_fields', 10, 2 );
+
 
 /**
  * Functions
  */
 function crb_woocommerce_before_main_content() {
-	echo '<div class="woocommerce-wrapper">';
-}
-
-function crb_woocommerce_before_shop_loop() {
-	echo '<div class="woocommerce-columns">
-                <div class="shell">
-                    <div class="woocommerce__columns">
-                        <div class="woocommerce__shop">';
-}
-
-function crb_woocommerce_after_after_shop_loop() {
-	echo '</div><!-- /.woocommerce__shop -->';
-}
-
-function crb_woocommerce_archive_description() {
-	get_template_part( 'woocommerce/wc-archive-description' );
+	get_template_part( 'woocommerce/wc-before-main-content' );
 }
 
 function crb_woocommerce_sale_flash( $html, $post, $product ) {
@@ -113,4 +92,8 @@ function crb_add_on_hover_shop_loop_image() {
     }
 
     echo wp_get_attachment_image( $images_ids[0], 'woocommerce_thumbnail' );
+}
+
+function crb_remove_all_quantity_fields( $return, $product ) {
+    return true;
 }

@@ -1,3 +1,5 @@
+			</div><!-- /.woocommerce__shop -->
+			
 			<?php $sidebar_id = 'woocommerce-sidebar';
 
 			if ( is_active_sidebar( $sidebar_id ) ) : ?>

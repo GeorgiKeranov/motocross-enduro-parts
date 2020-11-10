@@ -78,9 +78,7 @@
 	Woocommerce Products Header
 \* ------------------------------------------------------------ */
 
-.woocommerce-products-header { background-color: #f5f5f5; }
-
-.woocommerce-products-header h1 { display: none; }
+.woocommerce-products-header { display: none; }
 
 /* ------------------------------------------------------------ *\
 	Woocommerce Columns

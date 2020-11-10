@@ -16,7 +16,7 @@
 .section-search-parts h3 { color: #e7a161; }
 
 /* Section Search Parts Alt */
-.section-search-parts--alt { padding: 0; }
+.section-search-parts--alt { background-color: #f5f5f5; padding: 0; }
 
 .section-search-parts--alt .section__search-filters { max-width: 700px; }
 

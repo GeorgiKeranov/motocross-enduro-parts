@@ -27,3 +27,9 @@
 		</div><!-- /.section__inner -->
 	</div><!-- /.shell -->
 </div><!-- /.section-search-parts -->
+
+<div class="woocommerce-wrapper">
+	<div class="woocommerce-columns">
+		<div class="shell">
+			<div class="woocommerce__columns">
+				<div class="woocommerce__shop">
