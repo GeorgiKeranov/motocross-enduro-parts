@@ -16,7 +16,10 @@ add_action( 'woocommerce_before_main_content', 'crb_woocommerce_before_main_cont
 add_action( 'woocommerce_before_shop_loop', 'crb_woocommerce_before_shop_loop', 5 );
 add_action( 'woocommerce_after_shop_loop', 'crb_woocommerce_after_after_shop_loop', 10 );
 
-add_action( 'woocommerce_archive_description', 'crb_woocommerce_archive_description', 10 );
+add_action( 'woocommerce_no_products_found', 'crb_woocommerce_before_shop_loop', 5 );
+add_action( 'woocommerce_no_products_found', 'crb_woocommerce_after_after_shop_loop', 20 );
+
+add_action( 'woocommerce_archive_description', 'crb_woocommerce_archive_description', 20 );
 
 add_action( 'woocommerce_before_shop_loop_item_title', 'crb_start_product_images_wrapper', 0 );
 add_action( 'woocommerce_before_shop_loop_item_title', 'crb_add_on_hover_shop_loop_image', 10 );
