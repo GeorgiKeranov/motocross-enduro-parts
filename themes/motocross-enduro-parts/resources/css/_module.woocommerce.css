@@ -58,11 +58,27 @@
 .woocommerce ul.products li.product .woocommerce-loop-product__link img + img { position: absolute; left: 0; right: 0; bottom: 0; top: 0; opacity: 0; transition: .3s; }
 .woocommerce ul.products li.product .woocommerce-loop-product__link:hover img + img { opacity: 1; }
 
+/* Pagination */
+.woocommerce nav.woocommerce-pagination ul,
+.woocommerce nav.woocommerce-pagination ul li { border: 0; }
+
+.woocommerce nav.woocommerce-pagination ul li a,
+.woocommerce nav.woocommerce-pagination ul li span { background: #424043; color: #fff; border: 1px solid #424043; border-radius: 4px; font-size: 14px; font-weight: 600; width: 30px; height: 30px; line-height: 30px; padding: 0; transition: .3s; }
+
+.woocommerce nav.woocommerce-pagination ul li + li { margin-left: 5px; }
+
+.woocommerce nav.woocommerce-pagination ul li a:focus,
+.woocommerce nav.woocommerce-pagination ul li a:hover,
+.woocommerce nav.woocommerce-pagination ul li span.current { background: #fff; color: #424043; }
+
+.woocommerce nav.woocommerce-pagination ul li .prev,
+.woocommerce nav.woocommerce-pagination ul li .next { padding: 0; font-size: 24px; line-height: 25px; }
+
 /* ------------------------------------------------------------ *\
 	Woocommerce Products Header
 \* ------------------------------------------------------------ */
 
-.woocommerce-products-header { background-color: #f5f5f5; margin-bottom: 30px; }
+.woocommerce-products-header { background-color: #f5f5f5; }
 
 .woocommerce-products-header h1 { display: none; }
 
@@ -70,6 +86,8 @@
 	Woocommerce Columns
 \* ------------------------------------------------------------ */
 
+.woocommerce-columns { padding: 30px 0; }
+
 .woocommerce-columns .woocommerce__columns { display: flex; }
-.woocommerce-columns .woocommerce__sidebar { width: 28%; order: -1; padding-right: 3%; border-right: 1px solid #ddd; }
-.woocommerce-columns .woocommerce__shop { width: 72%; padding-left: 3%; }
+.woocommerce-columns .woocommerce__sidebar { width: 23%; order: -1; padding-right: 3%; border-right: 1px solid #ddd; }
+.woocommerce-columns .woocommerce__shop { width: 77%; padding-left: 3%; }
