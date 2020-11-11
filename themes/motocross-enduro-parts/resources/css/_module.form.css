@@ -14,6 +14,13 @@
 [class^="form"] select { padding: 10px 60px 10px 20px; appearance: none; text-indent: 1px; text-overflow: ''; background-image: url(../images/select-down-arrow.svg); background-repeat: no-repeat; background-size: 50px 50px; background-position: right 10px center; }
 [class^="form"] select::-ms-expand { display: none; }
 
+/* Tablet Portrait */
+
+$breakpoint-tablet-portrait {
+	[class^="form"] input,
+	[class^="form"] select { font-size: 20px; }
+}
+
 /* ------------------------------------------------------------ *\
 	Form Search
 \* ------------------------------------------------------------ */
@@ -23,6 +30,7 @@
 .form-search button { border: 0; background-color: transparent; width: 52px; }
 .form-search button img { width: 40px; transition: .3s;	 }
 .form-search button:hover img { transform: scale(1.3, 1.3); }
+
 
 /* ------------------------------------------------------------ *\
 	Form Make Filter
