@@ -17,13 +17,16 @@ add_action( 'woocommerce_before_shop_loop_item_title', 'crb_start_product_images
 add_action( 'woocommerce_before_shop_loop_item_title', 'crb_add_on_hover_shop_loop_image', 10 );
 add_action( 'woocommerce_before_shop_loop_item_title', 'crb_end_product_images_wrapper', 20 );
 
+add_action( 'woocommerce_checkout_before_order_review_heading', 'crb_start_wrapper_to_order_review', 10 );
+add_action( 'woocommerce_checkout_after_order_review', 'crb_end_wrapper_to_order_review', 10 );
+
 /**
  * Add Filters
  */
 add_filter( 'woocommerce_sale_flash', 'crb_woocommerce_sale_flash', 20, 3 );
 add_filter( 'woocommerce_get_script_data', 'crb_change_js_view_cart_button', 10, 2 ); 
 add_filter( 'woocommerce_is_sold_individually', 'crb_remove_all_quantity_fields', 10, 2 );
-
+add_filter( 'woocommerce_checkout_fields', 'crb_change_checkout_fields' );
 
 /**
  * Functions
@@ -97,3 +100,19 @@ function crb_add_on_hover_shop_loop_image() {
 function crb_remove_all_quantity_fields( $return, $product ) {
     return true;
 }
+
+function crb_change_checkout_fields( $fields ) {
+    // var_dump( $fields );
+    // exit;
+
+    return $fields;
+}
+
+function crb_start_wrapper_to_order_review() {
+    echo '<div class="woocommerce-order-review-wrapper">';
+}
+
+function crb_end_wrapper_to_order_review() {
+    echo '</div><!-- /.woocommerce-order-review-wrapper -->';
+}
+

@@ -35,7 +35,6 @@
 
 .section-search-parts--alt form select[disabled] { border-color: #ddd; }
 
-
 /* ------------------------------------------------------------ *\
 	Section Intro
 \* ------------------------------------------------------------ */
@@ -78,3 +77,11 @@
 .section-columns + .section-columns { margin-top: 10px; }
 
 .section-columns .section__column { width: 50%; }
+
+/* ------------------------------------------------------------ *\
+	Section Default
+\* ------------------------------------------------------------ */
+
+.section-default { padding: 30px 0; }
+
+.section-default h1 { color: #e7a161; }
