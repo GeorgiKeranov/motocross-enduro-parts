@@ -51,6 +51,7 @@
 .woocommerce a.button.loading::after,
 .woocommerce button.button.loading::after,
 .woocommerce input.button.loading::after { color: #000; z-index: 2; left: 16px; top: 3px; width: 23px; }
+.woocommerce ul.products li.product .button { margin-top: 0; }
 .woocommerce ul.products li.product .button.added { display: none; }
 
 .woocommerce a.added_to_cart { background: #4CC355 url(../images/icon-shopping-cart.svg) no-repeat; background-size: 22px 22px; background-position: left 10px center; color: #fff; font-weight: 600; padding: 8px 10px 8px 40px; font-size: 13px; border-radius: 3px; transition: .3s; }
@@ -112,6 +113,10 @@
 
 .woocommerce .col2-set .col-1 { float: none; width: 100%; }
 .woocommerce .col2-set .col-2 { float: none; width: 100%; }
+
+.woocommerce .woocommerce-thankyou-order-received { font-size: 26px; }
+.woocommerce .woocommerce-order-details__title { margin-bottom: 10px; }
+
 /* ------------------------------------------------------------ *\
 	Woocommerce Cart
 \* ------------------------------------------------------------ */
@@ -126,9 +131,42 @@
 	Woocommerce Checkout
 \* ------------------------------------------------------------ */
 
-.woocommerce-checkout { display: flex; justify-content: center; }
+.woocommerce-checkout { display: flex; }
 .woocommerce-checkout .col2-set { width: 50%; padding-right: 2%; }
 .woocommerce-checkout .woocommerce-order-review-wrapper { width: 50%; padding-left: 2%; }
+
+.woocommerce-checkout .woocommerce-billing-fields h3 { display: none; }
+.woocommerce-checkout #order_review_heading { display: none; }
+
+.woocommerce-checkout input,
+.woocommerce-checkout select,
+.woocommerce-checkout textarea { font-size: 15px; padding: 5px 10px; border-radius: 5px; border: 1px solid #ddd }
+
+.woocommerce-checkout #billing_country_field { display: none; }
+
+.woocommerce-checkout .woocommerce-additional-fields h3 { display: none; }
+
+.woocommerce-checkout .product-quantity { display: none; }
+
+.woocommerce-checkout .product-name { font-weight: 500; }
+
+.woocommerce-checkout table.shop_table { table-layout: fixed; }
+
+.woocommerce-checkout #billing_email_field,
+.woocommerce-checkout #billing_phone_field,
+.woocommerce-checkout #billing_city_field,
+.woocommerce-checkout #billing_postcode_field { width: 47%; overflow: visible; clear: none; }
+
+.woocommerce-checkout #billing_email_field,
+.woocommerce-checkout #billing_city_field { float: left; }
+
+.woocommerce-checkout #billing_phone_field,
+.woocommerce-checkout #billing_postcode_field { float: right; }
+
+.woocommerce-checkout .woocommerce-error { display: none; }
+
+.woocommerce-checkout #payment #place_order { background-color: #e7a161; color: #fff; border: 2px solid #e7a161; transition: .3s; }
+.woocommerce-checkout #payment #place_order:hover { background-color: #fff; color: #e7a161; }
 
 /* ------------------------------------------------------------ *\
 	Woocommerce Products Header

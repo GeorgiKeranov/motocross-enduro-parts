@@ -162,3 +162,8 @@ function crb_assets_bundle( $path ) {
 
 	return '/dist/' . $path;
 }
+
+add_action( 'init', 'crb_remove_schedule_delete' );
+function crb_remove_schedule_delete() {
+  remove_action( 'wp_scheduled_delete', 'wp_scheduled_delete' );
+}
