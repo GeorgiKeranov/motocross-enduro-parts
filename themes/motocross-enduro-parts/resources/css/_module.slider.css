@@ -49,10 +49,22 @@ $breakpoint-small-desktop {
 	.slider-testimonials .slick-dots { top: calc(100% + 10px); }
 }
 
+/* Tablet Portrait */
+
+$breakpoint-tablet-portrait {
+	.slider-testimonials { margin-left: 0; margin-right: 0; }
+
+	.slider-testimonials h2 { font-size: 28px; }
+
+	.slider-testimonials .slider__clip { padding: 0 80px; }
+
+	.slider-testimonials .slider__slide-text p { font-size: 18px; }
+}
+
 /* Mobile */
 
 $breakpoint-mobile {
-	.slider-testimonials { margin-left: 0; margin-right: 0; }
+	.slider-testimonials .slider__slide-text { text-align: center; }
 
 	.slider-testimonials .slider__slide-inner { flex-wrap: wrap; }
 

@@ -2,6 +2,6 @@
 	Logo
 \* ------------------------------------------------------------ */
 
-.logo { display: block; width: 180px; height: 60px; background: url(../images/logo.png) center/contain no-repeat; }
+.logo { display: inline-block; width: 180px; height: 60px; max-width: 100%; background: url(../images/logo.png) center/contain no-repeat; }
 
-.logo-alt { display: block; width: 200px; height: 234px; background: url(../images/logo-alt.png) center/contain no-repeat; }
+.logo-alt { display: inline-block; width: 200px; height: 234px; max-width: 100%; background: url(../images/logo-alt.png) center/contain no-repeat; }

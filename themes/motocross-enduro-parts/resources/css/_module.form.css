@@ -18,7 +18,9 @@
 
 $breakpoint-tablet-portrait {
 	[class^="form"] input,
-	[class^="form"] select { font-size: 20px; }
+	[class^="form"] select { font-size: 18px; }
+
+	[class^="form"] select { background-size: 40px 40px; padding-right: 50px; }
 }
 
 /* ------------------------------------------------------------ *\

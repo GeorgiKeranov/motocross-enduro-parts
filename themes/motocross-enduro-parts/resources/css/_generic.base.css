@@ -59,3 +59,12 @@ $breakpoint-small-desktop {
 	h4 { font-size: 20px; }
 }
 
+/* Tablet Portrait */
+
+$breakpoint-tablet-portrait {
+	h1 { font-size: 27px; }
+	h2 { font-size: 25px; }
+	h3 { font-size: 22px; }
+	h4 { font-size: 20px; }	
+}
+

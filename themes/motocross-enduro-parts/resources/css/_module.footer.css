@@ -7,7 +7,8 @@
 .footer .footer__body { padding: 100px 0; background: linear-gradient(135deg, #1A1A1A, #3D3935); }
 .footer .footer__body-flex { display: flex; justify-content: space-between; align-items: center; }
 
-.footer .footer__text p { font-size: 18px; margin-bottom: 10px; text-align: center; }
+.footer .footer__text { text-align: center; }
+.footer .footer__text p { font-size: 18px; margin-bottom: 10px; }
 
 .footer .footer__copyright { padding: 25px 0; background-color: #000; text-align: center; }
 .footer .footer__copyright p { font-size: 20px; }
@@ -16,4 +17,15 @@
 
 $breakpoint-small-desktop {
 	.footer .footer__body { padding: 50px 0; }
+}
+
+/* Tablet Portrait */
+
+$breakpoint-tablet-portrait {
+	.footer .footer__body-flex { flex-wrap: wrap; }
+
+	.footer .footer__body-flex .footer__logo { width: 100%; text-align: center; margin-bottom: 60px; }
+
+	.footer .footer__body-flex .footer__text { width: 45%; }
+	.footer .footer__body-flex .footer__contacts { width: 45%; text-align: center; }
 }
