@@ -94,7 +94,7 @@
 .woocommerce div.product div.images .flex-control-thumbs { margin: 0 -10px; }
 .woocommerce div.product div.images .flex-control-thumbs li { padding: 0 10px; }
 
-.woocommerce div.product .related.products { float: left; border-top: 1px solid #ddd; padding-top: 20px; }
+.woocommerce div.product .related.products { float: left; border-top: 1px solid #ddd; padding-top: 20px; width: 100px; }
 .woocommerce div.product .related.products > h2 { font-size: 24px; font-weight: 500; margin-bottom: 0; }
 
 .woocommerce div.product .product_title { font-size: 24px; font-weight: 500; padding-bottom: 10px; border-bottom: 1px solid #ddd; margin-bottom: 10px; }
