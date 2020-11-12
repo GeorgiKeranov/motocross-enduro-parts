@@ -28,6 +28,8 @@ $breakpoint-tablet-portrait {
 $breakpoint-mobile {
 	[class^="form"] input,
 	[class^="form"] select { font-size: 16px; }
+
+	[class^="form"] select { background-size: 30px 30px; }
 }
 
 /* ------------------------------------------------------------ *\
