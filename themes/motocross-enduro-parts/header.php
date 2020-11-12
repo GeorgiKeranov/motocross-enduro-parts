@@ -34,6 +34,14 @@
 							<span>5</span>
 						</a>
 					</div><!-- /.header__shopping-cart -->
+
+					<div class="header__menu-toggle">
+						<div></div>
+
+						<div></div>
+
+						<div></div>
+					</div><!-- /.header__menu-toggle -->
 				</div><!-- /.header__body -->
 			</div><!-- /.header__inner -->
 		</div><!-- /.shell -->

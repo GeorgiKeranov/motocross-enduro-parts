@@ -5,3 +5,15 @@
 .logo { display: inline-block; width: 180px; height: 60px; max-width: 100%; background: url(../images/logo.png) center/contain no-repeat; }
 
 .logo-alt { display: inline-block; width: 200px; height: 234px; max-width: 100%; background: url(../images/logo-alt.png) center/contain no-repeat; }
+
+/* Tablet Portrait */
+
+$breakpoint-tablet-portrait {
+	.logo { width: 140px; height: 47px; }
+}
+
+/* Mobile */
+
+$breakpoint-mobile {
+	.logo-alt { width: 150px; height: 176px; }
+}

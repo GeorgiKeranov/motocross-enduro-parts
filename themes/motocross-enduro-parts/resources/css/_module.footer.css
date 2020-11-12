@@ -24,8 +24,26 @@ $breakpoint-small-desktop {
 $breakpoint-tablet-portrait {
 	.footer .footer__body-flex { flex-wrap: wrap; }
 
-	.footer .footer__body-flex .footer__logo { width: 100%; text-align: center; margin-bottom: 60px; }
+	.footer .footer__logo { width: 100%; text-align: center; margin-bottom: 60px; }
 
-	.footer .footer__body-flex .footer__text { width: 45%; }
-	.footer .footer__body-flex .footer__contacts { width: 45%; text-align: center; }
+	.footer .footer__text { width: 45%; }
+	.footer .footer__contacts { width: 45%; text-align: center; }
+}
+
+/* Mobile */
+
+$breakpoint-mobile {
+	.footer .footer__body { padding: 20px 0; }
+	
+	.footer .footer__text,
+	.footer .footer__contacts { width: 100%; }
+
+	.footer .footer__text,
+	.footer .footer__logo { margin-bottom: 40px; }
+
+	.footer .footer__text p { font-size: 15px; }
+	.footer .footer__text hr { max-width: 200px; margin: 0 auto 10px; }
+	
+	.footer .footer__copyright { padding: 15px 0; }
+	.footer .footer__copyright p { font-size: 15px; }
 }

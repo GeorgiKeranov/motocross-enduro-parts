@@ -12,3 +12,10 @@
 .ico-phone { display: inline-block; background-image: url(../images/icon-phone.png); width: 45px; height: 45px; }
 
 .ico-mail { display: inline-block; background-image: url(../images/icon-mail.svg); width: 45px; height: 45px; }
+
+/* Mobile */
+
+$breakpoint-mobile {
+	.ico-phone,
+	.ico-mail { width: 30px; height: 30px; }
+}

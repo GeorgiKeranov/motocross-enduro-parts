@@ -9,4 +9,16 @@
 .nav a:before { content: ''; position: absolute; top: 100%; left: 0; right: 101%; height: 2px; background-color: #ffb26b; transition: .3s; }
 
 .nav a { text-decoration: none; }
-.nav a:hover:before { right: 0; }
+
+.nav a:hover:before,
+.nav .current_page_item a:before { right: 0; }
+
+/* Tablet Portrait */
+
+$breakpoint-tablet-portrait {
+	.nav ul { flex-direction: column; justify-content: center; align-items: center; text-align: center; height: 100%; }
+	
+	.nav ul li { width: 100%; margin-top: 40px; }
+	
+	.nav a { font-size: 25px; }
+}

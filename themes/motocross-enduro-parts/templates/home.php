@@ -23,10 +23,10 @@ get_header();
 				<h3>Търсете части по име:</h3>
 
 				<form class="form-search">
-					<input type="text" name="s" placeholder="Например: Кормило Honda CRF450R">
+					<input type="text" name="s" placeholder="Например: Заден амортисьор">
 
 					<button type="submit">
-						<img src="<?php bloginfo('stylesheet_directory'); ?>/resources/images/icon-search.svg)" alt="Search Button">
+						<?php crb_render_fragment( 'svgs/icon-search' ) ?>
 					</button>
 				</form>
 			</div><!-- /.section__search -->
@@ -63,6 +63,6 @@ get_header();
 </div><!-- /.section-search-parts -->
 
 <?php
-crb_render_fragment('slider-testimonials');
+crb_render_fragment( 'slider-testimonials' );
 
 get_footer();

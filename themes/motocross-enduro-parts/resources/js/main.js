@@ -15,3 +15,9 @@ $('.slider-testimonials .slider__slides').slick({
 	autoplay: true,
 	autoplaySpeed: 3000,
 });
+
+$('.header .header__menu-toggle').on('click', function(e) {
+	e.preventDefault();
+	
+	$('body').toggleClass('menu-active');
+});

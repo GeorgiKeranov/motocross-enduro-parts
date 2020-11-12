@@ -3,3 +3,9 @@
 \* ------------------------------------------------------------ */
 
 .wrapper { margin-top: 100px; width: 100%; }
+
+/* Tablet Portrait */
+
+$breakpoint-tablet-portrait {
+	.wrapper { margin-top: 71px; }
+}
