@@ -47,7 +47,7 @@ $breakpoint-small-desktop {
 	.section-search-parts .section__separator { margin: 20px 0; }
 }
 
-/* Mobile */
+/* Mobile Portrait */
 
 $breakpoint-mobile-portrait {
 	.section-search-parts { padding: 20px 0; }

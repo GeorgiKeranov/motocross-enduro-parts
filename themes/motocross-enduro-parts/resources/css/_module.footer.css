@@ -34,6 +34,13 @@ $breakpoint-tablet-portrait {
 
 /* Mobile */
 
+$breakpoint-mobile {
+	.footer .footer__text { width: 40%; }
+	.footer .footer__contacts { width: 55%; }
+}
+
+/* Mobile Portrait */
+
 $breakpoint-mobile-portrait {
 	.footer .footer__body { padding: 20px 0; }
 	

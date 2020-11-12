@@ -40,10 +40,16 @@
 
 /* Mobile */
 
-$breakpoint-mobile-portrait {
+$breakpoint-mobile {
     [class^="icotext"] { justify-content: center; font-size: 18px; font-weight: 500; margin-bottom: 10px; }
 
-    [class^="icotext"] i { margin-right: 5px; }
-
     [class^="icotext"]:last-child { margin-bottom: 0; }
+}
+
+/* Mobile Portrait */
+
+$breakpoint-mobile-portrait {
+    [class^="icotext"] { justify-content: center; }
+
+    [class^="icotext"] i { margin-right: 5px; }
 }

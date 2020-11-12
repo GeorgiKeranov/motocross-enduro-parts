@@ -23,7 +23,7 @@ $breakpoint-tablet-portrait {
 	[class^="form"] select { background-size: 40px 40px; padding-right: 50px; }
 }
 
-/* Mobile */
+/* Mobile Portrait */
 
 $breakpoint-mobile-portrait {
 	[class^="form"] input,
@@ -42,7 +42,7 @@ $breakpoint-mobile-portrait {
 .form-search button svg { width: 40px; height: 40px; transition: .3s; }
 .form-search button:hover svg { transform: scale(1.3, 1.3); }
 
-/* Mobile */
+/* Mobile Portrait */
 
 $breakpoint-mobile-portrait {
 	.form-search { position: relative; flex-wrap: wrap; justify-content: center; }
@@ -61,7 +61,7 @@ $breakpoint-mobile-portrait {
 .form-make-filter { display: flex; justify-content: center; align-items: center; margin: 0 -10px; }
 .form-make-filter select { width: 33.3%; margin: 0 10px; }
 
-/* Mobile */
+/* Mobile Portrait */
 
 $breakpoint-mobile-portrait {
 	.form-make-filter { flex-direction: column; margin: 0; }

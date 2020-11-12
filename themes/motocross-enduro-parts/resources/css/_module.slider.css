@@ -67,7 +67,7 @@ $breakpoint-tablet-portrait {
 	.slider-testimonials .slider__slide-text p { font-size: 18px; }
 }
 
-/* Mobile */
+/* Mobile Portrait */
 
 $breakpoint-mobile-portrait {
 	.slider-testimonials { padding: 20px 0; }

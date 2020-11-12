@@ -12,7 +12,7 @@ $breakpoint-tablet-portrait {
 	.logo { width: 140px; height: 47px; }
 }
 
-/* Mobile */
+/* Mobile Portrait */
 
 $breakpoint-mobile-portrait {
 	.logo-alt { width: 150px; height: 176px; }
