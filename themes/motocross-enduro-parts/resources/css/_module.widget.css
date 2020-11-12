@@ -55,6 +55,8 @@
 .widget_product_categories .current-cat a:before,
 .widget_product_categories .cat-item a:hover:before { background-color: #e7a161; border-color: transparent; }
 
+.widget_product_categories#woocommerce_product_categories-4 { display: none; }
+
 /* Small Desktop */
 
 $breakpoint-small-desktop {
@@ -69,4 +71,46 @@ $breakpoint-small-desktop {
 	/* Widget Price Filter */
 	.widget_price_filter .price_slider_amount { display: flex; flex-direction: column; }
 	.widget_price_filter .price_slider_amount .price_label { text-align: left; order: -1; }
+}
+
+/* Mobile */
+
+$breakpoint-mobile {
+	.widget_product_search button[type="submit"] { padding: 4px 10px; }
+	.widget_product_search button[type="submit"] { font-size: 15px; font-weight: 500; line-height: 1; }
+	.widget_product_search input[type="search"] { font-size: 12px; }
+}
+
+
+/* Mobile Portrait */
+
+$breakpoint-mobile-portrait {
+	.widgets { display: flex; flex-direction: column; }
+
+	.widget { margin-bottom: 20px; text-align: center; }
+	
+	.widget:last-child { margin-bottom: 0; }
+
+	.widget .widgettitle { display: none; }
+
+	.widget_product_categories#woocommerce_product_categories-2 { display: none; }
+	.widget_product_categories#woocommerce_product_categories-4 { display: block; }
+
+	.widget_product_search { margin-bottom: 10px; }
+
+	.widget_product_search button[type="submit"] { display: none; }
+	.widget_product_search input[type="search"] { background-color: #fff; color: #000; font-size: 17px; border-radius: 8px; border-color: #ddd; padding: 6px 15px; line-height: normal; margin-bottom: 0; }
+
+	.widget_price_filter { order: 2; }
+	.widget_price_filter .price_slider_amount .price_label { font-size: 14px; padding: 0 5px; }
+
+	.widget_product_categories .select2-container--default .select2-selection--single { border-color: #ddd; border-radius: 8px; text-align: left; }
+	.widget_product_categories .select2-container--default .select2-selection--single .select2-selection__placeholder { color: #000; }
+	.widget_product_categories .select2-container--default .select2-selection--single .select2-selection__rendered { color: #000; padding: 7px 15px; line-height: 18px; font-size: 16px; }
+	.widget_product_categories .select2-container--default .select2-selection--single .select2-selection__clear { display: none; }
+	.widget_product_categories .select2-dropdown { border-color: #ddd; }
+
+	.widget_product_categories .select2-container .select2-selection--single { height: 32px; }
+
+	span.select2-container--default .select2-search--dropdown .select2-search__field { border-color: #ddd; }
 }

@@ -13,6 +13,8 @@
 
 .ico-mail { display: inline-block; background-image: url(../images/icon-mail.svg); width: 45px; height: 45px; }
 
+.ico-filter { display: inline-block; background-image: url(../images/icon-filter.svg); width: 24px; height: 24px; vertical-align: middle; }
+
 /* Mobile */
 
 $breakpoint-mobile {

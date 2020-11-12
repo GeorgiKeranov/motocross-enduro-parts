@@ -3,6 +3,8 @@
 		<div class="section__inner">
 			<div class="section__search-filters">
 				<h3>Търсете части за вашият мотор:</h3>
+
+				<button class="section__filter-mobile">Филтри <span class="ico-filter"></span></button>
 				
 				<form class="form-make-filter">
 					<select name="make" id="make">

@@ -7,6 +7,8 @@
 					<ul class="widgets">
 						<?php dynamic_sidebar( $sidebar_id ); ?>
 					</ul><!-- /.widgets -->
+
+					<button class="js-mobile-filter"><?php _e( 'Search', 'woocommerce' ) ?></button>
 				</div><!-- /.woocommerce__sidebar -->
 			<?php endif; ?>
 
