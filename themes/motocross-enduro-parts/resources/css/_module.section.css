@@ -33,7 +33,11 @@
 .section-search-parts--alt form select:hover,
 .section-search-parts--alt form select:focus { border-color: #adabab; }
 
-.section-search-parts--alt form select[disabled] { border-color: #ddd; }
+.section-search-parts--alt form input, 
+.section-search-parts--alt form select { background-color: #fff; }
+
+.section-search-parts--alt form input[disabled],
+.section-search-parts--alt form select[disabled] { border-color: #ddd; background-color: #ddd; }
 
 /* Small Desktop */
 
@@ -41,10 +45,12 @@ $breakpoint-small-desktop {
 	.section-search-parts { padding: 30px 0; }	
 
 	.section-search-parts .section__inner { padding: 20px 20px 30px; }
-
 	.section-search-parts .section__heading { margin-bottom: 20px; }
-
 	.section-search-parts .section__separator { margin: 20px 0; }
+
+	/* Section Search Parts Alt */
+	.section-search-parts--alt { padding: 0; }
+	.section-search-parts--alt .section__inner { padding: 10px 0 20px; }
 }
 
 /* Mobile Portrait */

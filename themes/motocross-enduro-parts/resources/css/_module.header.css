@@ -8,7 +8,7 @@
 .header .header__inner { display: flex; justify-content: space-between; align-items: center; }
 .header .header__body { display: flex; align-items: center; }
 
-.header .header__shopping-cart { margin-left: 60px; }
+.header .header__shopping-cart { margin-left: 40px; padding-right: 13px; }
 
 .header .header__menu-toggle { display: none; cursor: pointer; position: relative; z-index: 100; width: 40px; height: 30px; }
 
