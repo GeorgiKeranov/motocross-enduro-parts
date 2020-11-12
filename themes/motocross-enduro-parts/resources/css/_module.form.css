@@ -64,7 +64,7 @@ $breakpoint-mobile-portrait {
 /* Mobile Portrait */
 
 $breakpoint-mobile-portrait {
-	.form-make-filter { padding-top: 15px; flex-direction: column; margin: 0; }
+	.form-make-filter { flex-direction: column; margin: 0; }
 	.form-make-filter select { width: 100%; margin: 5px 0; }
 }
 
