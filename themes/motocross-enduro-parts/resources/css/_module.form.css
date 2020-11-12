@@ -25,7 +25,7 @@ $breakpoint-tablet-portrait {
 
 /* Mobile */
 
-$breakpoint-mobile {
+$breakpoint-mobile-portrait {
 	[class^="form"] input,
 	[class^="form"] select { font-size: 16px; }
 
@@ -44,7 +44,7 @@ $breakpoint-mobile {
 
 /* Mobile */
 
-$breakpoint-mobile {
+$breakpoint-mobile-portrait {
 	.form-search { position: relative; flex-wrap: wrap; justify-content: center; }
 
 	.form-search input[type="text"] { margin: 0; padding: 10px 40px 10px 20px; }
@@ -63,7 +63,7 @@ $breakpoint-mobile {
 
 /* Mobile */
 
-$breakpoint-mobile {
+$breakpoint-mobile-portrait {
 	.form-make-filter { flex-direction: column; margin: 0; }
 	.form-make-filter select { width: 100%; margin: 5px 0; }
 }

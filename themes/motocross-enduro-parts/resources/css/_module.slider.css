@@ -69,7 +69,7 @@ $breakpoint-tablet-portrait {
 
 /* Mobile */
 
-$breakpoint-mobile {
+$breakpoint-mobile-portrait {
 	.slider-testimonials { padding: 20px 0; }
 
 	.slider-testimonials h2 { font-size: 21px; }

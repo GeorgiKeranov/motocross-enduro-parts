@@ -7,7 +7,7 @@ $line-height-base			: 1.3;
 $shell-max-width			: 1200px;
 $shell-gutter				: 10px;
 
-$responsive-xxs				: 374px;
+$responsive-xxs				: 600px;
 $responsive-xs				: 767px;
 $responsive-ios				: 812px;
 $responsive-sm				: 1023px;
@@ -18,3 +18,4 @@ $breakpoint-mobile			: @media (max-width: $responsive-xs), screen and (max-width
 $breakpoint-tablet-portrait	: @media (max-width: $responsive-sm);
 $breakpoint-small-desktop	: @media (max-width: $responsive-md);
 $retina						: @media (min-resolution: 2dppx);
+

@@ -15,7 +15,7 @@
 
 /* Mobile */
 
-$breakpoint-mobile {
+$breakpoint-mobile-portrait {
 	.ico-phone,
 	.ico-mail { width: 30px; height: 30px; }
 }
