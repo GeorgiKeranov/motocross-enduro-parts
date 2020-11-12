@@ -117,6 +117,12 @@
 .woocommerce .woocommerce-thankyou-order-received { font-size: 26px; }
 .woocommerce .woocommerce-order-details__title { margin-bottom: 10px; }
 
+/* Small Desktop */
+
+$breakpoint-small-desktop {
+	.woocommerce .widget_price_filter .price_slider_wrapper .ui-widget-content { margin-bottom: 0; }
+}
+
 /* ------------------------------------------------------------ *\
 	Woocommerce Cart
 \* ------------------------------------------------------------ */

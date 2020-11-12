@@ -54,3 +54,19 @@
 
 .widget_product_categories .current-cat a:before,
 .widget_product_categories .cat-item a:hover:before { background-color: #e7a161; border-color: transparent; }
+
+/* Small Desktop */
+
+$breakpoint-small-desktop {
+	.widget { margin-bottom: 30px; }
+
+	/* Widget Title */
+	.widget .widgettitle { font-size: 15px; }
+
+	/* Widget Product Search */
+	.widget_product_search button[type="submit"] { font-size: 15px; }
+	
+	/* Widget Price Filter */
+	.widget_price_filter .price_slider_amount { display: flex; flex-direction: column; }
+	.widget_price_filter .price_slider_amount .price_label { text-align: left; order: -1; }
+}
