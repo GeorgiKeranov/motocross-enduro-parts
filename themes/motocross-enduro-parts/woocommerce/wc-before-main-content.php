@@ -6,25 +6,27 @@
 
 				<button class="section__filter-mobile">Филтри <span class="ico-filter"></span></button>
 				
-				<form class="form-make-filter">
-					<select name="make" id="make">
-						<option default>Марка</option>
-						<option value="honda">Honda</option>
-						<option value="kawasaki">Kawasaki</option>
-					</select>
+				<div class="section__filter-menu">
+					<form class="form-make-filter">
+						<select name="make" id="make">
+							<option default>Марка</option>
+							<option value="honda">Honda</option>
+							<option value="kawasaki">Kawasaki</option>
+						</select>
 
-					<select name="model" id="model" disabled="disabled">
-						<option default>Модел</option>
-						<option value="CRF450R">CRF450R</option>
-						<option value="CRF450X">CRF450X</option>
-					</select>
+						<select name="model" id="model" disabled="disabled">
+							<option default>Модел</option>
+							<option value="CRF450R">CRF450R</option>
+							<option value="CRF450X">CRF450X</option>
+						</select>
 
-					<select name="year" id="year" disabled="disabled">
-						<option default>Година</option>
-						<option value="2000">2000</option>
-						<option value="2001">2001</option>
-					</select>
-				</form>
+						<select name="year" id="year" disabled="disabled">
+							<option default>Година</option>
+							<option value="2000">2000</option>
+							<option value="2001">2001</option>
+						</select>
+					</form>
+				</div><!-- /.section__filter-menu -->
 			</div><!-- /.section__search-filters -->
 		</div><!-- /.section__inner -->
 	</div><!-- /.shell -->
