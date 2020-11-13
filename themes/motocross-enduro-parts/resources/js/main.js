@@ -30,5 +30,4 @@ $('.section-search-parts--alt .section__filter-mobile').on('click', function() {
 	$filterMenuElement.toggleClass(filterMenuExpandedClass);
 
 	$('.section-search-parts--alt .section__filter-menu').slideToggle();
-	// $('.section-search-parts--alt').slideToggle();
 });
