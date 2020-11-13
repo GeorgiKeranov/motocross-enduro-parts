@@ -21,3 +21,14 @@ $('.header .header__menu-toggle').on('click', function(e) {
 	
 	$('body').toggleClass('menu-active');
 });
+
+$('.section-search-parts--alt .section__filter-mobile').on('click', function() {
+	const filterMenuExpandedClass = 'section__filter-menu--expanded';
+	let $clickedElement = $(this);
+	let $filterMenuElement = $clickedElement.siblings('.section__filter-menu');
+
+	$filterMenuElement.toggleClass(filterMenuExpandedClass);
+
+	$('.section-search-parts--alt .section__filter-menu').slideToggle();
+	// $('.section-search-parts--alt').slideToggle();
+});
