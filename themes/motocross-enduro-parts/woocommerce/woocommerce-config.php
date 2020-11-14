@@ -23,6 +23,8 @@ add_action( 'woocommerce_checkout_after_order_review', 'crb_end_wrapper_to_order
 add_action( 'woocommerce_order_status_completed', 'crb_outofstock_products_from_completed_order', 10, 1 );
 add_action( 'woocommerce_order_status_cancelled', 'crb_instock_products_from_canceled_order', 10, 1 );
 
+add_action( 'woocommerce_before_single_product', 'crb_add_product_title_for_mobile_devices', 10 );
+
 /**
  * Add Filters
  */
@@ -82,6 +84,9 @@ function crb_end_product_images_wrapper() {
 	echo '</div><!-- /.woocommerce-product-images -->';
 }
 
+function crb_add_product_title_for_mobile_devices() {
+	echo '<h2 class="woocommerce-product-mobile-title">' . get_the_title() . '</h2>';
+}
 
 function crb_add_on_hover_shop_loop_image() {
 	$images_ids = wc_get_product()->get_gallery_image_ids(); 
