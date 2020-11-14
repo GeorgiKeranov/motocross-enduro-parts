@@ -42,7 +42,7 @@
 .section-search-parts .section__filter-mobile { display: none; }
 
 @media(min-width: 601px) {
-	.section-search-parts--alt .section__filter-menu:not(.section__filter-menu--expanded) { display: block !important; }
+	.section-search-parts--alt .section__filter-menu { display: block !important; }
 }
 
 /* Small Desktop */
@@ -69,8 +69,8 @@ $breakpoint-mobile-portrait {
 	.section-search-parts--alt .section__inner { padding: 0; }
 
 	.section-search-parts--alt .section__filter-mobile { display: inline-block; background-color: #eaa362; color: #fff; padding: 5px 10px; border: 2px solid #eaa362; border-radius: 3px; font-size: 18px; font-weight: 600; transition: .3s; margin-bottom: 11px; }
-	.section-search-parts--alt .section__filter-mobile:hover { opacity: .5; }
-	.section-search-parts--alt .section__filter-menu { display: none; padding-top: 15px; }
+	.section-search-parts--alt .section__filter-mobile:active { opacity: .5; }
+	.section-search-parts--alt .section__filter-menu { display: none; }
 
 	.section-search-parts--alt h3 { display: none; }
 }
