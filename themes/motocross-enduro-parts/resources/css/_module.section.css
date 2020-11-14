@@ -87,6 +87,23 @@ $breakpoint-mobile-portrait {
 .section-intro h1 { font-size: 45px; color: #e7a161; }
 .section-intro p { font-size: 34px; }
 
+/* Tablet Portrait */
+
+$breakpoint-tablet-portrait {
+	.section-intro { padding: 50px 0; }
+
+	.section-intro h1 { font-size: 35px; }
+	.section-intro p { font-size: 25px; }
+}
+
+/* Mobile Portrait */
+
+$breakpoint-mobile-portrait {
+	.section-intro h1 { font-size: 28px; }
+
+	.section-intro p { font-size: 20px; }
+}
+
 /* ------------------------------------------------------------ *\
 	Section Contact
 \* ------------------------------------------------------------ */
@@ -107,6 +124,53 @@ $breakpoint-mobile-portrait {
 .section-contact .section__details-contacts > a { margin-bottom: 0; }
 
 .section-contact .section__details-contacts .icotext-phone { margin-bottom: 20px; }
+
+/* Small Desktop */
+
+$breakpoint-small-desktop {
+	.section-contact .section__details { padding-left: 10%; }
+}
+
+/* Tablet Portrait */
+
+$breakpoint-tablet-portrait {
+	.section-contact { padding: 30px 0; }
+
+	.section-contact .section__details  { padding-left: 20px; }
+
+	.section-contact .section__details-contacts .icotext-phone { margin-bottom: 10px; }
+}
+
+/* Mobile */
+
+$breakpoint-mobile {
+	.section-contact .section__inner { flex-direction: column; }
+
+	.section-contact .section__form,
+	.section-contact .section__details { width: 100%; }
+
+	.section-contact .section__details { padding-left: 0; margin-bottom: 25px; order: -1; border-bottom: 1px solid #c8c7c7; }
+
+	.section-contact .section__details-text { max-width: 400px; margin: 0 auto 10px; border: 0; }
+
+	.section-contact .section__details-contacts [class^="icotext"] { font-size: 22px; font-weight: 500; }
+
+	.section-contact .section__details-contacts .ico-phone,
+	.section-contact .section__details-contacts .ico-mail { width: 35px; height: 35px; }
+}
+
+/* Mobile Portrait */
+
+$breakpoint-mobile-portrait {
+	.section-contact .section__details-contacts [class^="icotext"] { font-size: 18px; font-weight: 500; }
+
+	.section-contact .section__details-contacts .ico-phone,
+	.section-contact .section__details-contacts .ico-mail { width: 25px; height: 25px; }
+
+	.section-contact .section__details-contacts { padding-bottom: 0; }
+
+	.form-contact.wpforms-container-full .wpforms-form .wpforms-title { font-size: 20px; }
+}
 
 /* ------------------------------------------------------------ *\
 	Section Columns

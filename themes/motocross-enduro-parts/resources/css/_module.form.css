@@ -89,3 +89,26 @@ $breakpoint-mobile-portrait {
 .form-contact.wpforms-container-full .wpforms-form button[type=submit]:hover { border: 2px solid #e7a161; background-color: #fff; color: #e7a161; }
 
 .form-contact .wpforms-confirmation-container-full p { font-size: 23px; }
+
+.form-contact.wpforms-container-full .wpforms-form label.wpforms-error { display: none !important; }
+
+.form-contact .wpforms-field-container .wpforms-has-error input,
+.form-contact .wpforms-field-container .wpforms-has-error textarea { border-color: #cc0000 !important; }
+
+.form-contact .wpforms-field-container input.wpforms-valid,
+.form-contact .wpforms-field-container textarea.wpforms-valid { border-color: #4CC355 !important; }
+
+/* Tablet Portrait */
+
+$breakpoint-tablet-portrait {
+	.form-contact.wpforms-container-full .wpforms-form .wpforms-title { font-size: 25px; }
+	.form-contact.wpforms-container-full .wpforms-form button[type=submit] { font-size: 20px; padding: 8px 20px; }
+}
+
+/* Mobile */
+
+$breakpoint-mobile {
+	.form-contact.wpforms-container-full { text-align: center; }
+
+	.form-contact.wpforms-container-full .wpforms-form button[type=submit] { width: 100%; }
+}

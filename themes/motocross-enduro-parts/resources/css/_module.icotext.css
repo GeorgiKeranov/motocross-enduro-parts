@@ -38,10 +38,16 @@
     }
 }
 
+/* Tablet Portrait */
+
+$breakpoint-tablet-portrait {
+    [class^="icotext"] { font-size: 18px; }
+}
+
 /* Mobile */
 
 $breakpoint-mobile {
-    [class^="icotext"] { justify-content: center; font-size: 18px; font-weight: 500; margin-bottom: 10px; }
+    [class^="icotext"] { justify-content: center; font-weight: 500; margin-bottom: 10px; }
 
     [class^="icotext"]:last-child { margin-bottom: 0; }
 }
