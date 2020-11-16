@@ -108,7 +108,7 @@ $breakpoint-mobile-portrait {
 	Section Intro Alt
 \* ------------------------------------------------------------ */
 
-.section-intro-alt { padding: 100px 0; background-color: #e7a161; color: #fff; text-align: center; }
+.section-intro-alt { padding: 50px 0; background-color: #e7a161; color: #fff; text-align: center; }
 
 .section-intro-alt h1 { font-size: 54px; text-transform: uppercase; font-weight: 500; margin-bottom: 15px; }
 
