@@ -118,6 +118,14 @@ $breakpoint-mobile-portrait {
 .section-intro-alt .section__links a { transition: .3s; }
 .section-intro-alt .section__links a:hover { opacity: .5; }
 
+/* Tablet Portrait */
+
+$breakpoint-tablet-portrait {
+	.section-intro-alt { padding: 40px 0; }
+
+	.section-intro-alt h1 { font-size: 40px; }
+}
+
 /* ------------------------------------------------------------ *\
 	Section Contact
 \* ------------------------------------------------------------ */
