@@ -126,6 +126,14 @@ $breakpoint-tablet-portrait {
 	.section-intro-alt h1 { font-size: 40px; }
 }
 
+/* Mobile */
+
+$breakpoint-mobile {
+	.section-intro-alt { padding: 30px 0; }
+
+	.section-intro-alt h1 { font-size: 30px; }	
+}
+
 /* ------------------------------------------------------------ *\
 	Section Contact
 \* ------------------------------------------------------------ */
