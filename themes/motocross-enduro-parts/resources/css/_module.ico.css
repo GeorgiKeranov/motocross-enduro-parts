@@ -15,6 +15,8 @@
 
 .ico-filter { display: inline-block; background-image: url(../images/icon-filter.svg); width: 24px; height: 24px; vertical-align: middle; }
 
+.ico-home { display: inline-block; background-image: url(../images/icon-home.svg); width: 15px; height: 15px; }
+
 /* Mobile */
 
 $breakpoint-mobile {

@@ -105,6 +105,20 @@ $breakpoint-mobile-portrait {
 }
 
 /* ------------------------------------------------------------ *\
+	Section Intro Alt
+\* ------------------------------------------------------------ */
+
+.section-intro-alt { padding: 100px 0; background-color: #e7a161; color: #fff; text-align: center; }
+
+.section-intro-alt h1 { font-size: 54px; text-transform: uppercase; font-weight: 500; margin-bottom: 15px; }
+
+.section-intro-alt .section__links { display: flex; list-style-type: none; justify-content: center; align-content: center; }
+.section-intro-alt .section__links li + li:before { content: '/'; display: inline-block; margin: 0 10px; }
+.section-intro-alt .section__links p { display: inline-block; font-size: 16px; font-weight: 400; }
+.section-intro-alt .section__links a { transition: .3s; }
+.section-intro-alt .section__links a:hover { opacity: .5; }
+
+/* ------------------------------------------------------------ *\
 	Section Contact
 \* ------------------------------------------------------------ */
 
