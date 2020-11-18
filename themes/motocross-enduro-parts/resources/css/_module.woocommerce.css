@@ -168,7 +168,10 @@ $breakpoint-mobile {
 	.woocommerce div.product div.images.woocommerce-product-gallery .flex-viewport { margin-bottom: 10px; }
 	.woocommerce div.woocommerce__shop .product .price { margin-bottom: 5px; }
 
+	.woocommerce .woocommerce-error li,
 	.woocommerce .woocommerce-message { display: flex; flex-direction: column; }
+	
+	.woocommerce .woocommerce-error li a,
 	.woocommerce .woocommerce-message a { order: 2; margin-top: 10px; float: none; }
 }
 
@@ -277,13 +280,13 @@ $breakpoint-mobile {
 
 .woocommerce-checkout { display: flex; }
 .woocommerce-checkout .col2-set { width: 50%; padding-right: 2%; }
-.woocommerce-checkout .woocommerce-order-review-wrapper { width: 50%; padding-left: 2%; }
+.woocommerce-checkout .woocommerce-order-review-wrapper { width: 50%; background-color: #f3f3f3; padding: 30px 20px; border: 2px solid #e7a161; }
 
 .woocommerce-checkout .woocommerce-billing-fields h3 { display: none; }
 
 .woocommerce-checkout input,
 .woocommerce-checkout select,
-.woocommerce-checkout textarea { font-size: 16px; padding: 8px 10px; border-radius: 5px; border: 1px solid #ddd }
+.woocommerce-checkout textarea { font-size: 16px; padding: 8px 10px; border-radius: 5px; border: 1px solid #ddd; }
 
 .woocommerce-checkout .select2-dropdown,
 .woocommerce-checkout .select2-container--default .select2-search--dropdown .select2-search__field,
@@ -318,12 +321,11 @@ $breakpoint-mobile {
 
 .woocommerce-checkout .woocommerce-error { display: none; }
 
-.woocommerce-checkout #payment #place_order { float: none; background-color: #e7a161; color: #fff; border: 2px solid #e7a161; transition: .3s; font-size: 18px; font-weight: 600; padding: 10px 40px; }
+.woocommerce-checkout #payment #place_order { float: none; background-color: #e7a161; color: #fff; border: 2px solid #e7a161; transition: .3s; font-size: 18px; font-weight: 600; padding: 10px 40px; margin-bottom: 0; }
 .woocommerce-checkout #payment #place_order:hover { background-color: #fff; color: #e7a161; }
 
 .woocommerce-checkout .woocommerce-billing-fields .form-row { margin-bottom: 15px; }
 
-.woocommerce-checkout .woocommerce-order-review-wrapper { background-color: #f3f3f3; padding: 30px 20px; border: 2px solid #e7a161; }
 .woocommerce-checkout .woocommerce-order-review-wrapper h3 { font-weight: 500; font-size: 25px; text-transform: uppercase; text-align: center; }
 
 .woocommerce-checkout .woocommerce-order-review-wrapper table { background-color: #fff; padding: 10px 20px; margin-bottom: 20px; }
@@ -347,6 +349,53 @@ $breakpoint-mobile {
 
 .woocommerce-checkout #payment ul.payment_methods li label,
 .woocommerce-checkout #payment div.payment_box p { font-size: 17px; }
+
+/* Tablet Portrait */
+
+$breakpoint-tablet-portrait {
+	.woocommerce-checkout { flex-direction: column; }
+	.woocommerce-checkout .col2-set { width: 100%; padding-right: 0; margin-bottom: 20px; }
+	.woocommerce-checkout .woocommerce-order-review-wrapper { width: 100%; }
+}
+
+/* Mobile */
+
+$breakpoint-mobile {
+	.woocommerce-checkout .woocommerce-order-review-wrapper table { background: transparent; padding: 10px 0; border: 0; }
+
+	.woocommerce-checkout .woocommerce-order-review-wrapper tr:nth-child(2n) td { background: transparent; }
+
+	.woocommerce-checkout .woocommerce-order-review-wrapper tr td:before { font-weight: 500; }
+	
+	.woocommerce-checkout .woocommerce-order-review-wrapper tr.woocommerce-shipping-totals td { display: flex; justify-content: space-between; }
+	.woocommerce-checkout .woocommerce-order-review-wrapper tr.woocommerce-shipping-totals td:before { padding-right: 15px; }
+}
+
+/* Mobile Portrait */
+
+$breakpoint-mobile-portrait {
+	.woocommerce-checkout .woocommerce-order-review-wrapper { padding: 20px 10px; }
+
+	.woocommerce-checkout #payment ul.payment_methods li label,
+	.woocommerce-checkout #payment div.payment_box p { font-size: 15px; }
+
+	.woocommerce-checkout #billing_email_field,
+	.woocommerce-checkout #billing_phone_field,
+	.woocommerce-checkout #billing_city_field,
+	.woocommerce-checkout #billing_postcode_field { float: none; width: 100%; }
+
+	.woocommerce-checkout form .form-row-first,
+	.woocommerce-checkout form .form-row-last { width: 49% }
+
+	.woocommerce-checkout .woocommerce-billing-fields .form-row { margin-bottom: 5px; }
+
+	.woocommerce-checkout input,
+	.woocommerce-checkout select,
+	.woocommerce-checkout textarea { font-size: 14px; padding: 4px 10px; }
+
+	.woocommerce-checkout .select2-container .select2-selection--single { height: 28px; }
+	.woocommerce-checkout .select2-container--default .select2-selection--single .select2-selection__rendered { font-size: 14px; line-height: 27px; }
+}
 
 /* ------------------------------------------------------------ *\
 	Woocommerce Products Header

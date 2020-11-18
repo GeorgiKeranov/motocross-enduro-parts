@@ -134,6 +134,12 @@ $breakpoint-mobile {
 	.section-intro-alt h1 { font-size: 30px; }	
 }
 
+/* Mobile Portrait */
+
+$breakpoint-mobile-portrait {
+	.section-intro-alt .section__links p { font-size: 14px; }
+}
+
 /* ------------------------------------------------------------ *\
 	Section Contact
 \* ------------------------------------------------------------ */
@@ -219,3 +225,9 @@ $breakpoint-mobile-portrait {
 .section-default { padding: 30px 0; }
 
 .section-default h1 { color: #e7a161; }
+
+/* Mobile Portrait */
+
+$breakpoint-mobile-portrait {
+	.section-default { padding: 10px 0; }
+}
