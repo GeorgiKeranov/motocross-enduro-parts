@@ -231,3 +231,34 @@ $breakpoint-mobile-portrait {
 $breakpoint-mobile-portrait {
 	.section-default { padding: 10px 0; }
 }
+
+/* ------------------------------------------------------------ *\
+	Section 404
+\* ------------------------------------------------------------ */
+
+.section-404 { padding: 100px 0; text-align: center; background-color: #e7a161; }
+
+.section-404 .section__inner { padding: 80px 20px; border-radius: 30px; background-color: #fff; }
+
+.section-404 h1 { font-size: 50px; color: #e7a161; }
+.section-404 p { font-size: 25px; }
+.section-404 a { color: #e7a161; text-decoration: underline; transition: .3s; }
+.section-404 a:hover { opacity: .5; }
+
+/* Mobile */
+
+$breakpoint-mobile {
+	.section-404 { padding: 80px 0; }
+
+	.section-404 h1 { font-size: 40px; }
+	.section-404 p { font-size: 22px; }
+}
+
+/* Mobile Portrait */
+
+$breakpoint-mobile-portrait {
+	.section-404 { padding: 50px 0; }
+
+	.section-404 h1 { font-size: 30px; }
+	.section-404 p { font-size: 18px; }
+}
