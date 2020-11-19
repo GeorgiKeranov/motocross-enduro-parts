@@ -23,6 +23,35 @@ Container::make( 'post_meta', __( 'Page Builder', 'crb' ) )
 			) )
 
 			/**
+			 * Intro Section
+			 */
+			->add_fields( 'intro-section', __( 'Intro Section', 'crb' ), array(
+				Field::make( 'image', 'background_image', __( 'Background Image', 'crb' ) ),
+				Field::make( 'text', 'title', __( 'Title', 'crb' ) ),
+				Field::make( 'textarea', 'text', __( 'Text', 'crb' ) )
+					->set_rows( 4 ),
+			) )
+
+			/**
+			 * Contact Section
+			 */
+			->add_fields( 'contact-section', __( 'Contact Section', 'crb' ), array(
+				Field::make( 'text', 'form_shortcode', __( 'Form Shortcode', 'crb' ) ),
+				Field::make( 'text', 'phone', __( 'Phone', 'crb' ) ),
+				Field::make( 'text', 'email', __( 'Email', 'crb' ) ),
+				Field::make( 'text', 'work_time_title', __( 'Work Time Title', 'crb' ) ),
+				Field::make( 'complex', 'work_time_rows', __( 'Work Time Rows', 'crb' ) )
+					->set_layout( 'tabbed-vertical' )
+					->add_fields( array(
+						Field::make( 'text', 'left_text', __( 'Left Text', 'crb' ) )
+							->set_width( 50 ),
+						Field::make( 'text', 'right_text', __( 'Right Text', 'crb' ) )
+							->set_width( 50 ),
+					) )
+					->set_header_template( '<%- left_text %>' ),
+			) )
+
+			/**
 			 * Slider Section
 			 */
 			->add_fields( 'slider-section', __( 'Slider Section', 'crb' ), array(
