@@ -95,6 +95,9 @@ if ( ! function_exists( 'crb_setup_theme' ) ) {
 		) );
 		
 
+		# Add Image Sizes
+		add_image_size( 'full-width', 1920 );
+
 		# Include woocommerce settings
 		include_once( CRB_THEME_DIR . 'woocommerce/woocommerce-config.php' );
 

@@ -1,11 +1,8 @@
 <?php
 
-$title = carbon_get_the_post_meta( 'crb_slider_testimonials_title' );
-$slides = carbon_get_the_post_meta( 'crb_slider_testimonials' );
-
 $has_content = array_filter( [
-	$title,
-	$slides,
+	$section['title'],
+	$section['slides'],
 ] );
 
 if ( empty( $has_content ) ) {
@@ -17,17 +14,20 @@ if ( empty( $has_content ) ) {
 <div class="slider-testimonials">
 	<div class="shell">
 		<div class="slider__inner">
-			<?php if ( !empty( $title ) ) : ?>
+			<?php if ( !empty( $section['title'] ) ) : ?>
 				<div class="slider__title">
-					<h2><?php echo esc_html( $title ) ?></h2>
+					<h2><?php echo esc_html( $section['title'] ) ?></h2>
 				</div><!-- /.slider__title -->
 			<?php endif; ?>
 
-			<?php if ( !empty( $slides ) ) : ?>
+			<?php if ( !empty( $section['slides'] ) ) : ?>
 				<div class="slider__body">
 					<div class="slider__clip">
 						<div class="slider__slides">
-							<?php foreach ( $slides as $slide ) : ?>
+							<?php foreach ( $section['slides'] as $slide ) :
+								if ( empty( $slide['image'] ) && empty( $slide['text'] ) && empty( $slide['author'] ) ) {
+									continue;
+								} ?>
 								<div class="slider__slide">
 									<div class="slider__slide-inner">
 										<div class="slider__slide-image">
