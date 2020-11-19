@@ -33,6 +33,7 @@ add_filter( 'woocommerce_get_script_data', 'crb_change_js_view_cart_button', 10,
 add_filter( 'woocommerce_is_sold_individually', 'crb_remove_all_quantity_fields', 10, 2 );
 add_filter( 'woocommerce_checkout_fields', 'crb_change_checkout_fields', 10 );
 add_filter( 'woocommerce_default_address_fields', 'crb_reorder_address_fields', 10 );
+add_filter( 'woocommerce_add_to_cart_fragments', 'crb_refresh_mini_cart_count', 10);
 
 /**
  * Functions
@@ -165,4 +166,13 @@ function crb_set_status_for_products_from_order( $order_id, $status ) {
 		$product->set_stock_status( $status );
 		$product->save();
 	}
+}
+
+function crb_refresh_mini_cart_count( $fragments ) {
+    ob_start(); ?>
+    	<span id="mini-cart-count"><?php echo WC()->cart->get_cart_contents_count(); ?></span>
+	<?php
+	$fragments['#mini-cart-count'] = ob_get_clean();
+
+    return $fragments;
 }

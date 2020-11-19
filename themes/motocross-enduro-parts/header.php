@@ -30,8 +30,8 @@
 					<?php endif; ?>
 
 					<div class="header__shopping-cart">
-						<a class="ico-shopping-cart" href="#">
-							<span>5</span>
+						<a class="ico-shopping-cart" href="<?php echo wc_get_cart_url() ?>">
+							<span id="mini-cart-count"><?php echo WC()->cart->get_cart_contents_count(); ?></span>
 						</a>
 					</div><!-- /.header__shopping-cart -->
 
