@@ -91,16 +91,16 @@
         },
         {
             "name": "htmlburger/carbon-fields",
-            "version": "v3.1.20",
+            "version": "v3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/htmlburger/carbon-fields.git",
-                "reference": "0688b493efcf97aab9f540d399813e1392fe30cd"
+                "reference": "cd772f1c6c002207eed71f98a8c54ad9403d5644"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/htmlburger/carbon-fields/zipball/0688b493efcf97aab9f540d399813e1392fe30cd",
-                "reference": "0688b493efcf97aab9f540d399813e1392fe30cd",
+                "url": "https://api.github.com/repos/htmlburger/carbon-fields/zipball/cd772f1c6c002207eed71f98a8c54ad9403d5644",
+                "reference": "cd772f1c6c002207eed71f98a8c54ad9403d5644",
                 "shasum": ""
             },
             "require": {
@@ -220,7 +220,7 @@
             ],
             "description": "WordPress developer-friendly custom fields for post types, taxonomy terms, users, comments, widgets, options and more.",
             "homepage": "http://carbonfields.net/",
-            "time": "2020-05-18T09:54:56+00:00"
+            "time": "2020-11-05T17:10:48+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
