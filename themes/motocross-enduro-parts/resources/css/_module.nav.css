@@ -5,13 +5,13 @@
 .nav ul { display: flex; margin: 0 -20px; }
 .nav li { margin: 0 20px; }
 
-.nav a { display: inline-block; position: relative; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 17px; }
-.nav a:before { content: ''; display: block; position: absolute; top: 100%; left: 0; right: 0; width: 0; border-bottom: 2px solid #ffb26b; transition: .3s; opacity: 0; }
+.nav a { display: inline-block; position: relative; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 17px; overflow: hidden; padding-bottom: 3px; }
+.nav a:before { content: ''; display: block; position: absolute; top: 23px; left: 0; right: 0; width: 0; border-bottom: 2px solid #ffb26b; transition: width .3s; }
 
 .nav a { text-decoration: none; }
 
 .nav a:hover:before,
-.nav .current_page_item a:before { width: 100%; opacity: 1; }
+.nav .current_page_item a:before { width: 100%; }
 
 /* Tablet Portrait */
 
