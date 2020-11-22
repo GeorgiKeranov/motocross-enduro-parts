@@ -81,8 +81,8 @@ if ( ! function_exists( 'crb_setup_theme' ) ) {
 		# Add Image Sizes
 		add_image_size( 'full-width', 1920 );
 
-		# Add metaboxes and functionality for motorcycle type fields
-		include_once( CRB_THEME_DIR . 'motorcycle-type/functionality.php' );
+		# Add functionality for compatible motorcycles
+		include_once( CRB_THEME_DIR . 'compatible-motorcycles/functionality.php' );
 
 		# Include woocommerce settings
 		include_once( CRB_THEME_DIR . 'woocommerce/woocommerce-config.php' );
