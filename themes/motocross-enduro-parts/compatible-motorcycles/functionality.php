@@ -106,3 +106,18 @@ function crb_get_product_compatible_motorycles( $product_id ) {
 
 	return $results;
 }
+
+function crb_get_all_motorcycle_makes() {
+	$makes = carbon_get_theme_option( 'crb_motorcycle_types' );
+	$makes_only = array();
+
+	if ( empty( $makes ) ) {
+		return $makes_only;
+	}
+
+	foreach ( $makes as $make ) {
+		$makes_only[] = $make['make'];
+	}
+
+	return $makes_only;
+}

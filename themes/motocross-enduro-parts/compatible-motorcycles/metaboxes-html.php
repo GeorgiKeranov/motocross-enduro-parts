@@ -1,42 +1,33 @@
 <?php
 $current_post_id = get_the_ID();
 
+$makes = crb_get_all_motorcycle_makes();
 $compatible_motorcycles = crb_get_product_compatible_motorycles( $current_post_id );
 ?>
 
 <ul class="compatible-motorcycles">
 	<?php foreach ($compatible_motorcycles as $index => $motorcycle) : ?>
 		<li data-id="<?php echo $motorcycle->id ?>">
-			<input type="hidden" name="existing_compatible_motorcycles[<?php echo $index ?>][id]" value="<?php echo $motorcycle->id ?>">
+			<input type="hidden" name="existing_compatible_motorcycles[<?php echo $index ?>][id]" value="<?php echo esc_html( $motorcycle->id ) ?>">
 
 			<select name="existing_compatible_motorcycles[<?php echo $index ?>][make]" class="postbox">
 				<option value="" default>Марка</option>
-				<option value="Honda" <?php echo $motorcycle->make === 'Honda' ? 'selected' : '' ?>>Honda</option>
-				<option value="Kawasaki" <?php echo $motorcycle->make === 'Kawasaki' ? 'selected' : '' ?>>Kawasaki</option>
+				
+				<?php foreach ( $makes as $make ) : ?>
+					<option value="<?php echo esc_html( $make ) ?>"<?php echo $motorcycle->make == $make ? ' selected' : '' ?>><?php echo esc_html( $make ) ?></option>
+				<?php endforeach ?>
 			</select>
 			
 			<select name="existing_compatible_motorcycles[<?php echo $index ?>][model]" class="postbox">
 				<option value="" default>Модел</option>
-				<option value="crf450r">crf450r</option>
-				<option value="kx250f">kx250f</option>
 			</select>
 
 			<select name="existing_compatible_motorcycles[<?php echo $index ?>][year_from]" class="postbox">
 				<option value="" default>От Година</option>
-				<option value="2000">2000</option>
-				<option value="2001">2001</option>
-				<option value="2003">2003</option>
-				<option value="2004">2004</option>
-				<option value="2005">2005</option>
 			</select>
 
 			<select name="existing_compatible_motorcycles[<?php echo $index ?>][year_to]" class="postbox">
 				<option value="" default>До Година</option>
-				<option value="2000">2000</option>
-				<option value="2001">2001</option>
-				<option value="2003">2003</option>
-				<option value="2004">2004</option>
-				<option value="2005">2005</option>
 			</select>
 
 			<button class="button button-remove-compatible-motorcycle">Премахни</button>
@@ -46,6 +37,32 @@ $compatible_motorcycles = crb_get_product_compatible_motorycles( $current_post_i
 
 <div class="removed-compatible-motorcycles hidden">
 </div><!-- /.removed-compatible-motorcycles -->
+
+<div class="template-element-with-new-compatible-motorcycle hidden">
+	<li>
+		<select name="new_compatible_motorcycles[__INDEX__][make]" class="postbox">
+			<option value="" default>Марка</option>
+
+			<?php foreach ( $makes as $make ) : ?>
+					<option value="<?php echo esc_html( $make ) ?>"><?php echo esc_html( $make ) ?></option>
+				<?php endforeach ?>
+		</select>
+		
+		<select name="new_compatible_motorcycles[__INDEX__][model]" class="postbox" disabled>
+			<option value="" default>Модел</option>
+		</select>
+
+		<select name="new_compatible_motorcycles[__INDEX__][year_from]" class="postbox" disabled>
+			<option value="" default>От Година</option>
+		</select>
+
+		<select name="new_compatible_motorcycles[__INDEX__][year_to]" class="postbox" disabled>
+			<option value="" default>До Година</option>
+		</select>
+
+		<button class="button button-remove-compatible-motorcycle">Премахни</button>
+	</li>
+</div><!-- /.template-element-with-new-compatible-motorcycle -->
 
 <button class="button button-add-compatible-motorcycle">Добави Мотор</button>
 
