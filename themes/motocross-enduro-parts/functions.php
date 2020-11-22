@@ -30,20 +30,6 @@ function crb_enqueue_assets() {
 	}
 }
 
-# Enqueue JS and CSS assets on admin pages
-add_action( 'admin_enqueue_scripts', 'crb_admin_enqueue_scripts' );
-function crb_admin_enqueue_scripts() {
-	$template_dir = get_template_directory_uri();
-
-	# Enqueue Scripts
-	# @crb_enqueue_script attributes -- id, location, dependencies, in_footer = false
-	# crb_enqueue_script( 'theme-admin-functions', $template_dir . '/js/admin-functions.js', array( 'jquery' ) );
-
-	# Enqueue Styles
-	# @crb_enqueue_style attributes -- id, location, dependencies, media = all
-	# crb_enqueue_style( 'theme-admin-styles', $template_dir . '/css/admin-style.css' );
-}
-
 # Attach Custom Post Types and Custom Taxonomies
 add_action( 'init', 'crb_attach_post_types_and_taxonomies', 0 );
 function crb_attach_post_types_and_taxonomies() {
@@ -79,7 +65,6 @@ if ( ! function_exists( 'crb_setup_theme' ) ) {
 		add_theme_support( 'automatic-feed-links' );
 		add_theme_support( 'post-thumbnails' );
 		add_theme_support( 'title-tag' );
-		add_theme_support( 'menus' );
 		add_theme_support( 'html5', array( 'gallery' ) );
 		add_theme_support( 'woocommerce' );
 		add_theme_support( 'wc-product-gallery-lightbox' );
@@ -89,14 +74,15 @@ if ( ! function_exists( 'crb_setup_theme' ) ) {
 		// add_theme_support( 'post-formats', array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' ) );
 
 		# Register Theme Menu Locations
-		
 		register_nav_menus( array(
 			'header-menu' => __( 'Header Menu', 'crb' ),
 		) );
-		
 
 		# Add Image Sizes
 		add_image_size( 'full-width', 1920 );
+
+		# Add metaboxes and functionality for motorcycle type fields
+		include_once( CRB_THEME_DIR . 'motorcycle-type/functionality.php' );
 
 		# Include woocommerce settings
 		include_once( CRB_THEME_DIR . 'woocommerce/woocommerce-config.php' );
@@ -132,6 +118,7 @@ function crb_register_custom_sidebars() {
 function crb_attach_theme_options() {
 	include_once(CRB_THEME_DIR . 'options/theme-options.php');
 	include_once(CRB_THEME_DIR . 'options/post-meta.php');
+	include_once(CRB_THEME_DIR . 'options/motorcycle-types.php');
 }
 
 function crb_excerpt_more() {
