@@ -107,17 +107,24 @@ function crb_get_product_compatible_motorycles( $product_id ) {
 	return $results;
 }
 
-function crb_get_all_motorcycle_makes() {
-	$makes = carbon_get_theme_option( 'crb_motorcycle_types' );
-	$makes_only = array();
+function crb_get_all_motorcycle_types() {
+	$motorcycle_types = carbon_get_theme_option( 'crb_motorcycle_types' );
+	$motorcycle_types_structured_array = array();
 
-	if ( empty( $makes ) ) {
-		return $makes_only;
+	if ( empty( $motorcycle_types ) ) {
+		return array();
 	}
 
-	foreach ( $makes as $make ) {
-		$makes_only[] = $make['make'];
-	}
+	foreach ( $motorcycle_types as $motorcycle_type ) {
+		$motorcycle_types_structured_array[$motorcycle_type['make']] = array();
 
-	return $makes_only;
+		foreach ( $motorcycle_type['motorcycle_models'] as $model ) {
+			$motorcycle_types_structured_array[$motorcycle_type['make']][$model['model']] = array(
+				'first_production_year' => $model['first_production_year'],
+				'last_production_year' => $model['last_production_year']
+			);
+		}
+	}
+	
+	return $motorcycle_types_structured_array;
 }
