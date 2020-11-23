@@ -45,15 +45,15 @@
 .widget_price_filter #max_price { display: none; }
 
 /* Widget Product Categories */
-.widget_product_categories .cat-item { padding: 0; margin-bottom: 12px; }
-.widget_product_categories .cat-item a { position: relative; display: block; padding-left: 22px; font-size: 13px; transition: .3s; font-weight: 500; }
-.widget_product_categories .cat-item a:before { content: ''; display: inline-block; position: absolute; left: 0; top: 2px; width: 14px; height: 14px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.15); transition: .3s; }
+.widget_product_categories_widget li { padding: 0; margin-bottom: 12px; }
+.widget_product_categories_widget li a { position: relative; display: block; padding-left: 22px; font-size: 13px; transition: .3s; font-weight: 500; }
+.widget_product_categories_widget li a:before { content: ''; display: inline-block; position: absolute; left: 0; top: 2px; width: 14px; height: 14px; border-radius: 50%; border: 1px solid rgba(0,0,0,0.15); transition: .3s; }
 
-.widget_product_categories .current-cat a,
-.widget_product_categories .cat-item a:hover { color: #e7a161; }
+.widget_product_categories_widget .current-cat a,
+.widget_product_categories_widget li a:hover { color: #e7a161; }
 
-.widget_product_categories .current-cat a:before,
-.widget_product_categories .cat-item a:hover:before { background-color: #e7a161; border-color: transparent; }
+.widget_product_categories_widget .current-cat a:before,
+.widget_product_categories_widget li a:hover:before { background-color: #e7a161; border-color: transparent; }
 
 .widget_product_categories#woocommerce_product_categories-4 { display: none; }
 
