@@ -18,9 +18,20 @@
 /* Section Search Parts Alt */
 .section-search-parts--alt { background-color: #f5f5f5; padding: 0; }
 
+.section-search-parts--alt .section__filter-mobile { display: none; }
+.section-search-parts--alt .section__search { margin-bottom: 20px; }
 .section-search-parts--alt .section__search-filters { max-width: 700px; }
-
 .section-search-parts--alt .section__inner { background: transparent; padding: 10px 0 20px; }
+
+.section-search-parts--alt .form-search { position: relative; max-width: 400px; margin: 0 auto; }
+.section-search-parts--alt .form-search input[type="text"] { margin-right: 0; max-width: none; padding: 10px 40px 10px 20px; border-radius: 21px; }
+.section-search-parts--alt .form-search button { position: absolute; top: 0; right: 0; padding: 6px 10px 7px 0; width: 40px; display: flex; align-items: center; transition: opacity .3s; }
+.section-search-parts--alt .form-search button svg { fill: #000; width: 100%; height: auto; }
+.section-search-parts--alt .form-search button:hover { opacity: .5; }
+.section-search-parts--alt .form-search button:hover svg { transform: none; }
+
+.section-search-parts--alt .form-make-filter { display: block; }
+.section-search-parts--alt .form-make-filter .form__inner { display: flex; margin: 0 -10px; justify-content: center; align-items: center; margin-bottom: 10px; }
 
 .section-search-parts--alt form input { padding: 5px 15px; }
 .section-search-parts--alt form select { padding: 5px 40px 5px 15px; background-size: 30px 30px; }
@@ -39,7 +50,10 @@
 .section-search-parts--alt form input[disabled],
 .section-search-parts--alt form select[disabled] { border-color: #ddd; background-color: #ddd; }
 
-.section-search-parts .section__filter-mobile { display: none; }
+.section-search-parts--alt form input[type="submit"] { background-color: #e7a161; color: #fff; border-width: 2px; border-color: #e7a161; font-size: 17px; font-weight: 600; border-radius: 6px; padding: 3px 30px; width: 100%; }
+.section-search-parts--alt form input[type="submit"]:hover { background-color: #fff; color: #e7a161; }
+
+.section-search-parts--alt h3 { margin-bottom: 10px; }
 
 @media(min-width: 601px) {
 	.section-search-parts--alt .section__filter-menu { display: block !important; }
@@ -68,9 +82,18 @@ $breakpoint-mobile-portrait {
 	/* Section Search Parts Alt */
 	.section-search-parts--alt .section__inner { padding: 0; }
 
-	.section-search-parts--alt .section__filter-mobile { display: inline-block; background-color: #eaa362; color: #fff; padding: 5px 10px; border: 2px solid #eaa362; border-radius: 3px; font-size: 18px; font-weight: 600; transition: .3s; margin-bottom: 11px; }
+	.section-search-parts--alt .section__filter-mobile { display: inline-block; background-color: #eaa362; color: #fff; padding: 5px 10px; border: 2px solid #eaa362; border-radius: 3px; font-size: 18px; font-weight: 600; transition: .3s; margin-bottom: 11px; width: 100%; }
 	.section-search-parts--alt .section__filter-mobile:active { opacity: .5; }
 	.section-search-parts--alt .section__filter-menu { display: none; }
+
+	.section-search-parts--alt .section__search { margin-bottom: 10px; }
+	
+	.section-search-parts--alt .form-search { max-width: none; }
+	.section-search-parts--alt .form-search input[type="text"] { border-radius: 8px; }
+	
+	.section-search-parts--alt .form-make-filter .form__inner { flex-direction: column; margin: 0; }
+
+	.section-search-parts--alt form input[type="submit"] { display: none; }
 
 	.section-search-parts--alt h3 { display: none; }
 }
