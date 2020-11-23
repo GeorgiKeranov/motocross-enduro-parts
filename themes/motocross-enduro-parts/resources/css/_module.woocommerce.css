@@ -109,8 +109,6 @@
 
 .woocommerce form .form-row #billing_country_field { display: none; }
 
-.woocommerce .woocommerce-error { margin-bottom: 20px; }
-
 .woocommerce .col2-set .col-1 { float: none; width: 100%; }
 .woocommerce .col2-set .col-2 { float: none; width: 100%; }
 
@@ -122,6 +120,21 @@
 .woocommerce ul#shipping_method .amount { font-weight: 400; }
 
 .woocommerce .woocommerce-notices-wrapper > *:last-child { margin-bottom: 2em; }
+
+.woocommerce .woocommerce-info,
+.woocommerce .woocommerce-message,
+.woocommerce .woocommerce-error { font-size: 17px; margin-bottom: 20px; }
+
+.woocommerce .woocommerce-error li,
+.woocommerce .woocommerce-message { display: flex; flex-direction: column; }
+
+.woocommerce .woocommerce-error li a,
+.woocommerce .woocommerce-message a { order: 2; margin-top: 10px; float: none; }
+
+.woocommerce .woocommerce-error .button { max-width: 260px; font-size: 18px; font-weight: 600; }
+
+.woocommerce .return-to-shop .button { font-size: 20px; background: #424043; color: #fff; border: 2px solid #424043; transition: .3s; }
+.woocommerce .return-to-shop .button:hover { background: #fff; color: #424043; }
 
 /* Small Desktop */
 
@@ -167,12 +180,6 @@ $breakpoint-mobile {
 	.woocommerce div.product div.images.woocommerce-product-gallery { margin-bottom: 15px; }
 	.woocommerce div.product div.images.woocommerce-product-gallery .flex-viewport { margin-bottom: 10px; }
 	.woocommerce div.woocommerce__shop .product .price { margin-bottom: 5px; }
-
-	.woocommerce .woocommerce-error li,
-	.woocommerce .woocommerce-message { display: flex; flex-direction: column; }
-	
-	.woocommerce .woocommerce-error li a,
-	.woocommerce .woocommerce-message a { order: 2; margin-top: 10px; float: none; }
 }
 
 /* Mobile Portrait */
@@ -183,6 +190,8 @@ $breakpoint-mobile-portrait {
 	.woocommerce .widget_price_filter .price_slider_wrapper .ui-widget-content { background-color: #fff; }
 
 	.woocommerce .woocommerce-product-mobile-title { font-size: 18px; padding-top: 10px; }
+
+	.woocommerce .return-to-shop .button { font-size: 17px; width: 100%; text-align: center; }
 }
 
 /* ------------------------------------------------------------ *\
