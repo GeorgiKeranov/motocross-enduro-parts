@@ -195,10 +195,29 @@ function crb_get_woocommerce_products( $parameters ) {
 	//   $status // an untrusted integer (function will do the sanitization for you)
 	// );
 
-	if ( isset( $parameters['search'] ) ) {
-		$sql_query .= " and {$table_posts}.post_title LIKE '%s'";
+	if ( !empty( $parameters['search'] ) ) {
+		if ( strpos($parameters['search'], ' ') === false ) {
+			// Build search query for only one keyword
+			$sql_query .= " and {$table_posts}.post_title LIKE '%s'";
+			$sql_query_parameters[] = $parameters['search'];
+		} else {
+			// Build search query for multiple keywords
+			$sql_query .= " and (";
 
-		$sql_query_parameters[] = '%' . $parameters['search'] . '%';
+			$keywords = explode( ' ', $parameters );
+			$keywords_count = count( $keywords );
+			foreach ( $keywords as $index => $keyword ) {
+				$sql_query .= "{$table_posts}.post_title LIKE '%s'";
+
+				if ( $index < $keywords_count ) {
+					$sql_query .= " and ";
+				}
+
+				$sql_query_parameters[] = $keyword;
+			}
+
+			$sql_query .= ")";
+		}
 	}
 
 	$sql_query .= " ORDER BY {$table_posts}.post_date DESC LIMIT 0, 16";
