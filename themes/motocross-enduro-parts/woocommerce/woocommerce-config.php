@@ -183,53 +183,53 @@ function crb_refresh_mini_cart_count( $fragments ) {
 function crb_get_woocommerce_products( $parameters ) {
 	global $wpdb;
 
-	$tables_prefix = $wpdb->prefix;
-	$table_posts = $wpdb->prefix . 'posts';
+	$prefix = $wpdb->prefix;
 
+	// This array is used to store all of the user variables that are coming so we
+	// can prepare the dynamic sql query with them at the end to prevent sql injection
 	$sql_query_parameters = array();
-	$sql_query = "SELECT {$table_posts}.ID FROM {$table_posts} WHERE {$table_posts}.post_type = 'product' and {$table_posts}.post_status = 'publish'";
 
-	// Prevent SQL INJECTION
-	// $wpdb->prepare( "SELECT something FROM table WHERE foo = %s and status = %d",
-	//   $name, // an unescaped string (function will do the sanitization for you)
-	//   $status // an untrusted integer (function will do the sanitization for you)
-	// );
+	// This string will store the dynamic sql query and we will not add directly here the user input
+	$sql_query = "SELECT {$prefix}posts.post_title FROM {$prefix}posts WHERE {$prefix}posts.post_type = 'product' and {$prefix}posts.post_status = 'publish'";
 
+	// Search in the title of the product
 	if ( !empty( $parameters['search'] ) ) {
 		if ( strpos($parameters['search'], ' ') === false ) {
 			// Build search query for only one keyword
-			$sql_query .= " and {$table_posts}.post_title LIKE '%s'";
-			$sql_query_parameters[] = $parameters['search'];
+			$sql_query .= " and {$prefix}posts.post_title LIKE '%s'";
+			$sql_query_parameters[] = '%' . $parameters['search'] . '%';
 		} else {
 			// Build search query for multiple keywords
 			$sql_query .= " and (";
 
-			$keywords = explode( ' ', $parameters );
-			$keywords_count = count( $keywords );
+			$keywords = explode( ' ', $parameters['search'] );
+			$keywords_count = count( $keywords ) - 1;
+
+			// Add sql search query and parameter for each keyword
 			foreach ( $keywords as $index => $keyword ) {
-				$sql_query .= "{$table_posts}.post_title LIKE '%s'";
+				$sql_query .= "{$prefix}posts.post_title LIKE '%s'";
+				$sql_query_parameters[] = '%' . $keyword . '%';
 
 				if ( $index < $keywords_count ) {
 					$sql_query .= " and ";
 				}
-
-				$sql_query_parameters[] = $keyword;
 			}
 
 			$sql_query .= ")";
 		}
 	}
 
-	$sql_query .= " ORDER BY {$table_posts}.post_date DESC LIMIT 0, 16";
+	$sql_query .= " ORDER BY {$prefix}posts.post_date DESC LIMIT 0, 16";
 
-	$sql_query_prepared = $wpdb->prepare( $sql_query, $sql_query_parameters );
+	// Do not prepare sql query with parameters if there are not parameters to be prepared
+	$sql_query_prepared = $sql_query;
 
-	echo $sql_query . "<br>";
-	echo $sql_query_prepared;
-	exit;
+	// Prepare sql query with parameters if there are defined parameters in the array
+	if ( !empty( $sql_query_parameters ) ) {
+		$sql_query_prepared = $wpdb->prepare( $sql_query, $sql_query_parameters );
+	}
 
-	$products_ids = $wpdb->get_results( $sql_query );
-	// var_dump( $products_ids );
+	$products_ids = $wpdb->get_results( $sql_query_prepared );
 
 	return $products_ids;
 }
