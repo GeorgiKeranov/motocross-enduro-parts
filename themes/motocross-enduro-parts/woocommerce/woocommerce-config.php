@@ -8,6 +8,9 @@ remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 )
 
 remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
 
+remove_action( 'woocommerce_before_shop_loop', 'woocommerce_output_all_notices', 10 );
+remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
+
 /**
  * Add Actions
  */
@@ -32,7 +35,7 @@ add_filter( 'woocommerce_sale_flash', 'crb_woocommerce_sale_flash', 20, 3 );
 add_filter( 'woocommerce_get_script_data', 'crb_change_js_view_cart_button', 10, 2 ); 
 add_filter( 'woocommerce_is_sold_individually', 'crb_remove_all_quantity_fields', 10, 2 );
 add_filter( 'woocommerce_checkout_fields', 'crb_change_checkout_fields', 10 );
-add_filter( 'woocommerce_default_address_fields', 'crb_reorder_address_fields', 10 );
+add_filter( 'woocommerce_default_address_fields', 'crb_change_checkout_address_fields', 10 );
 add_filter( 'woocommerce_add_to_cart_fragments', 'crb_refresh_mini_cart_count', 10);
 
 /**
@@ -119,7 +122,7 @@ function crb_change_checkout_fields( $fields ) {
 	return $fields;
 }
 
-function crb_reorder_address_fields( $fields ) {
+function crb_change_checkout_address_fields( $fields ) {
 	// Reorder fields
 	$fields['state']['priority'] = 32;
 	$fields['city']['priority'] = 33;
@@ -175,4 +178,46 @@ function crb_refresh_mini_cart_count( $fragments ) {
 	$fragments['#mini-cart-count'] = ob_get_clean();
 
     return $fragments;
+}
+
+function crb_get_woocommerce_products( $parameters ) {
+	global $wpdb;
+
+	$tables_prefix = $wpdb->prefix;
+	$table_posts = $wpdb->prefix . 'posts';
+
+	$sql_query_parameters = array();
+	$sql_query = "SELECT {$table_posts}.ID FROM {$table_posts} WHERE {$table_posts}.post_type = 'product' and {$table_posts}.post_status = 'publish'";
+
+	// Prevent SQL INJECTION
+	// $wpdb->prepare( "SELECT something FROM table WHERE foo = %s and status = %d",
+	//   $name, // an unescaped string (function will do the sanitization for you)
+	//   $status // an untrusted integer (function will do the sanitization for you)
+	// );
+
+	if ( isset( $parameters['search'] ) ) {
+		$sql_query .= " and {$table_posts}.post_title LIKE '%s'";
+
+		$sql_query_parameters[] = '%' . $parameters['search'] . '%';
+	}
+
+	$sql_query .= " ORDER BY {$table_posts}.post_date DESC LIMIT 0, 16";
+
+	$sql_query_prepared = $wpdb->prepare( $sql_query, $sql_query_parameters );
+
+	echo $sql_query . "<br>";
+	echo $sql_query_prepared;
+	exit;
+
+	$products_ids = $wpdb->get_results( $sql_query );
+	// var_dump( $products_ids );
+
+	return $products_ids;
+}
+
+function crb_get_woocommerce_pages_for_products( $parameters ) {
+	$products_count = $wpdb->get_var( "SELECT COUNT(*) FROM wp_posts WHERE wp_posts.post_type = 'product' and wp_posts.post_status = 'publish'" );
+	$pages_count = intval($products_count / 16) + ($products_count % 16 == 0 ? 0 : 1);
+
+	return $pages_count;
 }
