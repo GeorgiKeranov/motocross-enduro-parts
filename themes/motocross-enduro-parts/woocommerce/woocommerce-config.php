@@ -217,6 +217,8 @@ function crb_get_woocommerce_products( $parameters ) {
 
 			$sql_query .= ")";
 		}
+
+		// TODO MAYBE add order by ( case when ... when ... )
 	}
 
 	$sql_query .= " ORDER BY {$prefix}posts.post_date DESC LIMIT 0, 16";

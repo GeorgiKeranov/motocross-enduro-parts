@@ -46,13 +46,24 @@ function crb_get_compatible_motorcycles_scripts_markup( $post ) {
 
 /**
  * When the product is saved get the compatible motorcycles and save them in the database
- * TODO: add validation for the fields
  */
-add_action( 'save_post', 'crb_save_product_compatible_motorcycles' );
-function crb_save_product_compatible_motorcycles() {
+add_action( 'save_post', 'crb_save_product_compatible_motorcycles', 10, 3 );
+function crb_save_product_compatible_motorcycles( $post_id, $post, $update ) {
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+		return;
+	}
+
+	if ( 'auto-draft' === $post->post_status ) {
+		return;	
+	}
+
+	// Do this function only on the products from woocommerce
+	if ( $post->post_type != 'product' ) {
+		return;
+	}
+
 	global $wpdb;
 	$table_name = $wpdb->base_prefix . 'product_compatible_motorcycle_types';
-	$current_product_id = get_the_ID();
 
 	// Remove deleted compatible motorcycles
 	if ( !empty( $_POST['removed_compatible_motorcycles'] ) ) {
@@ -71,7 +82,7 @@ function crb_save_product_compatible_motorcycles() {
 
 		foreach ( $new_compatible_motorcycles as $motorcycle ) {
 			$wpdb->insert( $table_name, array(
-				'post_id' => $current_product_id,
+				'post_id' => $post_id,
 				'make' => $motorcycle['make'],
 				'model' => $motorcycle['model'],
 				'year_from' => $motorcycle['year_from'],
@@ -85,7 +96,7 @@ function crb_save_product_compatible_motorcycles() {
 
 		foreach ( $existing_compatible_motorcycles as $motorcycle ) {
 			$sucess = $wpdb->update( $table_name, array(
-				'post_id' => $current_product_id,
+				'post_id' => $post_id,
 				'make' => $motorcycle['make'],
 				'model' => $motorcycle['model'],
 				'year_from' => $motorcycle['year_from'],
@@ -127,4 +138,91 @@ function crb_get_all_motorcycle_types() {
 	}
 	
 	return $motorcycle_types_structured_array;
+}
+
+function crb_get_compatible_motorcycles_excerpt( $compatible_motorcycles ) {
+	$compatible_motorcycles_excerpt = '';
+
+	if ( empty( $compatible_motorcycles ) ) {
+		return $compatible_motorcycles_excerpt;
+	}
+
+	$compatible_motorcycles_sorted = array();
+
+	// Create associative array by make and model
+	foreach ( $compatible_motorcycles as $compatible_motorcycle )  {
+		$make = $compatible_motorcycle['make'];
+		$model = $compatible_motorcycle['model'];
+
+		$compatible_motorcycles_sorted[$make][$model][] = array(
+			'year_from' => $compatible_motorcycle['year_from'],
+			'year_to' => $compatible_motorcycle['year_to'],
+		);
+	}
+
+	// Sort the makes and models by the alphabets
+	$compatible_motorcycles_sorted = crb_ksort_nested_array( $compatible_motorcycles_sorted );
+
+	// Create custom string from all of the makes, models and years
+	$is_first_make = true;
+	foreach ( $compatible_motorcycles_sorted as $make => $models ) {
+		// Apply comma only on the makes after the first one
+		if ( !$is_first_make ) {
+			$compatible_motorcycles_excerpt .= ', ';
+		}
+
+		$is_first_make = false;
+
+		$compatible_motorcycles_excerpt .= $make . ' ';
+
+		$is_first_model = true;
+		foreach ( $models as $model => $years ) {
+			// Apply comma only on the models after the first one
+			if ( !$is_first_model ) {
+				$compatible_motorcycles_excerpt .= ', ';
+			}
+
+			$is_first_model = false;
+
+			$compatible_motorcycles_excerpt .= $model . ' ';
+
+			foreach ( $years as $index_years => $years ) {
+				// Apply space only on the years after the first one
+				if ( $index_years > 0 ) {
+					$compatible_motorcycles_excerpt .= ' ';
+				}
+
+				$compatible_motorcycles_excerpt .=  crb_get_compatible_years( $years['year_from'], $years['year_to'] );
+			}
+		}
+	}
+	
+	return $compatible_motorcycles_excerpt;
+}
+
+function crb_ksort_nested_array( $array ) {
+	if ( is_array( $array ) ) {
+		ksort( $array );
+
+		foreach ( $array as $key => $value ) {
+			$array[$key] = crb_ksort_nested_array( $value );
+		}
+	}
+
+	return $array;
+}
+
+function crb_get_last_two_digits_from_year( $year ) {
+	return substr( $year, -2 );
+}
+
+function crb_get_compatible_years( $year_from, $year_to ) {
+	if ( $year_from === $year_to ) {
+		return $year_from;
+	}
+	
+	$year_from_last_two_digits = substr( $year_from, -2 );
+	$year_to_last_two_digits = substr( $year_to, -2 );
+
+	return $year_from_last_two_digits . '-' . $year_to_last_two_digits;	
 }

@@ -65,3 +65,9 @@ Container::make( 'post_meta', __( 'Page Builder', 'crb' ) )
 					) ),
 			) )
 	) );
+
+Container::make( 'post_meta', __( 'Заглавие на продукт', 'crb' ) )
+	->show_on_post_type( 'product' )
+	->add_fields( array(
+		Field::make( 'text', 'crb_part_name', __( 'Име на част', 'crb' ) ),
+	) );

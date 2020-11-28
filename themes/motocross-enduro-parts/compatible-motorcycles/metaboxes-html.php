@@ -78,7 +78,7 @@ $compatible_motorcycles = crb_get_product_compatible_motorycles( $current_post_i
 
 <div class="template-element-with-new-compatible-motorcycle hidden">
 	<li>
-		<select name="new_compatible_motorcycles[__INDEX__][make]" class="postbox compatible-motorcycle-make">
+		<select name="__SELECT__NAME__[__INDEX__][make]" class="postbox compatible-motorcycle-make">
 			<option value="" default>Марка</option>
 
 			<?php foreach ( $motorcycle_types as $make => $model ) : ?>
@@ -86,15 +86,15 @@ $compatible_motorcycles = crb_get_product_compatible_motorycles( $current_post_i
 			<?php endforeach ?>
 		</select>
 		
-		<select name="new_compatible_motorcycles[__INDEX__][model]" class="postbox compatible-motorcycle-model" disabled>
+		<select name="__SELECT__NAME__[__INDEX__][model]" class="postbox compatible-motorcycle-model" disabled>
 			<option value="" default>Модел</option>
 		</select>
 
-		<select name="new_compatible_motorcycles[__INDEX__][year_from]" class="postbox compatible-motorcycle-year-from" disabled>
+		<select name="__SELECT__NAME__[__INDEX__][year_from]" class="postbox compatible-motorcycle-year-from" disabled>
 			<option value="" default>От Година</option>
 		</select>
 
-		<select name="new_compatible_motorcycles[__INDEX__][year_to]" class="postbox compatible-motorcycle-year-to" disabled>
+		<select name="__SELECT__NAME__[__INDEX__][year_to]" class="postbox compatible-motorcycle-year-to" disabled>
 			<option value="" default>До Година</option>
 		</select>
 

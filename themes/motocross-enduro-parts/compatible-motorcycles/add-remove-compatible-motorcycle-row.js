@@ -1,6 +1,8 @@
 (function($) {
 	// Add new compatible motorcycles with the add button.
 	let newCompatibleMotorcycleHtml = $('.template-element-with-new-compatible-motorcycle').html();
+	newCompatibleMotorcycleHtml.replaceAll( '__SELECT__NAME__', 'new_compatible_motorcycles' );
+
 	let $compatibleMotorcycles = $('.compatible-motorcycles');
 	let newCompatibleMotorcyclesCount = 0;
 
