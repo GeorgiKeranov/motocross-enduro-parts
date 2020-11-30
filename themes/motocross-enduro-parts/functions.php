@@ -166,14 +166,6 @@ function crb_remove_schedule_delete() {
  */
 add_action( 'save_post', 'crb_set_custom_product_title', 20, 3 );
 function crb_set_custom_product_title( $post_id, $post, $update ) {
-	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
-		return;
-	}
-
-	if ( 'auto-draft' === $post->post_status ) {
-		return;	
-	} 
-	
 	// Do this function only on the products from woocommerce
 	if ( $post->post_type != 'product' ) {
 		return;

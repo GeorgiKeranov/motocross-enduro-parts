@@ -49,14 +49,6 @@ function crb_get_compatible_motorcycles_scripts_markup( $post ) {
  */
 add_action( 'save_post', 'crb_save_product_compatible_motorcycles', 10, 3 );
 function crb_save_product_compatible_motorcycles( $post_id, $post, $update ) {
-	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
-		return;
-	}
-
-	if ( 'auto-draft' === $post->post_status ) {
-		return;	
-	}
-
 	// Do this function only on the products from woocommerce
 	if ( $post->post_type != 'product' ) {
 		return;
