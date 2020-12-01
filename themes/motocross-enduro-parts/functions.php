@@ -156,53 +156,10 @@ function crb_assets_bundle( $path ) {
 	return '/dist/' . $path;
 }
 
+/**
+ * Remove the default behavior of deleting trashed posts after some time
+ */
 add_action( 'init', 'crb_remove_schedule_delete' );
 function crb_remove_schedule_delete() {
   remove_action( 'wp_scheduled_delete', 'wp_scheduled_delete' );
-}
-
-/**
- * Change the title of the product based on part name and compatible motorcycles
- */
-add_action( 'save_post', 'crb_set_custom_product_title', 20, 3 );
-function crb_set_custom_product_title( $post_id, $post, $update ) {
-	// Do this function only on the products from woocommerce
-	if ( $post->post_type != 'product' ) {
-		return;
-	}
-
-	$part_name = '';
-	if ( isset( $_POST['carbon_fields_compact_input'] ) && !empty( $_POST['carbon_fields_compact_input']['_crb_part_name'] ) ) {
-		$part_name = $_POST['carbon_fields_compact_input']['_crb_part_name'];
-	}
-
-	$compatible_motorcycles = array();
-
-	// Add the new compatible motorcycles
-	if ( !empty( $_POST['new_compatible_motorcycles'] ) ) {
-		 $compatible_motorcycles = $_POST['new_compatible_motorcycles'];
-	}
-
-	// Add existing compatible motorcycles
-	if ( !empty( $_POST['existing_compatible_motorcycles'] ) ) {
-		$compatible_motorcycles = array_merge($compatible_motorcycles, $_POST['existing_compatible_motorcycles']);
-	}
-
-	$product_title = $part_name;
-	$compatible_motorcycles_excerpt = crb_get_compatible_motorcycles_excerpt( $compatible_motorcycles );
-
-	if ( !empty( $product_title ) && !empty( $compatible_motorcycles_excerpt ) ) {
-		$product_title .= ' ';
-	}
-	
-	$product_title .= $compatible_motorcycles_excerpt;
-
-	if ( empty( $product_title ) ) {
-		return;
-	}
-
-	wp_update_post( array(
-		'ID'         => $post_id,
-		'post_title' => $product_title
-	) );
 }

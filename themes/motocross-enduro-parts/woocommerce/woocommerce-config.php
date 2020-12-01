@@ -28,6 +28,8 @@ add_action( 'woocommerce_order_status_cancelled', 'crb_instock_products_from_can
 
 add_action( 'woocommerce_before_single_product', 'crb_add_product_title_for_mobile_devices', 10 );
 
+add_action( 'wp_insert_post_data', 'crb_set_custom_product_title', 20, 1 );
+
 /**
  * Add Filters
  */
@@ -37,6 +39,8 @@ add_filter( 'woocommerce_is_sold_individually', 'crb_remove_all_quantity_fields'
 add_filter( 'woocommerce_checkout_fields', 'crb_change_checkout_fields', 10 );
 add_filter( 'woocommerce_default_address_fields', 'crb_change_checkout_address_fields', 10 );
 add_filter( 'woocommerce_add_to_cart_fragments', 'crb_refresh_mini_cart_count', 10);
+
+add_filter( 'wp_insert_post_empty_content', 'crb_insert_product_empty_content', 10, 2 );
 
 /**
  * Functions
@@ -241,4 +245,86 @@ function crb_get_woocommerce_pages_for_products( $parameters ) {
 	$pages_count = intval($products_count / 16) + ($products_count % 16 == 0 ? 0 : 1);
 
 	return $pages_count;
+}
+
+/**
+ * Add additional functionality for determing if the post is empty only if the post_type is product
+ *
+ * This is done because we have custom fields in the post type product that the default wordpress
+ * check for empty post is not detecting by it self and it is thinking that the post is empty
+ * while we have content to the custom fields
+ */
+function crb_insert_product_empty_content( $maybe_empty, $postarr ) {
+	// If the post is not empty return that the post is not empty
+	if ( $maybe_empty === false ) {
+		return $maybe_empty;
+	}
+
+	// If the post type is not product return the default behavior of validating
+	if ( $postarr['post_type'] != 'product' ) {
+		return $maybe_empty;
+	}
+	
+	$are_carbon_fields_changed = !empty( $postarr['carbon_fields_changed'] );
+	$are_new_compatible_motorcycles = !empty( $postarr['new_compatible_motorcycles'] );
+
+	// If the carbon fields are changed or the new compatible motorcycles added
+	// return that the post is not empty and can be saved by returning false value
+	if ( $are_carbon_fields_changed || $are_new_compatible_motorcycles ) {
+		return false;
+	}
+
+	return true;
+}
+
+/**
+ * Change the title of the product based on part name and compatible motorcycles
+ */
+function crb_set_custom_product_title( $data ) {
+	// Do this function only on the products from woocommerce
+	if ( get_post_type() != 'product' ) {
+		return $data;
+	}
+
+	$part_name = '';
+	if ( isset( $_POST['carbon_fields_compact_input'] ) && !empty( $_POST['carbon_fields_compact_input']['_crb_part_name'] ) ) {
+		$part_name = $_POST['carbon_fields_compact_input']['_crb_part_name'];
+	}
+
+	$compatible_motorcycles = array();
+
+	// Add the new compatible motorcycles
+	if ( !empty( $_POST['new_compatible_motorcycles'] ) ) {
+		 $compatible_motorcycles = $_POST['new_compatible_motorcycles'];
+	}
+
+	// Add existing compatible motorcycles
+	if ( !empty( $_POST['existing_compatible_motorcycles'] ) ) {
+		$compatible_motorcycles = array_merge($compatible_motorcycles, $_POST['existing_compatible_motorcycles']);
+	}
+
+	$product_title = $part_name;
+	$compatible_motorcycles_excerpt = crb_get_compatible_motorcycles_excerpt( $compatible_motorcycles );
+
+	if ( !empty( $product_title ) && !empty( $compatible_motorcycles_excerpt ) ) {
+		$product_title .= ' ';
+	}
+	
+	$product_title .= $compatible_motorcycles_excerpt;
+
+	// If the generated title is empty return 'Без заглавие' by default
+	if ( empty( $product_title ) ) {
+		$data['post_title'] = 'Без заглавие';
+
+		return $data;
+	}
+
+	// If the current product title is different from the generated 
+	// update the post title and permalink with the generated one
+	if ( get_the_title() != $product_title ) {
+		$data['post_title'] = $product_title;
+		$data['post_name'] = sanitize_title( $product_title );
+	}
+
+	return $data;
 }
