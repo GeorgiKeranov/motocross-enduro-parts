@@ -10,17 +10,17 @@
 
 	$compatibleMotorcycles.on('change', '.compatible-motorcycle-make', function() {
 		let $this = $(this);
-		let $li = $this.closest('li');
+		let $parent = $this.parent();
 
 		let selectedMake = $this.val();
 
-		disableAndClearOptionsForTheLastNSelects($li, 3);
+		disableAndClearOptionsForTheLastNSelects($parent, 3);
 
 		if (selectedMake === '') {
 			return;
 		}
 
-		$model = $li.find('.compatible-motorcycle-model');
+		$model = $parent.find('.compatible-motorcycle-model');
 
 		// Fill model select with the options associated to the selected make
 		for (model in jsonMotorcyclesTypes[selectedMake]) {
@@ -34,18 +34,18 @@
 
 	$compatibleMotorcycles.on('change', '.compatible-motorcycle-model', function() {
 		let $this = $(this);
-		let $li = $this.closest('li');
+		let $parent = $this.parent();
 
-		let selectedMake = $li.find('.compatible-motorcycle-make').val();
+		let selectedMake = $parent.find('.compatible-motorcycle-make').val();
 		let selectedModel = $this.val();
 
-		disableAndClearOptionsForTheLastNSelects($li, 2);
+		disableAndClearOptionsForTheLastNSelects($parent, 2);
 
 		if (selectedModel === '') {
 			return;
 		}
 
-		$yearFrom = $li.find('.compatible-motorcycle-year-from');
+		$yearFrom = $parent.find('.compatible-motorcycle-year-from');
 
 		// Fill year-from select with the production years
 		let yearFrom = jsonMotorcyclesTypes[selectedMake][selectedModel]['first_production_year'];
@@ -62,19 +62,19 @@
 
 	$compatibleMotorcycles.on('change', '.compatible-motorcycle-year-from', function() {
 		let $this = $(this);
-		let $li = $this.closest('li');
+		let $parent = $this.parent();
 
-		let selectedMake = $li.find('.compatible-motorcycle-make').val();
-		let selectedModel = $li.find('.compatible-motorcycle-model').val();
+		let selectedMake = $parent.find('.compatible-motorcycle-make').val();
+		let selectedModel = $parent.find('.compatible-motorcycle-model').val();
 		let selectedYearFrom = $this.val();
 
-		disableAndClearOptionsForTheLastNSelects($li, 1);
+		disableAndClearOptionsForTheLastNSelects($parent, 1);
 
 		if (selectedYearFrom === '') {
 			return;
 		}
 
-		$yearTo = $li.find('.compatible-motorcycle-year-to');
+		$yearTo = $parent.find('.compatible-motorcycle-year-to');
 
 		// Fill year-to select with the production years that are bigger than the year-from selected value
 		let yearTo = jsonMotorcyclesTypes[selectedMake][selectedModel]['last_production_year'];
