@@ -30,8 +30,8 @@
 .section-search-parts--alt .form-search button:hover { opacity: .5; }
 .section-search-parts--alt .form-search button:hover svg { transform: none; }
 
-.section-search-parts--alt .form-make-filter { display: block; }
-.section-search-parts--alt .form-make-filter .form__inner { display: flex; margin: 0 -10px; justify-content: center; align-items: center; margin-bottom: 10px; }
+.section-search-parts--alt .form-compatible-motorcycle { display: block; }
+.section-search-parts--alt .form-compatible-motorcycle .form__inner { display: flex; margin: 0 -10px; justify-content: center; align-items: center; margin-bottom: 10px; }
 
 .section-search-parts--alt form input { padding: 5px 15px; }
 .section-search-parts--alt form select { padding: 5px 40px 5px 15px; background-size: 30px 30px; }
@@ -91,7 +91,7 @@ $breakpoint-mobile-portrait {
 	.section-search-parts--alt .form-search { max-width: none; }
 	.section-search-parts--alt .form-search input[type="text"] { border-radius: 8px; }
 	
-	.section-search-parts--alt .form-make-filter .form__inner { flex-direction: column; margin: 0; }
+	.section-search-parts--alt .form-compatible-motorcycle .form__inner { flex-direction: column; margin: 0; }
 
 	.section-search-parts--alt form input[type="submit"] { display: none; }
 

@@ -11,10 +11,11 @@
 	$compatibleMotorcycles.on('change', '.compatible-motorcycle-make', function() {
 		let $this = $(this);
 		let $parent = $this.parent();
+		let countOfSelects = $parent.find('> select').length;
 
 		let selectedMake = $this.val();
 
-		disableAndClearOptionsForTheLastNSelects($parent, 3);
+		disableAndClearOptionsForTheLastNSelects($parent, countOfSelects - 1);
 
 		if (selectedMake === '') {
 			return;
@@ -35,57 +36,63 @@
 	$compatibleMotorcycles.on('change', '.compatible-motorcycle-model', function() {
 		let $this = $(this);
 		let $parent = $this.parent();
+		let countOfSelects = $parent.find('> select').length;
 
 		let selectedMake = $parent.find('.compatible-motorcycle-make').val();
 		let selectedModel = $this.val();
 
-		disableAndClearOptionsForTheLastNSelects($parent, 2);
+		disableAndClearOptionsForTheLastNSelects($parent, countOfSelects - 2);
 
 		if (selectedModel === '') {
 			return;
 		}
 
-		$yearFrom = $parent.find('.compatible-motorcycle-year-from');
-
-		// Fill year-from select with the production years
 		let yearFrom = jsonMotorcyclesTypes[selectedMake][selectedModel]['first_production_year'];
 		let yearTo = jsonMotorcyclesTypes[selectedMake][selectedModel]['last_production_year'];
 		
+		let $yearsSelect = $parent.find('.compatible-motorcycle-year-from');
+
+		if ( !$yearsSelect.length ) {
+			$yearsSelect = $parent.find('.compatible-motorcycle-year');
+		}
+
+		// Fill years select with the production years
 		for (let yearsCounter = yearFrom; yearsCounter<=yearTo; yearsCounter++) {
 			let newOptionHtml = optionHtml.replaceAll('__VALUE__', yearsCounter);
-			$yearFrom.append(newOptionHtml);	
+			$yearsSelect.append(newOptionHtml);	
 		}
 
 		// Enable the yearFrom select to be used
-		$yearFrom.removeAttr('disabled');
+		$yearsSelect.removeAttr('disabled');
 	});
 
 	$compatibleMotorcycles.on('change', '.compatible-motorcycle-year-from', function() {
 		let $this = $(this);
 		let $parent = $this.parent();
+		let countOfSelects = $parent.find('> select').length;
 
 		let selectedMake = $parent.find('.compatible-motorcycle-make').val();
 		let selectedModel = $parent.find('.compatible-motorcycle-model').val();
 		let selectedYearFrom = $this.val();
 
-		disableAndClearOptionsForTheLastNSelects($parent, 1);
+		disableAndClearOptionsForTheLastNSelects($parent, countOfSelects - 3);
 
 		if (selectedYearFrom === '') {
 			return;
 		}
 
-		$yearTo = $parent.find('.compatible-motorcycle-year-to');
+		let $yearsTo = $parent.find('.compatible-motorcycle-year-to');
 
 		// Fill year-to select with the production years that are bigger than the year-from selected value
 		let yearTo = jsonMotorcyclesTypes[selectedMake][selectedModel]['last_production_year'];
 		
 		for (let yearsCounter = selectedYearFrom; yearsCounter<=yearTo; yearsCounter++) {
 			let newOptionHtml = optionHtml.replaceAll('__VALUE__', yearsCounter);
-			$yearTo.append(newOptionHtml);	
+			$yearsTo.append(newOptionHtml);	
 		}
 
 		// Enable the yearFrom select to be used
-		$yearTo.removeAttr('disabled');
+		$yearsTo.removeAttr('disabled');
 	});
 
 	function disableAndClearOptionsForTheLastNSelects($wrapper, lastNSelects) {

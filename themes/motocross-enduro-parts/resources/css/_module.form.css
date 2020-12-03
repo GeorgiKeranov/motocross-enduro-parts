@@ -58,14 +58,14 @@ $breakpoint-mobile-portrait {
 	Form Make Filter
 \* ------------------------------------------------------------ */
 
-.form-make-filter { display: flex; justify-content: center; align-items: center; margin: 0 -10px; }
-.form-make-filter select { width: 33.3%; margin: 0 10px; }
+.form-compatible-motorcycle { display: flex; justify-content: center; align-items: center; margin: 0 -10px; }
+.form-compatible-motorcycle select { width: 33.3%; margin: 0 10px; }
 
 /* Mobile Portrait */
 
 $breakpoint-mobile-portrait {
-	.form-make-filter { flex-direction: column; margin: 0; }
-	.form-make-filter select { width: 100%; margin: 5px 0; }
+	.form-compatible-motorcycle { flex-direction: column; margin: 0; }
+	.form-compatible-motorcycle select { width: 100%; margin: 5px 0; }
 }
 
 /* ------------------------------------------------------------ *\
