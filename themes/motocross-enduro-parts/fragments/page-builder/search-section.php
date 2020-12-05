@@ -29,33 +29,38 @@
 				</div><!-- /.section__separator -->
 			<?php endif; ?>
 
-			<div class="section__search-filters">
-				<?php if ( !empty( $section['type_fields_title'] ) ) : ?>
-					<h3><?php echo esc_html( $section['type_fields_title'] ) ?></h3>
-				<?php endif; ?>
+			<?php
+			$motorcycle_types = crb_get_all_motorcycle_types();
+			
+			if ( !empty( $motorcycle_types ) ) : ?>
+				<div class="section__search-filters">
+					<?php if ( !empty( $section['type_fields_title'] ) ) : ?>
+						<h3><?php echo esc_html( $section['type_fields_title'] ) ?></h3>
+					<?php endif; ?>
 
-				<!-- TODO -->
-				<form class="form-make-filter">
-					<!-- Fill this up and others after this field is chosen -->
-					<select name="make" id="make">
-						<option default>Марка</option>
-						<!-- <option value="honda">Honda</option>
-						<option value="kawasaki">Kawasaki</option> -->
-					</select>
+					<form class="form-compatible-motorcycle compatible-motorcycles">
+						<select name="make" class="compatible-motorcycle-make">
+							<option default>Марка</option>
+							
+							<?php foreach ( $motorcycle_types as $make => $model ) : ?>
+								<option value="<?php echo esc_html( $make ) ?>"><?php echo esc_html( $make ) ?></option>
+							<?php endforeach ?>
+						</select>
 
-					<select name="model" id="model" disabled="disabled">
-						<option default>Модел</option>
-						<!-- <option value="CRF450R">CRF450R</option>
-						<option value="CRF450X">CRF450X</option> -->
-					</select>
+						<select name="model" class="compatible-motorcycle-model" disabled="disabled">
+							<option default>Модел</option>
+						</select>
 
-					<select name="year" id="year" disabled="disabled">
-						<option default>Година</option>
-						<!-- <option value="2000">2000</option>
-						<option value="2001">2001</option> -->
-					</select>
-				</form>
-			</div><!-- /.section__search-filters -->
+						<select name="year" class="compatible-motorcycle-year" disabled="disabled">
+							<option default>Година</option>
+						</select>
+					</form>
+				</div><!-- /.section__search-filters -->
+
+				<!-- Scripts needed to fill the motorcycle model and year based on the make and model -->
+				<script type="text/javascript">let jsonMotorcyclesTypes = <?php echo json_encode( $motorcycle_types ); ?>;</script>
+				<script type="text/javascript" src="<?php bloginfo('stylesheet_directory'); ?>/compatible-motorcycles/load-values-in-selects-dynamically.js"></script>
+			<?php endif; ?>
 		</div><!-- /.section__inner -->
 	</div><!-- /.shell -->
 </div><!-- /.section-search-parts -->
