@@ -10,7 +10,8 @@
 .woocommerce .widget_price_filter .price_slider_amount .button { background-color: #e7a161; border: 2px solid #e7a161; color: #fff; transition: .3s; font-weight: 600; }
 .woocommerce .widget_price_filter .price_slider_amount .button:hover { background-color: #fff; color: #e7a161; }
 
-.woocommerce ul.products { padding-top: 20px; }
+.woocommerce ul.products { display: flex; flex-wrap: wrap; margin: 0 -20px; }
+.woocommerce ul.products li.product { float: none; margin: 20px 0; padding: 0 20px; width: 25%; }
 
 .woocommerce .woocommerce-result-count { display: none; }
 

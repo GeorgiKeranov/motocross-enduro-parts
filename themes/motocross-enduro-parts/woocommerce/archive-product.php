@@ -56,11 +56,15 @@ if ( !empty( $products ) ) {
 	 * @hooked woocommerce_result_count - 20
 	 * @hooked woocommerce_catalog_ordering - 30
 	 */
-	do_action( 'woocommerce_before_shop_loop' );
+	do_action( 'woocommerce_before_shop_loop' ); ?>
 
-	crb_render_fragment( 'woocommerce-loop.php', array( 'products' => $products ) );
+	<ul class="products columns-4">
+		<?php foreach ( $products as $product ) {
+			crb_render_fragment( 'woocommerce-loop-single-product.php', array( 'product' => $product ) );
+		} ?>
+	</ul>
 
-	crb_render_fragment( 'woocommerce-loop-pagination.php', array( 'products' => $products ) );
+	<?php crb_render_fragment( 'woocommerce-loop-pagination.php', array( 'products' => $products ) );
 } else {
 	/**
 	 * Hook: woocommerce_no_products_found.
