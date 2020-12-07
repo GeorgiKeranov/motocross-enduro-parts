@@ -6,7 +6,7 @@
 				
 				<div class="section__search">
 					<form class="form-search">
-						<input type="text" name="s" placeholder="Търсене на части">
+						<input type="text" name="search" placeholder="Търсене на части">
 
 						<button type="submit"><?php crb_render_fragment( 'svgs/icon-search' ) ?></button>
 					</form>

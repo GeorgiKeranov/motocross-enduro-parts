@@ -17,7 +17,7 @@
 				<?php endif; ?>
 
 				<form class="form-search">
-					<input type="text" name="s" placeholder="<?php echo esc_html( $section['search_field_placeholder'] ) ?>">
+					<input type="text" name="search" placeholder="<?php echo esc_html( $section['search_field_placeholder'] ) ?>">
 
 					<button type="submit"><?php crb_render_fragment( 'svgs/icon-search' ) ?></button>
 				</form>
