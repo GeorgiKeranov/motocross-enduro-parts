@@ -1,25 +1,55 @@
+<?php
+if ( !is_object( $product ) ) {
+	return;
+}
+
+if ( !property_exists($product, 'ID') ) {
+	return;
+}
+
+$product_id = $product->ID;
+$wc_product = new WC_Product( $product_id );
+
+$permalink = get_permalink( $product_id );
+$title = get_the_title( $product_id );
+$thumbnail_image = $wc_product->get_image( 'woocommerce_thumbnail' );
+$first_gallery_image = '';
+
+$gallery_images_ids = $wc_product->get_gallery_image_ids();
+$attrs = array(
+	'sizes' => '(max-width: 300px) 100vw, 300px'
+);
+
+if ( !empty( $gallery_images_ids ) ) {
+	$first_gallery_image = wp_get_attachment_image( $gallery_images_ids[0], 'woocommerce_thumbnail', false, $attrs );
+}
+
+if ( empty( $first_gallery_image ) ) {
+	$first_gallery_image = wc_placeholder_img( 'woocommerce_thumbnail', $attrs );
+}
+
+?>
+
 <li class="product">
-	<a href="http://gkeranov.com/projects/mine/motocross-enduro-parts/wordpress/product/%d1%80%d0%b0%d0%bc%d0%ba%d0%b0-%d0%b2%d1%8a%d0%b7%d0%b4%d1%83%d1%88%d0%b5%d0%bd-%d1%84%d0%b8%d0%bb%d1%82%d1%8a%d1%80-honda-crf450r-2012-crf450x-06-16-kawasaki-kx250f-04-06/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
+	<a href="<?php echo $permalink ?>" class="woocommerce-LoopProduct-link woocommerce-loop-product__link">
 		<div class="woocommerce-product-images">
-			<span class="onsale">- 40%</span>
+			<?php
+			if ( $wc_product->is_on_sale() ) {
+				echo crb_woocommerce_sale_flash( '', '', $wc_product );
+			}
 
-			<img width="300" height="300" src="http://gkeranov.com/projects/mine/motocross-enduro-parts/wordpress/wp-content/uploads/2020/10/20201011_181219-scaled-300x300.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" srcset="http://gkeranov.com/projects/mine/motocross-enduro-parts/wordpress/wp-content/uploads/2020/10/20201011_181219-scaled-300x300.jpg 300w, http://gkeranov.com/projects/mine/motocross-enduro-parts/wordpress/wp-content/uploads/2020/10/20201011_181219-scaled-100x100.jpg 100w" sizes="(max-width: 300px) 100vw, 300px" />
+			echo $thumbnail_image;
 
-			<img width="300" height="300" src="http://gkeranov.com/projects/mine/motocross-enduro-parts/wordpress/wp-content/uploads/2020/10/20201011_181219-scaled-300x300.jpg" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt="" loading="lazy" srcset="http://gkeranov.com/projects/mine/motocross-enduro-parts/wordpress/wp-content/uploads/2020/10/20201011_181219-scaled-300x300.jpg 300w, http://gkeranov.com/projects/mine/motocross-enduro-parts/wordpress/wp-content/uploads/2020/10/20201011_181219-scaled-100x100.jpg 100w" sizes="(max-width: 300px) 100vw, 300px" />
+			echo $first_gallery_image;
+			?>
 		</div><!-- /.woocommerce-product-images -->
 
-		<h2 class="woocommerce-loop-product__title">Рамка въздушен филтър Honda CRF450R 2012, CRF450X 06-16, Kawasaki KX250F 04-06</h2>
+		<h2 class="woocommerce-loop-product__title"><?php echo esc_html( $title ) ?></h2>
 		
-		<span class="price">
-			<del>
-				<span class="woocommerce-Price-amount amount"><bdi>250,00<span class="woocommerce-Price-currencySymbol">&#1083;&#1074;.</span></bdi></span>
-			</del>
-
-			<ins>
-				<span class="woocommerce-Price-amount amount"><bdi>150,00<span class="woocommerce-Price-currencySymbol">&#1083;&#1074;.</span></bdi></span>
-			</ins>
-		</span>
+		<?php if ( $price_html = $wc_product->get_price_html() ) : ?>
+			<span class="price"><?php echo $price_html; ?></span>
+		<?php endif; ?>
 	</a>
 
-	<a href="?add-to-cart=120" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="120" rel="nofollow">Купи</a>
+	<a href="?add-to-cart=<?php echo $product_id ?>" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="<?php echo $product_id ?>" rel="nofollow">Купи</a>
 </li>

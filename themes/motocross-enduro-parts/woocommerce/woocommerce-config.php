@@ -194,7 +194,7 @@ function crb_get_woocommerce_products( $parameters ) {
 	$sql_query_parameters = array();
 
 	// This string will store the dynamic sql query and we will not add directly here the user input
-	$sql_query = "SELECT {$prefix}posts.post_title FROM {$prefix}posts WHERE {$prefix}posts.post_type = 'product' and {$prefix}posts.post_status = 'publish'";
+	$sql_query = "SELECT {$prefix}posts.ID FROM {$prefix}posts WHERE {$prefix}posts.post_type = 'product' and {$prefix}posts.post_status = 'publish'";
 
 	// Search in the title of the product
 	if ( !empty( $parameters['search'] ) ) {
@@ -235,9 +235,9 @@ function crb_get_woocommerce_products( $parameters ) {
 		$sql_query_prepared = $wpdb->prepare( $sql_query, $sql_query_parameters );
 	}
 
-	$products_ids = $wpdb->get_results( $sql_query_prepared );
+	$products = $wpdb->get_results( $sql_query_prepared );
 
-	return $products_ids;
+	return $products;
 }
 
 function crb_get_woocommerce_pages_for_products( $parameters ) {
