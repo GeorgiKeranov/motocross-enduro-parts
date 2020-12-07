@@ -184,17 +184,22 @@ function crb_refresh_mini_cart_count( $fragments ) {
     return $fragments;
 }
 
-function crb_get_woocommerce_products( $parameters ) {
+function crb_get_woocommerce_products( $parameters, $pagination = false ) {
 	global $wpdb;
 
 	$prefix = $wpdb->prefix;
 
 	// This array is used to store all of the user variables that are coming so we
 	// can prepare the dynamic sql query with them at the end to prevent sql injection
+	$sql_query = "SELECT {$prefix}posts.ID";
 	$sql_query_parameters = array();
 
+	if ( $pagination ) {
+		$sql_query = "SELECT COUNT(*)";
+	}
+
 	// This string will store the dynamic sql query and we will not add directly here the user input
-	$sql_query = "SELECT {$prefix}posts.ID FROM {$prefix}posts WHERE {$prefix}posts.post_type = 'product' and {$prefix}posts.post_status = 'publish'";
+	$sql_query .= " FROM {$prefix}posts WHERE {$prefix}posts.post_type = 'product' and {$prefix}posts.post_status = 'publish'";
 
 	// Search in the title of the product
 	if ( !empty( $parameters['search'] ) ) {
@@ -235,16 +240,17 @@ function crb_get_woocommerce_products( $parameters ) {
 		$sql_query_prepared = $wpdb->prepare( $sql_query, $sql_query_parameters );
 	}
 
+	if ( $pagination ) {
+		$products_count = $products_count = $wpdb->get_var( $sql_query_prepared );
+		
+		$pages_count = intval($products_count / 16) + ($products_count % 16 == 0 ? 0 : 1);
+		
+		return $pages_count;
+	}
+
 	$products = $wpdb->get_results( $sql_query_prepared );
 
 	return $products;
-}
-
-function crb_get_woocommerce_pages_for_products( $parameters ) {
-	$products_count = $wpdb->get_var( "SELECT COUNT(*) FROM wp_posts WHERE wp_posts.post_type = 'product' and wp_posts.post_status = 'publish'" );
-	$pages_count = intval($products_count / 16) + ($products_count % 16 == 0 ? 0 : 1);
-
-	return $pages_count;
 }
 
 /**

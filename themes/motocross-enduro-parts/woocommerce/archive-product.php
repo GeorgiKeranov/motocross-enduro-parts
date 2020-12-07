@@ -45,7 +45,10 @@ do_action( 'woocommerce_before_main_content' );
 	?>
 </header>
 <?php
-$products = crb_get_woocommerce_products( $_GET );
+$get_parameters = $_GET;
+
+$products = crb_get_woocommerce_products( $get_parameters );
+$pages_count = crb_get_woocommerce_products( $get_parameters, true );
 
 if ( !empty( $products ) ) {
 
@@ -64,7 +67,7 @@ if ( !empty( $products ) ) {
 		} ?>
 	</ul>
 
-	<?php crb_render_fragment( 'woocommerce-loop-pagination.php', array( 'products' => $products ) );
+	<?php crb_render_fragment( 'woocommerce-loop-pagination.php', array( 'pages_count' => $pages_count ) );
 } else {
 	/**
 	 * Hook: woocommerce_no_products_found.
