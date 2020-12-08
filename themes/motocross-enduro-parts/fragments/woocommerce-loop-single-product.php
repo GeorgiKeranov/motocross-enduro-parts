@@ -13,21 +13,13 @@ $wc_product = new WC_Product( $product_id );
 $permalink = get_permalink( $product_id );
 $title = get_the_title( $product_id );
 $thumbnail_image = $wc_product->get_image( 'woocommerce_thumbnail' );
-$first_gallery_image = '';
 
+$first_gallery_image = '';
 $gallery_images_ids = $wc_product->get_gallery_image_ids();
-$attrs = array(
-	'sizes' => '(max-width: 300px) 100vw, 300px'
-);
 
 if ( !empty( $gallery_images_ids ) ) {
-	$first_gallery_image = wp_get_attachment_image( $gallery_images_ids[0], 'woocommerce_thumbnail', false, $attrs );
+	$first_gallery_image = wp_get_attachment_image( $gallery_images_ids[0], 'woocommerce_thumbnail', false, array( 'sizes' => '(max-width: 300px) 100vw, 300px' ) );
 }
-
-if ( empty( $first_gallery_image ) ) {
-	$first_gallery_image = wc_placeholder_img( 'woocommerce_thumbnail', $attrs );
-}
-
 ?>
 
 <li class="product">
@@ -40,7 +32,9 @@ if ( empty( $first_gallery_image ) ) {
 
 			echo $thumbnail_image;
 
-			echo $first_gallery_image;
+			if ( !empty( $first_gallery_image ) ) {
+				echo $first_gallery_image;
+			}
 			?>
 		</div><!-- /.woocommerce-product-images -->
 
