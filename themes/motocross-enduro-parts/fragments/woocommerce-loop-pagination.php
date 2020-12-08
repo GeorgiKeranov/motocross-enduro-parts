@@ -7,6 +7,12 @@ if ( $pages_count === 1 ) {
 	return;
 }
 
+$current_page = 1;
+
+if ( isset( $_GET['page'] ) ) {
+	$current_page = intval( $_GET['page'] );
+}
+
 // TODO show max 5 pages with one first and one last pages:
 // Example -> [1] 2 3 {4} 5 6 [7]
 // If pages are more than 7 add [...] before first or last or both pages
@@ -17,23 +23,26 @@ if ( $pages_count === 1 ) {
 
 <nav class="woocommerce-pagination">
 	<ul class="page-numbers">
-		<!-- TODO show prev page button if current page is not the first page -->
-		<li>
-			<a class="prev page-numbers" href="">←</a>
-		</li>
+		<?php if ( $current_page !== 1 ) : ?>
+			<li>
+				<a class="prev page-numbers" href="<?php echo $current_page - 1 ?>">←</a>
+			</li>
+		<?php endif; ?>
 
 		<?php for ( $page_counter = 1; $page_counter <= $pages_count; $page_counter++ ) : ?>
 			<li>
-				<!-- TODO check if we are on the current page_counter page -->
-				<!-- <span class="page-numbers current"></span> -->
-
-				<a class="page-numbers" href="<?php echo $page_counter ?>"><?php echo $page_counter ?></a>
+				<?php if ( $page_counter === $current_page ) : ?>
+					<span class="page-numbers current"><?php echo $current_page ?></span>
+				<?php else : ?>
+					<a class="page-numbers" href="<?php echo $page_counter ?>"><?php echo $page_counter ?></a>
+				<?php endif ?>
 			</li>
 		<?php endfor; ?>
 
-		<!-- TODO show next page button if current page is not the last page -->
-		<li>
-			<a class="next page-numbers" href="">→</a>
-		</li>
+		<?php if ( $current_page !== $pages_count ) : ?>
+			<li>
+				<a class="next page-numbers" href="<?php echo $current_page + 1 ?>">→</a>
+			</li>
+		<?php endif; ?>
 	</ul>
 </nav>
