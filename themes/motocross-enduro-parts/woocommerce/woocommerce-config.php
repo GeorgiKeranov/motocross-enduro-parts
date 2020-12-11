@@ -46,7 +46,7 @@ add_filter( 'wp_insert_post_empty_content', 'crb_insert_product_empty_content', 
  * Functions
  */
 function crb_woocommerce_before_main_content() {
-	get_template_part( 'woocommerce/wc-before-main-content' );
+	crb_render_fragment( 'woocommerce-before-main-content' );
 }
 
 function crb_woocommerce_sale_flash( $html, $post, $product ) {
