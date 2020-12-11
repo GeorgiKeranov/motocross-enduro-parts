@@ -50,7 +50,7 @@ $get_parameters = $_GET;
 $products = crb_get_woocommerce_products( $get_parameters );
 $pages_count = crb_get_woocommerce_products( $get_parameters, true );
 
-if ( !empty( $products ) ) {
+if ( !empty( $products ) ) :
 
 	/**
 	 * Hook: woocommerce_before_shop_loop.
@@ -60,22 +60,24 @@ if ( !empty( $products ) ) {
 	 * @hooked woocommerce_catalog_ordering - 30
 	 */
 	do_action( 'woocommerce_before_shop_loop' ); ?>
+	
+	<div class="products-wrapper">
+		<ul class="products columns-4">
+			<?php foreach ( $products as $product ) {
+				crb_render_fragment( 'woocommerce/woocommerce-loop-single-product.php', array( 'product' => $product ) );
+			} ?>
+		</ul>
 
-	<ul class="products columns-4">
-		<?php foreach ( $products as $product ) {
-			crb_render_fragment( 'woocommerce/woocommerce-loop-single-product.php', array( 'product' => $product ) );
-		} ?>
-	</ul>
-
-	<?php crb_render_fragment( 'woocommerce/woocommerce-loop-pagination.php', array( 'pages_count' => $pages_count ) );
-} else {
+		<?php crb_render_fragment( 'woocommerce/woocommerce-loop-pagination.php', array( 'pages_count' => $pages_count ) ); ?>
+	</div>
+<?php else :
 	/**
 	 * Hook: woocommerce_no_products_found.
 	 *
 	 * @hooked wc_no_products_found - 10
 	 */
 	do_action( 'woocommerce_no_products_found' );
-}
+endif;
 
 /**
  * Hook: woocommerce_after_main_content.
