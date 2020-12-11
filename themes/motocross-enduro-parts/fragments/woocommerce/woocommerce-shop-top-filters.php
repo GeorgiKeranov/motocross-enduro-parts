@@ -38,7 +38,7 @@ $is_selected_motorcycle_model = $is_selected_motorcycle_make && !empty( $selecte
 						<form action="<?php echo $shop_page_permalink ?>" class="form-compatible-motorcycle">
 							<div class="form__inner compatible-motorcycles">
 								<select name="motorcycle_make" class="compatible-motorcycle-make">
-									<option default>Марка</option>
+									<option value="" default>Марка</option>
 									
 									<?php foreach ( $motorcycle_types as $make => $model ) : ?>
 										<option value="<?php echo esc_html( $make ) ?>" <?php echo $selected_motorcycle_make === $make ? 'selected' : '' ?>><?php echo esc_html( $make ) ?></option>
@@ -46,7 +46,7 @@ $is_selected_motorcycle_model = $is_selected_motorcycle_make && !empty( $selecte
 								</select>
 
 								<select name="motorcycle_model" class="compatible-motorcycle-model"<?php echo $is_selected_motorcycle_make ? '' : ' disabled="disabled"' ?>>
-									<option default>Модел</option>
+									<option value="" default>Модел</option>
 
 									<?php if ( $is_selected_motorcycle_make ) :
 										foreach ( $motorcycle_types[$selected_motorcycle_make] as $model => $years ) : ?>
@@ -56,7 +56,7 @@ $is_selected_motorcycle_model = $is_selected_motorcycle_make && !empty( $selecte
 								</select>
 
 								<select name="motorcycle_year" class="compatible-motorcycle-year"<?php echo $is_selected_motorcycle_model ? '' : ' disabled="disabled"' ?>>
-									<option default>Година</option>
+									<option value="" default>Година</option>
 
 									<?php if ( !empty( $selected_motorcycle_model ) ) :
 										$selected_make_and_model = $motorcycle_types[$selected_motorcycle_make][$selected_motorcycle_model];

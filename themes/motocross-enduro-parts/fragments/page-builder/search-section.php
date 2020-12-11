@@ -40,7 +40,7 @@
 
 					<form class="form-compatible-motorcycle compatible-motorcycles">
 						<select name="motorcycle_make" class="compatible-motorcycle-make">
-							<option default>Марка</option>
+							<option value="" default>Марка</option>
 							
 							<?php foreach ( $motorcycle_types as $make => $model ) : ?>
 								<option value="<?php echo esc_html( $make ) ?>"><?php echo esc_html( $make ) ?></option>
@@ -48,11 +48,11 @@
 						</select>
 
 						<select name="motorcycle_model" class="compatible-motorcycle-model" disabled="disabled">
-							<option default>Модел</option>
+							<option value="" default>Модел</option>
 						</select>
 
 						<select name="motorcycle_year" class="compatible-motorcycle-year" disabled="disabled">
-							<option default>Година</option>
+							<option value="" default>Година</option>
 						</select>
 					</form>
 				</div><!-- /.section__search-filters -->
