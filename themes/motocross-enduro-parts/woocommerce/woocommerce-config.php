@@ -46,7 +46,7 @@ add_filter( 'wp_insert_post_empty_content', 'crb_insert_product_empty_content', 
  * Functions
  */
 function crb_woocommerce_before_main_content() {
-	crb_render_fragment( 'woocommerce-before-main-content' );
+	crb_render_fragment( 'woocommerce/woocommerce-before-main-content' );
 }
 
 function crb_woocommerce_sale_flash( $html, $post, $product ) {
@@ -351,5 +351,5 @@ function crb_print_pagination_pages( $pages_count, $current_page, $visible_pages
 		$pages_data['pages_skip_from'] = $current_page + $visible_pages_to_current;
 	}
 
-	crb_render_fragment( 'woocommerce-loop-pagination-pages', $pages_data );
+	crb_render_fragment( 'woocommerce/woocommerce-loop-pagination-pages', $pages_data );
 }

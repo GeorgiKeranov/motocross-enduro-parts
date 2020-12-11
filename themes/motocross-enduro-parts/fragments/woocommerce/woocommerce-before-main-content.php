@@ -1,4 +1,4 @@
-<?php crb_render_fragment( 'woocommerce-shop-top-filters' ) ?>
+<?php crb_render_fragment( 'woocommerce/woocommerce-shop-top-filters' ) ?>
 
 <div class="woocommerce-wrapper">
 	<div class="woocommerce-columns">

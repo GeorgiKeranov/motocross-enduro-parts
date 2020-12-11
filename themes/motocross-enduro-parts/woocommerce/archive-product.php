@@ -63,11 +63,11 @@ if ( !empty( $products ) ) {
 
 	<ul class="products columns-4">
 		<?php foreach ( $products as $product ) {
-			crb_render_fragment( 'woocommerce-loop-single-product.php', array( 'product' => $product ) );
+			crb_render_fragment( 'woocommerce/woocommerce-loop-single-product.php', array( 'product' => $product ) );
 		} ?>
 	</ul>
 
-	<?php crb_render_fragment( 'woocommerce-loop-pagination.php', array( 'pages_count' => $pages_count ) );
+	<?php crb_render_fragment( 'woocommerce/woocommerce-loop-pagination.php', array( 'pages_count' => $pages_count ) );
 } else {
 	/**
 	 * Hook: woocommerce_no_products_found.
