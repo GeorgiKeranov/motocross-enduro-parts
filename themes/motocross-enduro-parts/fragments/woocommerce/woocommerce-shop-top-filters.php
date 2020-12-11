@@ -21,7 +21,7 @@
 					<div class="section__filter-menu">
 						<form class="form-compatible-motorcycle">
 							<div class="form__inner compatible-motorcycles">
-								<select name="make" class="compatible-motorcycle-make">
+								<select name="motorcycle_make" class="compatible-motorcycle-make">
 									<option default>Марка</option>
 									
 									<?php foreach ( $motorcycle_types as $make => $model ) : ?>
@@ -29,11 +29,11 @@
 									<?php endforeach ?>
 								</select>
 
-								<select name="model" class="compatible-motorcycle-model" disabled="disabled">
+								<select name="motorcycle_model" class="compatible-motorcycle-model" disabled="disabled">
 									<option default>Модел</option>
 								</select>
 
-								<select name="year" class="compatible-motorcycle-year" disabled="disabled">
+								<select name="motorcycle_year" class="compatible-motorcycle-year" disabled="disabled">
 									<option default>Година</option>
 								</select>
 							</div><!-- /.from__inner -->
