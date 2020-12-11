@@ -24,7 +24,9 @@ $('.header .header__menu-toggle').on('click', function(e) {
 
 // Slide down/up the filters by button on shop page in mobile devices.
 let isAnimating = false;
-$('.section-search-parts--alt .section__filter-mobile').on('click', function() {
+$('.section-search-parts--alt .section__filter-mobile').on('click', function(e) {
+	e.preventDefault();
+
 	// If at the moment of clicking the button previous annimation is not completed do not do nothing
 	if (isAnimating) {
 		return;
