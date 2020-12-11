@@ -59,12 +59,13 @@ class Product_Categories_Widget extends WP_Widget {
 				$shop_page_permalink = get_permalink( $shop_page_id );
 			}
 
-			$class = is_shop() ? ' js-ajax-get-products' : '';
+			$is_shop = is_shop();
+			$class = $is_shop ? ' js-ajax-get-products' : '';
 			$selected_category = !empty( $_GET['category'] ) ? $_GET['category'] : 0;
 			?>
 			
 			<ul class="product-categories<?php echo $class ?>">
-				<li<?php echo empty( $selected_category ) ? ' class="current-cat"' : '' ?>>
+				<li<?php echo empty( $selected_category ) && $is_shop ? ' class="current-cat"' : '' ?>>
 					<a href="<?php echo $shop_page_permalink ?>" data-category-id="">Всички категории</a>
 				</li>
 
