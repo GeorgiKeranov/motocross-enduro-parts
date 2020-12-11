@@ -321,9 +321,6 @@ function crb_get_woocommerce_products( $parameters, $pagination = false ) {
 
 	$products = $wpdb->get_results( $sql_query_prepared );
 
-	var_dump( $products );
-	exit;
-
 	return $products;
 }
 
