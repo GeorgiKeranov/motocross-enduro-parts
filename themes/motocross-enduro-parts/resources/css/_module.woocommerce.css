@@ -82,7 +82,11 @@
 
 .woocommerce nav.woocommerce-pagination ul li a:focus,
 .woocommerce nav.woocommerce-pagination ul li a:hover,
+.woocommerce nav.woocommerce-pagination ul li span.inactive,
 .woocommerce nav.woocommerce-pagination ul li span.current { background: #fff; color: #424043; }
+
+.woocommerce nav.woocommerce-pagination ul li span.inactive,
+.woocommerce nav.woocommerce-pagination ul li span.current { cursor: default; }
 
 .woocommerce nav.woocommerce-pagination ul li .prev,
 .woocommerce nav.woocommerce-pagination ul li .next { padding: 0; font-size: 24px; line-height: 25px; }

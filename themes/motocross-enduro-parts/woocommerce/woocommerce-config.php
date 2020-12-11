@@ -334,3 +334,22 @@ function crb_set_custom_product_title( $data ) {
 
 	return $data;
 }
+
+function crb_print_pagination_pages( $pages_count, $current_page, $visible_pages_to_current ) {
+	$pages_data = array(
+		'pages_count' => $pages_count,
+		'current_page' => $current_page,
+	);
+
+	$page_before_current = $current_page - 1;
+	if ( ( $page_before_current - $visible_pages_to_current ) > 1 ) {
+		$pages_data['pages_skip_to'] = $current_page - $visible_pages_to_current;
+	}
+
+	$page_after_current = $current_page + 1;
+	if ( ( $page_after_current + $visible_pages_to_current ) < $pages_count ) {
+		$pages_data['pages_skip_from'] = $current_page + $visible_pages_to_current;
+	}
+
+	crb_render_fragment( 'woocommerce-loop-pagination-pages', $pages_data );
+}
