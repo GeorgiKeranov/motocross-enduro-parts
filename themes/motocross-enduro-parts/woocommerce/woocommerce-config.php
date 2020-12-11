@@ -42,6 +42,8 @@ add_filter( 'woocommerce_add_to_cart_fragments', 'crb_refresh_mini_cart_count', 
 
 add_filter( 'wp_insert_post_empty_content', 'crb_insert_product_empty_content', 10, 2 );
 
+add_filter( 'woocommerce_catalog_orderby', 'crb_change_catalog_orderby', 10, 1 );
+
 /**
  * Functions
  */
@@ -211,6 +213,10 @@ function crb_get_woocommerce_products( $parameters, $pagination = false ) {
 		$sql_query .= " LEFT JOIN {$prefix}terms ON ({$prefix}term_taxonomy.term_id = {$prefix}terms.term_id)";
 	}
 
+	if ( !empty( $parameters['orderby'] ) && substr( $parameters['orderby'], 0, 5 ) === 'price' ) {
+		$sql_query .= " LEFT JOIN {$prefix}wc_product_meta_lookup ON {$prefix}posts.ID = {$prefix}wc_product_meta_lookup.product_id";	
+	}
+
 	$sql_query .= " WHERE {$prefix}posts.post_type = 'product' AND {$prefix}posts.post_status = 'publish'";
 
 	if ( !empty( $parameters['motorcycle_make'] ) ) {
@@ -264,9 +270,36 @@ function crb_get_woocommerce_products( $parameters, $pagination = false ) {
 		}
 	}
 
-	// TODO ADD ORDER BY PODREDBA PO:
+	// Add 'ORDER BY' and 'LIMIT' only if we are not on the pagination query
+	if ( !$pagination ) {
+		// If there is not 'orderby' in the get parameters set the order of the products by date
+		// also if we have 'orderby' in the get parameters and it is equal to 'date' set the order by date
+		if ( empty( $parameters['orderby'] ) || $parameters['orderby'] === 'date' ) {
+			$sql_query .= " ORDER BY {$prefix}posts.post_date DESC";
+		}
 
-	$sql_query .= " ORDER BY {$prefix}posts.post_date DESC LIMIT 0, 16";
+		if ( !empty( $parameters['orderby'] ) && $parameters['orderby'] === 'price' ) {
+			$sql_query .= " ORDER BY {$prefix}wc_product_meta_lookup.min_price ASC, {$prefix}wc_product_meta_lookup.product_id ASC";
+		}
+
+		if ( !empty( $parameters['orderby'] ) && $parameters['orderby'] === 'price-desc' ) {
+			$sql_query .= " ORDER BY {$prefix}wc_product_meta_lookup.min_price DESC, {$prefix}wc_product_meta_lookup.product_id ASC";
+		}
+
+		$products_per_page = 16;
+		$page = 1;
+
+		if ( !empty( $parameters['page'] ) ) {
+			$page = intval( $parameters['page'] );
+		}
+
+		$last_product_on_page = $products_per_page * $page;
+		$first_product_on_page = $last_product_on_page - $products_per_page;
+
+		$sql_query .= " LIMIT %d, %d";
+		$sql_query_parameters[] = $first_product_on_page;
+		$sql_query_parameters[] = $last_product_on_page;
+	}
 
 	// Do not prepare sql query with parameters if there are not parameters to be prepared
 	$sql_query_prepared = $sql_query;
@@ -371,6 +404,9 @@ function crb_set_custom_product_title( $data ) {
 	return $data;
 }
 
+/**
+ * Print pages before and after current page based on 'visible_pages_to_current'
+ */
 function crb_print_pagination_pages( $pages_count, $current_page, $visible_pages_to_current ) {
 	$pages_data = array(
 		'pages_count' => $pages_count,
@@ -388,4 +424,13 @@ function crb_print_pagination_pages( $pages_count, $current_page, $visible_pages
 	}
 
 	crb_render_fragment( 'woocommerce/woocommerce-loop-pagination-pages', $pages_data );
+}
+
+/**
+ * Change default woocommerce options for ordering the products on shop page
+ */
+function crb_change_catalog_orderby( $options ) {
+	unset( $options['popularity'] );
+
+	return $options;
 }
