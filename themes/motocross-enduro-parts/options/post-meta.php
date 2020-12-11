@@ -18,8 +18,6 @@ Container::make( 'post_meta', __( 'Page Builder', 'crb' ) )
 				Field::make( 'text', 'title', __( 'Title', 'crb' ) ),
 				Field::make( 'text', 'search_field_title', __( 'Search Field Title', 'crb' ) ),
 				Field::make( 'text', 'search_field_placeholder', __( 'Search Field Placeholder', 'crb' ) ),
-				Field::make( 'text', 'separator_text', __( 'Separator Text', 'crb' ) ),
-				Field::make( 'text', 'type_fields_title', __( 'Type Fields Title', 'crb' ) ),
 			) )
 
 			/**
