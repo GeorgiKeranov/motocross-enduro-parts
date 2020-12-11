@@ -270,6 +270,8 @@ function crb_get_woocommerce_products( $parameters, $pagination = false ) {
 		}
 	}
 
+	$sql_query .= " GROUP BY {$prefix}posts.id";
+
 	// Add 'ORDER BY' and 'LIMIT' only if we are not on the pagination query
 	if ( !$pagination ) {
 		// If there is not 'orderby' in the get parameters set the order of the products by date
@@ -318,6 +320,9 @@ function crb_get_woocommerce_products( $parameters, $pagination = false ) {
 	}
 
 	$products = $wpdb->get_results( $sql_query_prepared );
+
+	var_dump( $products );
+	exit;
 
 	return $products;
 }
