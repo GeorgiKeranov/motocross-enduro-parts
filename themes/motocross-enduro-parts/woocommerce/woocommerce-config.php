@@ -176,12 +176,12 @@ function crb_set_status_for_products_from_order( $order_id, $status ) {
 }
 
 function crb_refresh_mini_cart_count( $fragments ) {
-    ob_start(); ?>
-    	<span id="mini-cart-count"><?php echo WC()->cart->get_cart_contents_count(); ?></span>
+	ob_start(); ?>
+		<span id="mini-cart-count"><?php echo WC()->cart->get_cart_contents_count(); ?></span>
 	<?php
 	$fragments['#mini-cart-count'] = ob_get_clean();
 
-    return $fragments;
+	return $fragments;
 }
 
 function crb_get_woocommerce_products( $parameters, $pagination = false ) {
@@ -199,17 +199,53 @@ function crb_get_woocommerce_products( $parameters, $pagination = false ) {
 	}
 
 	// This string will store the dynamic sql query and we will not add directly here the user input
-	$sql_query .= " FROM {$prefix}posts WHERE {$prefix}posts.post_type = 'product' and {$prefix}posts.post_status = 'publish'";
+	$sql_query .= " FROM {$prefix}posts";
+
+	if ( !empty( $parameters['motorcycle_make'] ) || !empty( $parameters['motorcycle_model'] ) || !empty( $parameters['motorcycle_year'] ) ) {
+		$sql_query .= " INNER JOIN {$prefix}product_compatible_motorcycle_types ON {$prefix}posts.id = {$prefix}product_compatible_motorcycle_types.post_id";
+	}
+
+	if ( !empty( $parameters['category'] ) ) {
+		$sql_query .= " LEFT JOIN {$prefix}term_relationships ON ({$prefix}posts.ID = {$prefix}term_relationships.object_id)";
+		$sql_query .= " LEFT JOIN {$prefix}term_taxonomy ON ({$prefix}term_relationships.term_taxonomy_id = {$prefix}term_taxonomy.term_taxonomy_id)";
+		$sql_query .= " LEFT JOIN {$prefix}terms ON ({$prefix}term_taxonomy.term_id = {$prefix}terms.term_id)";
+	}
+
+	$sql_query .= " WHERE {$prefix}posts.post_type = 'product' AND {$prefix}posts.post_status = 'publish'";
+
+	if ( !empty( $parameters['motorcycle_make'] ) ) {
+		$sql_query .= " AND {$prefix}product_compatible_motorcycle_types.make = '%s'";
+		$sql_query_parameters[] = $parameters['motorcycle_make'];
+	}
+
+	if ( !empty( $parameters['motorcycle_model'] ) ) {
+		$sql_query .= " AND {$prefix}product_compatible_motorcycle_types.model = '%s'";
+		$sql_query_parameters[] = $parameters['motorcycle_model'];
+	}
+
+	if ( !empty( $parameters['motorcycle_year'] ) ) {
+		$sql_query .= " AND ({$prefix}product_compatible_motorcycle_types.year_from <= %d AND %d <= {$prefix}product_compatible_motorcycle_types.year_to)";
+		
+		$sql_query_parameters[] = intval( $parameters['motorcycle_year'] );
+		$sql_query_parameters[] = intval( $parameters['motorcycle_year'] );
+	}
+
+	if ( !empty( $parameters['category'] ) ) {
+		$sql_query .= " AND {$prefix}terms.term_id = %d";
+		$sql_query_parameters[] = intval( $parameters['category'] );
+
+		$sql_query .= " AND {$prefix}term_taxonomy.taxonomy = 'product_cat'";
+	}
 
 	// Search in the title of the product
 	if ( !empty( $parameters['search'] ) ) {
 		if ( strpos($parameters['search'], ' ') === false ) {
 			// Build search query for only one keyword
-			$sql_query .= " and {$prefix}posts.post_title LIKE '%s'";
+			$sql_query .= " AND {$prefix}posts.post_title LIKE '%s'";
 			$sql_query_parameters[] = '%' . $parameters['search'] . '%';
 		} else {
 			// Build search query for multiple keywords
-			$sql_query .= " and (";
+			$sql_query .= " AND (";
 
 			$keywords = explode( ' ', $parameters['search'] );
 			$keywords_count = count( $keywords ) - 1;
@@ -220,7 +256,7 @@ function crb_get_woocommerce_products( $parameters, $pagination = false ) {
 				$sql_query_parameters[] = '%' . $keyword . '%';
 
 				if ( $index < $keywords_count ) {
-					$sql_query .= " and ";
+					$sql_query .= " AND ";
 				}
 			}
 
@@ -228,7 +264,7 @@ function crb_get_woocommerce_products( $parameters, $pagination = false ) {
 		}
 	}
 
-	// TODO add the other parameters
+	// TODO ADD ORDER BY PODREDBA PO:
 
 	$sql_query .= " ORDER BY {$prefix}posts.post_date DESC LIMIT 0, 16";
 
