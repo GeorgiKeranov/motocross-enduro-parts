@@ -51,11 +51,22 @@ class Product_Categories_Widget extends WP_Widget {
 					<option value="<?php echo $category->term_id ?>"><?php echo esc_html( $category->name ) ?></option>					
 				<?php endforeach; ?>
 			</select>
-		<?php else : ?>
-			<ul class="product-categories">
+		<?php else :
+			$shop_page_permalink = '';
+
+			$shop_page_id = wc_get_page_id( 'shop' );
+			if ( !empty( $shop_page_id ) ) {
+				$shop_page_permalink = get_permalink( $shop_page_id );
+			}
+
+			$class = is_shop() ? ' js-ajax-get-products' : '';
+			$selected_category = !empty( $_GET['category'] ) ? $_GET['category'] : 0;
+			?>
+			
+			<ul class="product-categories<?php echo $class ?>">
 				<?php foreach ( $product_categories as $category ) : ?>
-					<li class="porduct__category">
-						<a href="<?php echo $category->term_id ?>"><?php echo esc_html( $category->name ) ?></a>
+					<li<?php echo $selected_category == $category->term_id ? ' class="current-cat"' : '' ?>>
+						<a href="<?php echo $shop_page_permalink . '?category=' . $category->term_id ?>" data-category-id="<?php echo $category->term_id ?>"><?php echo esc_html( $category->name ) ?></a>
 					</li>
 				<?php endforeach; ?>
 			</ul>

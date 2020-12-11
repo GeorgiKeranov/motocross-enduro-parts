@@ -85,7 +85,7 @@ if ( ! function_exists( 'crb_setup_theme' ) ) {
 		include_once( CRB_THEME_DIR . 'compatible-motorcycles/functionality.php' );
 
 		# Register custom widgets
-		include_once( CRB_THEME_DIR . 'options/widgets.php' );
+		include_once( CRB_THEME_DIR . 'options/product-categories-widget.php' );
 
 		# Include woocommerce settings
 		include_once( CRB_THEME_DIR . 'woocommerce/woocommerce-config.php' );
