@@ -72,7 +72,7 @@
 .woocommerce ul.products li.product .woocommerce-loop-product__link:hover img + img { opacity: 1; }
 
 /* Pagination */
-.woocommerce nav.woocommerce-pagination { margin-bottom: 30px }
+.woocommerce nav.woocommerce-pagination { margin-top: 30px }
 
 .woocommerce nav.woocommerce-pagination ul,
 .woocommerce nav.woocommerce-pagination ul li { border: 0; }
