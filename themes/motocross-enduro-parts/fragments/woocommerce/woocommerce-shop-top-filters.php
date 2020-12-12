@@ -14,12 +14,11 @@ $selected_motorcycle_year = !empty( $_GET['motorcycle_year'] ) ? $_GET['motorcyc
 
 $is_selected_motorcycle_make = !empty( $selected_motorcycle_make ) && array_key_exists($selected_motorcycle_make, $motorcycle_types);
 $is_selected_motorcycle_model = $is_selected_motorcycle_make && !empty( $selected_motorcycle_model ) && array_key_exists($selected_motorcycle_model, $motorcycle_types[$selected_motorcycle_make]);
-
 ?>
 
 <div class="section-search-parts section-search-parts--alt">
 	<div class="shell">
-		<form action="<?php echo $shop_page_permalink ?>" method="get" autocomplete="off">
+		<form class="js-form-get-products-ajax" action="<?php echo $shop_page_permalink ?>" data-ajax-url="<?php echo admin_url( 'admin-ajax.php' ) ?>" method="get" autocomplete="off">
 			<div class="section__inner">
 				<div class="section__search-filters">
 					<h3>Търсете части за вашият мотор:</h3>

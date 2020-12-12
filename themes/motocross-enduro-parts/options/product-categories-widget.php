@@ -44,7 +44,7 @@ class Product_Categories_Widget extends WP_Widget {
 		} ?>
 
 		<?php if ( $is_select_menu == 'on' ) : ?>
-			<select name="product-categories" class="product-categories-select">
+			<select name="product-categories" class="product-categories-select js-category-mobile-get-products-ajax">
 				<option value="" default>Избиране на категория</option>
 
 				<?php foreach ( $product_categories as $category ) : ?>
@@ -60,11 +60,10 @@ class Product_Categories_Widget extends WP_Widget {
 			}
 
 			$is_shop = is_shop();
-			$class = $is_shop ? ' js-ajax-get-products' : '';
 			$selected_category = !empty( $_GET['category'] ) ? $_GET['category'] : 0;
 			?>
 			
-			<ul class="product-categories<?php echo $class ?>">
+			<ul class="product-categories js-category-desktop-get-products-ajax">
 				<li<?php echo empty( $selected_category ) && $is_shop ? ' class="current-cat"' : '' ?>>
 					<a href="<?php echo $shop_page_permalink ?>" data-category-id="">Всички категории</a>
 				</li>

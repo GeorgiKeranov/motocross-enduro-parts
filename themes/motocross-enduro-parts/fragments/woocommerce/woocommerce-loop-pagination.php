@@ -14,7 +14,7 @@ if ( isset( $_GET['page'] ) ) {
 }
 ?>
 
-<nav class="woocommerce-pagination">
+<nav class="woocommerce-pagination js-pagination-get-products-ajax">
 	<ul class="page-numbers">
 		<?php if ( $current_page !== 1 ) : ?>
 			<li>
