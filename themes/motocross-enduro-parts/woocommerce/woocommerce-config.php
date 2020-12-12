@@ -30,6 +30,8 @@ add_action( 'woocommerce_before_single_product', 'crb_add_product_title_for_mobi
 
 add_action( 'wp_insert_post_data', 'crb_set_custom_product_title', 20, 1 );
 
+add_action( 'wp_ajax_nopriv_get_products_html', 'crb_get_products_html_by_ajax' );
+add_action( 'wp_ajax_get_products_html', 'crb_get_products_html_by_ajax' );
 /**
  * Add Filters
  */
@@ -435,4 +437,41 @@ function crb_change_catalog_orderby( $options ) {
 	unset( $options['popularity'] );
 
 	return $options;
+}
+
+/**
+ * Get products html by ajax request parameters
+ */
+function crb_get_products_html_by_ajax() {
+    $get_parameters = $_GET;
+
+	$products = crb_get_woocommerce_products( $get_parameters );
+	$pages_count = crb_get_woocommerce_products( $get_parameters, true );
+
+	ob_start(); ?>
+
+	<div class="products-wrapper">
+		<?php if ( !empty( $products ) ) : ?>
+			<ul class="products columns-4">
+				<?php foreach ( $products as $product ) {
+					crb_render_fragment( 'woocommerce/woocommerce-loop-single-product.php', array( 'product' => $product ) );
+				} ?>
+			</ul>
+
+			<?php crb_render_fragment( 'woocommerce/woocommerce-loop-pagination.php', array( 'pages_count' => $pages_count ) ); ?>
+		
+		<?php else :
+			/**
+			 * Hook: woocommerce_no_products_found.
+			 *
+			 * @hooked wc_no_products_found - 10
+			 */
+			do_action( 'woocommerce_no_products_found' );
+		endif; ?>
+	</div><!-- /.products-wrapper -->
+
+	<?php
+	$html = ob_get_clean();
+	
+	wp_send_json_success( $html );
 }
