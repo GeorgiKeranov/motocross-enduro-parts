@@ -70,3 +70,147 @@ $('.section-search-parts--alt .section__filter-mobile').on('click', function(e) 
 		});
 	}, 100);
 });
+
+let isLoading = false;
+
+if ($('.post-type-archive-product').length) {
+	let $form = $('.js-form-get-products-ajax');
+	if ($form.length) {
+		$form.on('submit', function(e) {
+			e.preventDefault();
+
+			getProductsWithAjax();
+		});
+	}
+
+	let $categoriesDesktop = $('.js-category-desktop-get-products-ajax a');	
+	if ($categoriesDesktop.length) {
+		$categoriesDesktop.on('click', function(e) {
+			e.preventDefault();
+
+			if (isLoading) {
+				return;
+			}
+
+			let $this = $(this);
+			let $li = $this.parent();
+
+			if ($li.hasClass('current-cat')) {
+				return;
+			}
+
+			let $currentCat = $('.js-category-desktop-get-products-ajax .current-cat');
+			if ($currentCat.length) {
+				$currentCat.removeClass('current-cat');
+			}
+
+			$li.addClass('current-cat');
+
+			getProductsWithAjax();
+		});
+	}
+
+	let $paginationPages = $('.products-wrapper').on('click', '.js-pagination-get-products-ajax a', function(e) {
+			e.preventDefault();
+
+			let $this = $(this);
+			let page = $this.attr('href');
+
+			getProductsWithAjax(page);
+	});
+	
+	let $mobileFilter = $('.js-mobile-filter');
+	if ($mobileFilter.length) {
+		$mobileFilter.on('click', function(e) {
+			e.preventDefault();
+
+			getProductsWithAjax();
+		});
+	}
+
+	let $selectOrder = $('.woocommerce-ordering select');
+	if ($selectOrder.length) {
+		$selectOrder.on('change', function(e) {
+			e.stopPropagation();
+
+			getProductsWithAjax();
+		})
+	}
+}
+
+function getProductsWithAjax(page = 1) {
+	if (isLoading) {
+		return;
+	}
+
+	isLoading = true;
+
+	let $productsWrapper = $('.products-wrapper');
+	
+	let $form = $('.js-form-get-products-ajax');
+	let $categoriesDesktop = $('.js-category-desktop-get-products-ajax');	
+	let $categoriesMobile = $('.js-category-mobile-get-products-ajax');
+	let $selectOrder = $('.woocommerce-ordering select');
+
+	$('html, body').animate({
+		scrollTop: 0
+	}, 300);
+
+	$productsWrapper.empty();
+	$productsWrapper.addClass('products-wrapper__loading');
+
+	let url = $form.data('ajax-url');
+
+	// Add all fields from the form
+	let formData = $form.serializeArray();
+	
+	// Add ajax action name
+	formData.push({name: 'action', value: 'get_products_html'});
+
+	// Add category if it is selected
+	if ($categoriesDesktop.length && $categoriesDesktop.is(':visible')) {
+		let selectedCategory = $categoriesDesktop.find('.current-cat a').data('category-id');
+
+		if (selectedCategory != '') {
+			formData.push({name: 'category', value: selectedCategory });
+		}
+	} else if ($categoriesMobile.length) {
+		let selectedCategory = $categoriesMobile.val();
+
+		if (selectedCategory != '') {
+			formData.push({name: 'category', value: selectedCategory });
+		}
+	}
+	
+	if ($selectOrder.length) {
+		let selectedOrderBy = $selectOrder.val();
+
+		formData.push({name: 'orderby', value: selectedOrderBy });
+	}
+
+	if (page > 1) {
+		formData.push({name: 'page', value: page });
+	}
+
+	$.ajax({
+	    type: 'GET',
+	    url: url,
+	    data: $.param(formData),
+	    success: function(result) {
+	    	if (result['success']) {
+	    		let responseHtml = $(result['data']).html();
+
+	    		$productsWrapper.removeClass('products-wrapper__loading');
+	    		$productsWrapper.append(responseHtml);
+	    	}
+	    },
+	    error: function(msg) {
+	    	$productsWrapper.removeClass('products-wrapper__loading');
+
+	    	console.log(msg);
+	    },
+	    complete: function() {
+			isLoading = false;
+	    }
+	});
+}
