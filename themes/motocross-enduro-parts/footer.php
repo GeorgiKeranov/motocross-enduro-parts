@@ -1,3 +1,5 @@
+	</main><!-- /.main -->
+	
 	<?php
 	$text = carbon_get_theme_option( 'crb_footer_text' );
 	$phone = carbon_get_theme_option( 'crb_footer_phone' );
