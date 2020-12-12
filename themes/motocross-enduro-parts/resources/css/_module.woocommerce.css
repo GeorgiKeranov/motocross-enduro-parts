@@ -144,6 +144,11 @@
 .woocommerce .return-to-shop .button { font-size: 20px; background: #424043; color: #fff; border: 2px solid #424043; transition: .3s; }
 .woocommerce .return-to-shop .button:hover { background: #fff; color: #424043; }
 
+.woocommerce .products-wrapper .woocommerce-info { display: inline-block; width: 100%; margin-top: 20px; }
+
+.woocommerce .products-wrapper__loading { text-align: center; }
+.woocommerce .products-wrapper__loading:before { content: ''; display: inline-block; margin: 20px auto; width: 100px; height: 100px; background-image: url(../images/ajax-loader.gif); background-repeat: no-repeat; background-size: contain; }
+
 /* Small Desktop */
 
 $breakpoint-small-desktop {
