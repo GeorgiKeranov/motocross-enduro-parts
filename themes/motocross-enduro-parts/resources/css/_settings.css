@@ -10,7 +10,7 @@ $shell-gutter				: 10px;
 $responsive-xxs				: 600px;
 $responsive-xs				: 768px;
 $responsive-sm				: 1023px;
-$responsive-md				: 1200px;
+$responsive-md				: 1400px;
 
 $breakpoint-mobile-portrait : @media (max-width: $responsive-xxs);
 $breakpoint-mobile			: @media (max-width: $responsive-xs);

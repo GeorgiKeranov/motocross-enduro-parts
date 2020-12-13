@@ -3,10 +3,10 @@
 \* ------------------------------------------------------------ */
 
 .nav ul { display: flex; margin: 0 -20px; }
-.nav li { margin: 0 20px; }
+.nav li { margin: 0 20px; display: flex; align-items: center; }
 
-.nav a { display: inline-block; position: relative; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 17px; overflow: hidden; padding-bottom: 3px; }
-.nav a:before { content: ''; display: block; position: absolute; top: 23px; left: 0; right: 0; width: 0; border-bottom: 2px solid #ffb26b; transition: width .3s; }
+.nav a { display: inline-block; position: relative; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 17px; overflow: hidden; padding: 3px 0; }
+.nav a:before { content: ''; display: block; position: absolute; top: 26px; left: 0; right: 0; width: 0; border-bottom: 2px solid #ffb26b; transition: width .3s; }
 
 .nav a { text-decoration: none; }
 
