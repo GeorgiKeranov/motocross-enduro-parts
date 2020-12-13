@@ -70,8 +70,12 @@ $is_selected_motorcycle_model = $is_selected_motorcycle_make && !empty( $selecte
 										endif; ?>
 									</select>
 								</div><!-- /.from__inner -->
-
-								<input type="submit" class="btn-make-search" value="Търсене">
+								
+								<div class="form__actions">
+									<input type="submit" class="btn-make-search" value="Търсене">
+									
+									<button class="btn-remove-all-filters">Изчисти Филтри</button>
+								</div><!-- /.form__actions -->
 							</div><!-- /.form-compatible-motorcycle -->
 						</div><!-- /.section__filter-menu -->
 

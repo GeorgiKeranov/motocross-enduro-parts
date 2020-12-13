@@ -437,7 +437,7 @@ $breakpoint-mobile-portrait {
 
 @media(min-width: 601px) {
 	.woocommerce-columns .woocommerce__sidebar { display: block !important; }
-	.js-mobile-filter { display: none; }
+	.woocommerce-columns .woocommerce__sidebar-mobile-buttons { display: none; }
 }
 
 /* Tablet Portrait */
@@ -460,8 +460,14 @@ $breakpoint-mobile-portrait {
 	.woocommerce-columns .woocommerce__sidebar { display: none; width: 100%; order: -1; padding: 0 10px 20px; border-right: 0; background-color: #f5f5f5; }
 	.woocommerce-columns .woocommerce__shop { width: 100%; padding: 0 10px; }
 
-	.woocommerce-columns .js-mobile-filter { width: 100%; background-color: #eaa362; color: #fff; font-size: 17px; font-weight: 600; padding: 5px 15px; border: 2px solid #eaa362; border-radius: 3px; transition: .3s; }
+	.woocommerce-columns .js-mobile-filter,
+	.woocommerce-columns .js-mobile-remove-all-filters { width: 100%; }
+
+	.woocommerce-columns .js-mobile-filter { background-color: #eaa362; color: #fff; font-size: 17px; font-weight: 600; padding: 3px 15px; border: 2px solid #eaa362; border-radius: 3px; transition: .3s; }
 	.woocommerce-columns .js-mobile-filter:active { background-color: #fff; color: #eaa362; }
+
+	.woocommerce-columns .js-mobile-remove-all-filters { background-color: #c51313; color: #fff; border: solid 2px #c51313; font-size: 17px; font-weight: 600; border-radius: 3px; padding: 5px 30px; padding: 3px 30px; transition: background-color .3s, color .3s; margin-bottom: 10px; }
+	.woocommerce-columns .js-mobile-remove-all-filters:hover { background-color: #fff; color: #c51313; }
 
 	.woocommerce .woocommerce-ordering { border-top: 0; flex-wrap: wrap; }
 }

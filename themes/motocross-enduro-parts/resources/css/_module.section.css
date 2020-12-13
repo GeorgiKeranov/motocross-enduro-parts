@@ -14,8 +14,6 @@
 
 .section-search-parts .form-search { margin-bottom: 30px; }
 
-.section-search-parts .form-compatible-motorcycle input[type="submit"] { margin-top: 20px; }
-
 .section-search-parts h1 { color: #e7a161; margin-bottom: 20px; }
 .section-search-parts h3 { color: #e7a161; }
 
@@ -34,7 +32,7 @@
 .section-search-parts--alt .form-search button:hover { opacity: .5; }
 .section-search-parts--alt .form-search button:hover svg { transform: none; }
 
-.section-search-parts--alt .form-compatible-motorcycle input[type="submit"] { font-size: 17px; padding: 3px 30px; margin-top: 0; border-width: 2px; }
+.section-search-parts--alt .form-compatible-motorcycle .btn-make-search { font-size: 17px; padding: 3px 30px; margin-top: 0; border-width: 2px; }
 
 .section-search-parts--alt form input { padding: 5px 15px; }
 .section-search-parts--alt form select { padding: 5px 40px 5px 15px; background-size: 30px 30px; }
@@ -76,7 +74,7 @@ $breakpoint-small-desktop {
 /* Mobile Portrait */
 
 $breakpoint-mobile-portrait {
-	.section-search-parts { padding: 20px 0 10px; }
+	.section-search-parts { padding: 20px 0 5px; }
 	.section-search-parts .section__inner { padding: 20px 15px 30px; }
 	
 	/* Section Search Parts Alt */
@@ -84,6 +82,7 @@ $breakpoint-mobile-portrait {
 
 	.section-search-parts--alt .section__filter-mobile { display: inline-block; background-color: #eaa362; color: #fff; padding: 5px 10px; border: 2px solid #eaa362; border-radius: 3px; font-size: 18px; font-weight: 600; transition: .3s; margin-bottom: 11px; width: 100%; }
 	.section-search-parts--alt .section__filter-mobile:active { opacity: .5; }
+	
 	.section-search-parts--alt .section__filter-menu { display: none; }
 
 	.section-search-parts--alt .section__search { margin-bottom: 10px; }
@@ -91,7 +90,7 @@ $breakpoint-mobile-portrait {
 	.section-search-parts--alt .form-search { max-width: none; }
 	.section-search-parts--alt .form-search input[type="text"] { border-radius: 8px; }
 
-	.section-search-parts--alt .form-compatible-motorcycle input[type="submit"] { display: none; }
+	.section-search-parts--alt .form-compatible-motorcycle .form__actions { display: none; }
 
 	.section-search-parts--alt h3 { display: none; }
 }

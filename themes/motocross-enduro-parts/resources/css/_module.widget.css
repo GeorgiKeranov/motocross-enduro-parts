@@ -87,7 +87,7 @@ $breakpoint-mobile {
 /* Mobile Portrait */
 
 $breakpoint-mobile-portrait {
-	.widgets { display: flex; flex-direction: column; }
+	.widgets { display: flex; flex-direction: column; margin-bottom: 10px; }
 
 	.widget { margin-bottom: 20px; text-align: center; }
 	

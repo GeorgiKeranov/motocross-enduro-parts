@@ -62,8 +62,16 @@ $breakpoint-mobile-portrait {
 
 .form-compatible-motorcycle select { width: 33.3%; margin: 0 10px; }
 
-.form-compatible-motorcycle input[type="submit"] { background-color: #e7a161; color: #fff; border-width: 3px; border-color: #e7a161; font-size: 22px; font-weight: 500; border-radius: 6px; padding: 5px 30px; width: 100%; transition: background-color .3s, color .3s; margin-top: 10px; }
-.form-compatible-motorcycle input[type="submit"]:hover { background-color: #fff; color: #e7a161; border-color: #e7a161; }
+.form-compatible-motorcycle .btn-make-search { background-color: #e7a161; color: #fff; border-width: 3px; border-color: #e7a161; font-size: 22px; font-weight: 500; border-radius: 6px; padding: 5px 30px; width: 100%; transition: background-color .3s, color .3s; margin-top: 20px; }
+.form-compatible-motorcycle .btn-make-search:hover { background-color: #fff; color: #e7a161; border-color: #e7a161; }
+
+.form-compatible-motorcycle .btn-remove-all-filters { background-color: #c51313; color: #fff; border: solid 2px #c51313; font-weight: 500; border-radius: 6px; padding: 5px 30px; font-size: 17px; padding: 3px 30px; transition: background-color .3s, color .3s; }
+.form-compatible-motorcycle .btn-remove-all-filters:hover { background-color: #fff; color: #c51313; }
+
+.form-compatible-motorcycle .form__actions { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; }
+
+.form-compatible-motorcycle .form__actions .btn-make-search,
+.form-compatible-motorcycle .form__actions .btn-remove-all-filters { width: 49% }
 
 /* Mobile Portrait */
 

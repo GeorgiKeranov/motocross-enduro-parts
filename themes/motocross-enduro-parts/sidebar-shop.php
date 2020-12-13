@@ -7,8 +7,12 @@
 					<ul class="widgets">
 						<?php dynamic_sidebar( $sidebar_id ); ?>
 					</ul><!-- /.widgets -->
+					
+					<div class="woocommerce__sidebar-mobile-buttons">
+						<button class="js-mobile-remove-all-filters">Изчисти Филтри</button>						
 
-					<button class="js-mobile-filter"><?php _e( 'Search', 'woocommerce' ) ?></button>
+						<button class="js-mobile-filter"><?php _e( 'Search', 'woocommerce' ) ?></button>
+					</div><!-- /.woocommerce__sidebar-mobile-buttons -->
 				</div><!-- /.woocommerce__sidebar -->
 			<?php endif; ?>
 
