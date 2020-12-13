@@ -159,7 +159,7 @@ $breakpoint-small-desktop {
 
 $breakpoint-tablet-portrait {
 	.woocommerce ul.products[class*=columns-] li.product,
-	.woocommerce-page ul.products[class*=columns-] li.product { width: 48%; float: left; clear: both; margin: 0 0 2.992em; }
+	.woocommerce-page ul.products[class*=columns-] li.product { width: 48%; float: left; clear: both; margin: 20px 0 }
 
 	.woocommerce ul.products[class*=columns-] li.product:nth-child(2n),
 	.woocommerce-page ul.products[class*=columns-] li.product:nth-child(2n) { float: right; clear: none!important; }

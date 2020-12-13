@@ -123,6 +123,38 @@ if ($('.post-type-archive-product').length) {
 	if ($mobileFilter.length) {
 		$mobileFilter.on('click', function(e) {
 			e.preventDefault();
+			
+			let $openMobileFilterButton = $('.section-search-parts--alt .section__filter-mobile');
+			if ($openMobileFilterButton.length) {
+				$openMobileFilterButton.click();
+			}
+
+			getProductsWithAjax();
+		});
+	}
+
+	let $buttonRemoveAllFiltersMobile = $('.js-mobile-remove-all-filters');
+	if ($buttonRemoveAllFiltersMobile.length) {
+		$buttonRemoveAllFiltersMobile.on('click', function(e) {
+			e.preventDefault();
+			
+			clearAllFilters();
+
+			let $openMobileFilterButton = $('.section-search-parts--alt .section__filter-mobile');
+			if ($openMobileFilterButton.length) {
+				$openMobileFilterButton.click();
+			}
+
+			getProductsWithAjax();
+		});
+	}
+
+	let $buttonRemoveAllFilters = $('.section-search-parts--alt .btn-remove-all-filters');
+	if ($buttonRemoveAllFilters.length) {
+		$buttonRemoveAllFilters.on('click', function(e) {
+			e.preventDefault();
+			
+			clearAllFilters();
 
 			getProductsWithAjax();
 		});
@@ -213,4 +245,39 @@ function getProductsWithAjax(page = 1) {
 			isLoading = false;
 	    }
 	});
+}
+
+function clearAllFilters() {
+	let $searchField = $('.section-search-parts--alt form input[name="search"]');
+	if ($searchField.length) {
+		$searchField.val('');
+	}
+
+	let $motorcycleMakeSelect = $('.form-compatible-motorcycle .compatible-motorcycle-make');
+	if ($motorcycleMakeSelect.length) {
+		let firstOptionValue = $motorcycleMakeSelect.find('option:first').val();
+		$motorcycleMakeSelect.val(firstOptionValue).change();
+	}
+
+	let $selectOrder = $('.woocommerce-ordering select');
+	if ($selectOrder.length) {
+		let firstOptionValue = $selectOrder.find('option:first').val();
+		$selectOrder.val(firstOptionValue);	
+	}
+
+	let $categoryAll = $('.js-category-desktop-get-products-ajax li:first-child');
+	if ( $categoryAll.length && !$categoryAll.hasClass('current-cat') ) {
+		let $currentCat = $('.js-category-desktop-get-products-ajax .current-cat');
+		if ($currentCat.length) {
+			$currentCat.removeClass('current-cat');
+		}
+
+		$categoryAll.addClass('current-cat');
+	}
+
+	let $categorySelectMobile = $('.widget_product_categories_widget select');
+	if ($categorySelectMobile.length) {
+		let firstOptionValue = $categorySelectMobile.find('option:first').val();
+		$categorySelectMobile.val(firstOptionValue);	
+	}
 }
