@@ -2,10 +2,10 @@
 	Wrapper
 \* ------------------------------------------------------------ */
 
-.wrapper { margin-top: 104px; width: 100%; }
+.wrapper { margin-top: 104px; width: 100%; min-height: calc(100vh - 104px); display: flex; flex-direction: column; }
 
 /* Tablet Portrait */
 
 $breakpoint-tablet-portrait {
-	.wrapper { margin-top: 71px; }
+	.wrapper { margin-top: 71px; min-height: calc(100vh - 71px); }
 }

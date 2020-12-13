@@ -2,7 +2,7 @@
 	Footer
 \* ------------------------------------------------------------ */
 
-.footer { color: #fff; }
+.footer { color: #fff; margin-top: auto; }
 
 .footer .footer__body { padding: 100px 0; background: linear-gradient(135deg, #1A1A1A, #3D3935); }
 .footer .footer__body-flex { display: flex; justify-content: space-between; align-items: center; }
