@@ -28,7 +28,7 @@ add_action( 'woocommerce_order_status_cancelled', 'crb_instock_products_from_can
 
 add_action( 'woocommerce_before_single_product', 'crb_add_product_title_for_mobile_devices', 10 );
 
-add_action( 'wp_insert_post_data', 'crb_set_custom_product_title', 20, 1 );
+add_action( 'wp_insert_post_data', 'crb_set_custom_product_title', 20, 3 );
 
 add_action( 'wp_ajax_nopriv_get_products_html', 'crb_get_products_html_by_ajax' );
 add_action( 'wp_ajax_get_products_html', 'crb_get_products_html_by_ajax' );
@@ -360,6 +360,11 @@ function crb_insert_product_empty_content( $maybe_empty, $postarr ) {
  * Change the title of the product based on part name and compatible motorcycles
  */
 function crb_set_custom_product_title( $data ) {
+	// If the post is going to trash don't change the title
+	if ( $data['post_status'] === 'trash' ) {
+		return $data;
+	}
+
 	// Do this function only on the products from woocommerce
 	if ( get_post_type() != 'product' ) {
 		return $data;
