@@ -14,6 +14,8 @@ remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
 /**
  * Add Actions
  */
+add_action( 'init', 'crb_remove_product_editor' );
+
 add_action( 'woocommerce_before_main_content', 'crb_woocommerce_before_main_content', 10 );
 
 add_action( 'woocommerce_before_shop_loop_item_title', 'crb_start_product_images_wrapper', 0 );
@@ -32,6 +34,7 @@ add_action( 'wp_insert_post_data', 'crb_set_custom_product_title', 20, 3 );
 
 add_action( 'wp_ajax_nopriv_get_products_html', 'crb_get_products_html_by_ajax' );
 add_action( 'wp_ajax_get_products_html', 'crb_get_products_html_by_ajax' );
+
 /**
  * Add Filters
  */
@@ -479,4 +482,8 @@ function crb_get_products_html_by_ajax() {
 	$html = ob_get_clean();
 	
 	wp_send_json_success( $html );
+}
+
+function crb_remove_product_editor() {
+	remove_post_type_support( 'product', 'editor' );
 }
