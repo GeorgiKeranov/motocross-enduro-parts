@@ -76,6 +76,23 @@ let isLoading = false;
 if ($('.post-type-archive-product').length) {
 	let $form = $('.js-form-get-products-ajax');
 	if ($form.length) {
+		let page = $form.attr('action');
+		let formData = getFormDataShopPage();
+		
+		let $currentPage = $('.js-pagination-get-products-ajax .current');
+		if ($currentPage.length) {
+			let currentPage = parseInt($currentPage.text());
+
+			if ( currentPage > 1 ) {
+				formData.push({name: 'page', value: currentPage});
+			}
+		}
+
+		history.replaceState({
+			page: 'shop-page',
+			formData: formData
+		}, '');
+
 		$form.on('submit', function(e) {
 			e.preventDefault();
 
@@ -178,26 +195,101 @@ function getProductsWithAjax(page = 1) {
 	isLoading = true;
 
 	let $productsWrapper = $('.products-wrapper');
-	
 	let $form = $('.js-form-get-products-ajax');
-	let $categoriesDesktop = $('.js-category-desktop-get-products-ajax');	
-	let $categoriesMobile = $('.js-category-mobile-get-products-ajax');
-	let $selectOrder = $('.woocommerce-ordering select');
+	
+	let url = $form.data('ajax-url');
+	let formData = getFormDataShopPage(page);
+
+	$productsWrapper.empty();
+	$productsWrapper.addClass('products-wrapper__loading')
+
+	// Add browser history for the back button because we use ajax
+	changeUrlBasedOnData(formData);
+
+	// Add ajax action name
+	formData.push({name: 'action', value: 'get_products_html'});
 
 	$('html, body').animate({
 		scrollTop: 0
 	}, 300);
 
-	$productsWrapper.empty();
-	$productsWrapper.addClass('products-wrapper__loading');
+	$.ajax({
+	    type: 'GET',
+	    url: url,
+	    data: $.param(formData),
+	    success: function(result) {
+	    	if (result['success']) {
+	    		let responseHtml = $(result['data']).html();
 
+	    		$productsWrapper.removeClass('products-wrapper__loading');
+	    		$productsWrapper.append(responseHtml);
+	    	}
+	    },
+	    error: function(msg) {
+	    	$productsWrapper.removeClass('products-wrapper__loading');
+
+	    	console.log(msg);
+	    },
+	    complete: function() {
+			isLoading = false;
+	    }
+	});
+}
+
+function getProductsFromPreviousPage(formData) {
+	let $productsWrapper = $('.products-wrapper');
+	let $form = $('.js-form-get-products-ajax');
+	
 	let url = $form.data('ajax-url');
 
-	// Add all fields from the form
-	let formData = $form.serializeArray();
-	
+	$productsWrapper.empty();
+	$productsWrapper.addClass('products-wrapper__loading')
+
 	// Add ajax action name
 	formData.push({name: 'action', value: 'get_products_html'});
+
+	$('html, body').animate({
+		scrollTop: 0
+	}, 300);
+
+	$.ajax({
+	    type: 'GET',
+	    url: url,
+	    data: $.param(formData),
+	    success: function(result) {
+	    	if (result['success']) {
+	    		let responseHtml = $(result['data']).html();
+
+	    		$productsWrapper.removeClass('products-wrapper__loading');
+	    		$productsWrapper.append(responseHtml);
+	    	}
+	    },
+	    error: function(msg) {
+	    	$productsWrapper.removeClass('products-wrapper__loading');
+
+	    	console.log(msg);
+	    },
+	    complete: function() {
+			isLoading = false;
+	    }
+	});
+}
+
+function getFormDataShopPage(page) {
+	let $form = $('.js-form-get-products-ajax');
+	let $categoriesDesktop = $('.js-category-desktop-get-products-ajax');	
+	let $categoriesMobile = $('.js-category-mobile-get-products-ajax');
+	let $selectOrder = $('.woocommerce-ordering select');
+
+	// Add all fields from the form
+	let formDataTemp = $form.serializeArray();
+	let formData = [];
+
+	for (let index in formDataTemp) {
+		if ( formDataTemp[index] !== undefined && formDataTemp[index].value !== '' ) {
+			formData.push({name: formDataTemp[index].name, value: formDataTemp[index].value});
+		}
+	}
 
 	// Add category if it is selected
 	if ($categoriesDesktop.length && $categoriesDesktop.is(':visible')) {
@@ -224,27 +316,7 @@ function getProductsWithAjax(page = 1) {
 		formData.push({name: 'page', value: page });
 	}
 
-	$.ajax({
-	    type: 'GET',
-	    url: url,
-	    data: $.param(formData),
-	    success: function(result) {
-	    	if (result['success']) {
-	    		let responseHtml = $(result['data']).html();
-
-	    		$productsWrapper.removeClass('products-wrapper__loading');
-	    		$productsWrapper.append(responseHtml);
-	    	}
-	    },
-	    error: function(msg) {
-	    	$productsWrapper.removeClass('products-wrapper__loading');
-
-	    	console.log(msg);
-	    },
-	    complete: function() {
-			isLoading = false;
-	    }
-	});
+	return formData;
 }
 
 function clearAllFilters() {
@@ -279,5 +351,39 @@ function clearAllFilters() {
 	if ($categorySelectMobile.length) {
 		let firstOptionValue = $categorySelectMobile.find('option:first').val();
 		$categorySelectMobile.val(firstOptionValue);	
+	}
+}
+
+function changeUrlBasedOnData(formData) {
+	let $form = $('.js-form-get-products-ajax');
+	if (!$form.length) {
+		return;
+	}
+
+	let page = $form.attr('action');
+
+	if ( page.slice(-1) !== '/' ) {
+		page += '/';
+	}
+
+	if (typeof formData === 'object' && formData !== null) {
+		let params = $.param(formData);
+
+		page += '?' + params;
+	}
+
+	history.pushState({
+		page: 'shop-page',
+		formData: formData
+	}, '', page);
+}
+
+window.onpopstate = function(event) {
+	let state = event.state;
+
+	if (typeof state === 'object' && state !== null && state.page === 'shop-page') {
+		let formData = state.formData;
+
+		getProductsFromPreviousPage(formData);
 	}
 }
