@@ -15,7 +15,7 @@ $motorcycle_types = crb_get_all_motorcycle_types();
 	</div><!-- /.section__overlay -->
 	
 	<div class="shell">
-		<form action="<?php echo $shop_page_permalink ?>" method="get" autocomplete="off">
+		<form action="<?php echo esc_url( $shop_page_permalink ) ?>" method="get" autocomplete="off">
 			<div class="section__inner">
 				<?php if ( !empty( $section['title'] ) ) : ?>
 					<div class="section__heading">

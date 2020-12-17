@@ -65,12 +65,12 @@ class Product_Categories_Widget extends WP_Widget {
 			
 			<ul class="product-categories js-category-desktop-get-products-ajax">
 				<li<?php echo empty( $selected_category ) && $is_shop ? ' class="current-cat"' : '' ?>>
-					<a href="<?php echo $shop_page_permalink ?>" data-category-id="">Всички категории</a>
+					<a href="<?php echo esc_url( $shop_page_permalink ) ?>" data-category-id="">Всички категории</a>
 				</li>
 
 				<?php foreach ( $product_categories as $category ) : ?>
 					<li<?php echo $selected_category == $category->term_id ? ' class="current-cat"' : '' ?>>
-						<a href="<?php echo $shop_page_permalink . '?category=' . $category->term_id ?>" data-category-id="<?php echo $category->term_id ?>"><?php echo esc_html( $category->name ) ?></a>
+						<a href="<?php echo esc_url( $shop_page_permalink ) . '?category=' . $category->term_id ?>" data-category-id="<?php echo $category->term_id ?>"><?php echo esc_html( $category->name ) ?></a>
 					</li>
 				<?php endforeach; ?>
 			</ul>

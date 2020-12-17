@@ -50,7 +50,7 @@ global $product;
 			} ?>
 
 			<?php foreach ( $categories as $index => $category ) : ?>
-				<a href="<?php echo $shop_page_permalink . '?category=' . $category->term_id ?>" rel="tag"><?php echo esc_html( $category->name ) ?></a><?php
+				<a href="<?php echo esc_url( $shop_page_permalink ) . '?category=' . $category->term_id ?>" rel="tag"><?php echo esc_html( $category->name ) ?></a><?php
 
 				if ( ($index + 1) < $categories_count ) {
 					echo ',';
