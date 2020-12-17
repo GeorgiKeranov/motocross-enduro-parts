@@ -83,7 +83,7 @@ if ($('.post-type-archive-product').length) {
 		if ($currentPage.length) {
 			let currentPage = parseInt($currentPage.text());
 
-			if ( currentPage > 1 ) {
+			if (currentPage > 1) {
 				formData.push({name: 'page', value: currentPage});
 			}
 		}
@@ -140,11 +140,6 @@ if ($('.post-type-archive-product').length) {
 	if ($mobileFilter.length) {
 		$mobileFilter.on('click', function(e) {
 			e.preventDefault();
-			
-			let $openMobileFilterButton = $('.section-search-parts--alt .section__filter-mobile');
-			if ($openMobileFilterButton.length) {
-				$openMobileFilterButton.click();
-			}
 
 			getProductsWithAjax();
 		});
@@ -200,6 +195,12 @@ function getProductsWithAjax(page = 1) {
 	let url = $form.data('ajax-url');
 	let formData = getFormDataShopPage(page);
 
+	let $openMobileFilterButton = $('.section-search-parts--alt .section__filter-mobile');
+	let $mobileFilters = $('.js-form-get-products-ajax .section__filter-menu--expanded')
+	if ($mobileFilters.is(':visible')) {
+		$openMobileFilterButton.click();
+	}
+
 	$productsWrapper.empty();
 	$productsWrapper.addClass('products-wrapper__loading')
 
@@ -237,6 +238,8 @@ function getProductsWithAjax(page = 1) {
 }
 
 function getProductsFromPreviousPage(formData) {
+	isLoading = true;
+
 	let $productsWrapper = $('.products-wrapper');
 	let $form = $('.js-form-get-products-ajax');
 	
@@ -244,6 +247,12 @@ function getProductsFromPreviousPage(formData) {
 
 	$productsWrapper.empty();
 	$productsWrapper.addClass('products-wrapper__loading')
+
+	let $openMobileFilterButton = $('.section-search-parts--alt .section__filter-mobile');
+	let $mobileFilters = $('.js-form-get-products-ajax .section__filter-menu--expanded')
+	if ($mobileFilters.is(':visible')) {
+		$openMobileFilterButton.click();
+	}
 
 	// Add ajax action name
 	formData.push({name: 'action', value: 'get_products_html'});
@@ -277,7 +286,7 @@ function getProductsFromPreviousPage(formData) {
 
 function getFormDataShopPage(page) {
 	let $form = $('.js-form-get-products-ajax');
-	let $categoriesDesktop = $('.js-category-desktop-get-products-ajax');	
+	let $categoriesDesktop = $('.js-category-desktop-get-products-ajax');
 	let $categoriesMobile = $('.js-category-mobile-get-products-ajax');
 	let $selectOrder = $('.woocommerce-ordering select');
 
@@ -286,7 +295,7 @@ function getFormDataShopPage(page) {
 	let formData = [];
 
 	for (let index in formDataTemp) {
-		if ( formDataTemp[index] !== undefined && formDataTemp[index].value !== '' ) {
+		if (formDataTemp[index] !== undefined && formDataTemp[index].value !== '') {
 			formData.push({name: formDataTemp[index].name, value: formDataTemp[index].value});
 		}
 	}
@@ -338,7 +347,7 @@ function clearAllFilters() {
 	}
 
 	let $categoryAll = $('.js-category-desktop-get-products-ajax li:first-child');
-	if ( $categoryAll.length && !$categoryAll.hasClass('current-cat') ) {
+	if ($categoryAll.length && !$categoryAll.hasClass('current-cat')) {
 		let $currentCat = $('.js-category-desktop-get-products-ajax .current-cat');
 		if ($currentCat.length) {
 			$currentCat.removeClass('current-cat');
@@ -354,6 +363,97 @@ function clearAllFilters() {
 	}
 }
 
+function setUserInputByFormData(formData) {
+	if (typeof formData !== 'object' || formData === null) {
+		clearAllFilters();
+		return;
+	}
+
+	let formNames = formData.map(data => data.name);
+	let formValues = formData.map(data => data.value);
+
+	let $searchField = $('.form-search input[name="search"]');
+	let $makeField = $('.form-compatible-motorcycle select[name="motorcycle_make"]');
+	let $modelField = $('.form-compatible-motorcycle select[name="motorcycle_model"]');
+	let $yearField = $('.form-compatible-motorcycle select[name="motorcycle_year"]');
+
+	if (formNames.includes('search')) {
+		$searchField.val(formValues[formNames.indexOf('search')]);
+	} else {
+		$searchField.val('');
+	}
+
+	if (formNames.includes('motorcycle_make')) {
+		$makeField.val(formValues[formNames.indexOf('motorcycle_make')]).change();
+	} else {
+		$makeField.val('').change();
+	}
+
+	if (formNames.includes('motorcycle_model')) {
+		$modelField.val(formValues[formNames.indexOf('motorcycle_model')]).change();
+	} else {
+		$modelField.val('').change();
+	}
+
+	if (formNames.includes('motorcycle_year')) {
+		$yearField.val(formValues[formNames.indexOf('motorcycle_year')]).change();
+	} else {
+		$yearField.val('').change();
+	}
+
+	let $selectOrder = $('.woocommerce-ordering select');
+	if (formNames.includes('orderby')) {
+		$selectOrder.val(formValues[formNames.indexOf('orderby')]);
+	} else {
+		$selectOrder.val('');
+	}
+
+	let $categoriesDesktop = $('.js-category-desktop-get-products-ajax');
+	let $categoriesMobile = $('.js-category-mobile-get-products-ajax');
+	if (formNames.includes('category')) {
+		let categoryId = formValues[formNames.indexOf('category')];
+
+		// Categories Desktop
+		let $currentCat = $categoriesDesktop.find('.current-cat');
+		if ($currentCat.length) {
+			$currentCat.removeClass('current-cat');
+		}
+
+		let $selectedCategory = $categoriesDesktop.find('[data-category-id="' + categoryId + '"]');
+		if ($selectedCategory.length) {
+			$selectedCategory.closest('li').addClass('current-cat');
+		}
+
+		// Categories Mobile
+		$categoriesMobile.val(categoryId);
+	} else {
+		// Categories Desktop
+		let $currentCat = $categoriesDesktop.find('.current-cat');
+		if ($currentCat.length) {
+			$currentCat.removeClass('current-cat');
+		}
+
+		let $categoryAll = $('.js-category-desktop-get-products-ajax li:first-child');
+		if ($categoryAll.length) {
+			$categoryAll.addClass('current-cat');
+		}
+
+		// Categories Mobile
+		$categoriesMobile.val('');
+	}
+
+	let page = 1;
+
+	let $currentPage = $('.js-pagination-get-products-ajax .current');
+	if ($currentPage.length) {
+		let currentPage = parseInt($currentPage.text());
+
+		if (currentPage > 1) {
+			page = currentPage;
+		}
+	}
+}
+
 function changeUrlBasedOnData(formData) {
 	let $form = $('.js-form-get-products-ajax');
 	if (!$form.length) {
@@ -362,7 +462,7 @@ function changeUrlBasedOnData(formData) {
 
 	let page = $form.attr('action');
 
-	if ( page.slice(-1) !== '/' ) {
+	if (page.slice(-1) !== '/') {
 		page += '/';
 	}
 
@@ -384,6 +484,7 @@ window.onpopstate = function(event) {
 	if (typeof state === 'object' && state !== null && state.page === 'shop-page') {
 		let formData = state.formData;
 
+		setUserInputByFormData(formData);
 		getProductsFromPreviousPage(formData);
 	}
 }
