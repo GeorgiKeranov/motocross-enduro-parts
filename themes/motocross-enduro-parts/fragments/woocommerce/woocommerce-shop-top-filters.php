@@ -18,7 +18,7 @@ $is_selected_motorcycle_model = $is_selected_motorcycle_make && !empty( $selecte
 
 <div class="section-search-parts section-search-parts--alt">
 	<div class="shell">
-		<form class="js-form-get-products-ajax" action="<?php echo $shop_page_permalink ?>" data-ajax-url="<?php echo admin_url( 'admin-ajax.php' ) ?>" method="get" autocomplete="off">
+		<form class="js-form-get-products-ajax" action="<?php echo esc_url( $shop_page_permalink ) ?>" data-ajax-url="<?php echo admin_url( 'admin-ajax.php' ) ?>" method="get" autocomplete="off">
 			<div class="section__inner">
 				<div class="section__search-filters">
 					<h3>Търсете части за вашият мотор:</h3>
