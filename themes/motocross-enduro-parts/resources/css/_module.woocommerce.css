@@ -113,7 +113,7 @@
 .woocommerce div.woocommerce__shop .woocommerce-product-details__short-description ul { padding-left: 30px; }
 
 .woocommerce div.product div.summary .posted_in { font-weight: 600; }
-.woocommerce div.product div.summary .posted_in a { color: #e7a161; font-weight: 400; transition: .3s; }
+.woocommerce div.product div.summary .posted_in a { color: #e7a161; font-weight: 500; transition: .3s; }
 .woocommerce div.product div.summary .posted_in a:hover { opacity: .5; }
 
 .woocommerce form .form-row #billing_country_field { display: none; }
