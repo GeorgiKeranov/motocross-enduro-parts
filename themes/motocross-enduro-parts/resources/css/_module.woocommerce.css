@@ -132,7 +132,7 @@
 
 .woocommerce .woocommerce-info,
 .woocommerce .woocommerce-message,
-.woocommerce .woocommerce-error { font-size: 17px; margin-bottom: 20px; }
+.woocommerce .woocommerce-error { font-size: 16px; margin-bottom: 20px; }
 
 .woocommerce .woocommerce-error li,
 .woocommerce .woocommerce-message { display: flex; flex-direction: column; }
@@ -140,7 +140,7 @@
 .woocommerce .woocommerce-error li a,
 .woocommerce .woocommerce-message a { order: 2; margin-top: 10px; float: none; }
 
-.woocommerce .woocommerce-error .button { max-width: 260px; font-size: 18px; font-weight: 600; }
+.woocommerce .woocommerce-error .button { max-width: 270px; font-size: 16px; font-weight: 600; }
 
 .woocommerce .return-to-shop .button { font-size: 20px; background: #424043; color: #fff; border: 2px solid #424043; transition: .3s; }
 .woocommerce .return-to-shop .button:hover { background: #fff; color: #424043; }
@@ -149,6 +149,12 @@
 
 .woocommerce .products-wrapper__loading { text-align: center; }
 .woocommerce .products-wrapper__loading:before { content: ''; display: inline-block; margin: 20px auto; width: 100px; height: 100px; background-image: url(../images/ajax-loader.gif); background-repeat: no-repeat; background-size: contain; }
+
+.single-product .woocommerce-message .button { background-color: #8fae1b; color: #fff; text-align: center; border: 2px solid #8fae1b; max-width: 260px; transition: .3s; }
+.single-product .woocommerce-message .button:hover { background-color: #fff; color: #8fae1b; }
+
+.single-product .woocommerce-error .button { background-color: #b81c23; color: #fff; text-align: center; border: 2px solid #b81c23; transition: .3s; }
+.single-product .woocommerce-error .button:hover { background-color: #fff; color: #b81c23; }
 
 /* Small Desktop */
 
@@ -203,7 +209,7 @@ $breakpoint-mobile-portrait {
 
 	.woocommerce .widget_price_filter .price_slider_wrapper .ui-widget-content { background-color: #fff; }
 
-	.woocommerce .woocommerce-product-mobile-title { font-size: 18px; padding-top: 10px; }
+	.woocommerce .woocommerce-product-mobile-title { font-size: 18px; padding-top: 15px; border-top: 1px solid #ddd; margin-top: 15px; }
 
 	.woocommerce .return-to-shop .button { font-size: 17px; width: 100%; text-align: center; }
 }
