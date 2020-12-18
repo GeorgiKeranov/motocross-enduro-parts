@@ -429,10 +429,31 @@ function crb_set_custom_product_title( $data ) {
 		$post_id = get_the_ID();
 
 		$data['post_title'] = $product_title;
-		$data['post_name'] = wp_unique_post_slug( sanitize_title( $product_title ), $post_id, 'publish', 'product', 0 );
+
+		$product_title_latin = crb_transliterate_cyrlic_to_latin( $product_title );
+		$data['post_name'] = wp_unique_post_slug( sanitize_title( $product_title_latin ), $post_id, 'publish', 'product', 0 );
 	}
 
 	return $data;
+}
+
+function crb_transliterate_cyrlic_to_latin( $cyrilic_string ) {
+	$translations_of_words = array(
+		"а"=>"a", "б"=>"b", "в"=>"v", "г"=>"g", "д"=>"d", 
+		"е"=>"e", "ж"=>"zh", "з"=>"z", "и"=>"i", "й"=>"y", 
+		"к"=>"k", "л"=>"l", "м"=>"m", "н"=>"n", "о"=>"o", 
+		"п"=>"p", "р"=>"r", "с"=>"s", "т"=>"t", "у"=>"u", 
+		"ф"=>"f", "х"=>"h", "ц"=>"ts", "ч"=>"ch", "ш"=>"sh", 
+		"щ"=>"sht", "ъ"=>"a", "ь"=>"y", "ю"=>"yu", "я"=>"ya",
+		"А"=>"a", "Б"=>"b", "В"=>"v", "Г"=>"g", "Д"=>"d",
+		"Е"=>"e", "Ж"=>"zh", "З"=>"z", "И"=>"i", "Й"=>"y",
+		"К"=>"k", "Л"=>"l", "М"=>"m", "Н"=>"n", "О"=>"o",
+		"П"=>"p", "Р"=>"r", "С"=>"s", "Т"=>"t", "У"=>"u",
+		"Ф"=>"f", "Х"=>"h", "Ц"=>"ts", "Ч"=>"ch", "Ш"=>"sh", 
+		"Щ"=>"sht", "Ъ"=>"a", "Ь"=>"y", "Ю"=>"yu", "Я"=>"ya"
+	);
+
+	return strtr( $cyrilic_string, $translations_of_words );
 }
 
 /**
