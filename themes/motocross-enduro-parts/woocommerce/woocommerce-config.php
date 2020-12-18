@@ -209,7 +209,7 @@ function crb_get_woocommerce_products( $parameters, $pagination = false ) {
 	$sql_query .= " FROM {$prefix}posts";
 
 	if ( !empty( $parameters['motorcycle_make'] ) || !empty( $parameters['motorcycle_model'] ) || !empty( $parameters['motorcycle_year'] ) ) {
-		$sql_query .= " INNER JOIN {$prefix}product_compatible_motorcycle_types ON {$prefix}posts.id = {$prefix}product_compatible_motorcycle_types.post_id";
+		$sql_query .= " LEFT JOIN {$prefix}product_compatible_motorcycle_types ON {$prefix}posts.id = {$prefix}product_compatible_motorcycle_types.post_id";
 	}
 
 	if ( !empty( $parameters['category'] ) ) {
@@ -224,21 +224,37 @@ function crb_get_woocommerce_products( $parameters, $pagination = false ) {
 
 	$sql_query .= " WHERE {$prefix}posts.post_type = 'product' AND {$prefix}posts.post_status = 'publish'";
 
+	if ( !empty( $parameters['motorcycle_make'] ) || !empty( $parameters['motorcycle_model'] ) || !empty( $parameters['motorcycle_year'] ) ) {
+		$sql_query .= " AND ( (";
+	}
+
 	if ( !empty( $parameters['motorcycle_make'] ) ) {
-		$sql_query .= " AND {$prefix}product_compatible_motorcycle_types.make = '%s'";
+		$sql_query .= "{$prefix}product_compatible_motorcycle_types.make = '%s'";
 		$sql_query_parameters[] = $parameters['motorcycle_make'];
 	}
 
 	if ( !empty( $parameters['motorcycle_model'] ) ) {
-		$sql_query .= " AND {$prefix}product_compatible_motorcycle_types.model = '%s'";
+		if ( !empty( $parameters['motorcycle_make'] ) ) {
+			$sql_query .= " AND ";
+		}
+
+		$sql_query .= "{$prefix}product_compatible_motorcycle_types.model = '%s'";
 		$sql_query_parameters[] = $parameters['motorcycle_model'];
 	}
 
 	if ( !empty( $parameters['motorcycle_year'] ) ) {
-		$sql_query .= " AND ({$prefix}product_compatible_motorcycle_types.year_from <= %d AND %d <= {$prefix}product_compatible_motorcycle_types.year_to)";
+		if ( !empty( $parameters['motorcycle_make'] ) || !empty( $parameters['motorcycle_model'] ) ) {
+			$sql_query .= " AND ";
+		}
+
+		$sql_query .= "({$prefix}product_compatible_motorcycle_types.year_from <= %d AND %d <= {$prefix}product_compatible_motorcycle_types.year_to)";
 		
 		$sql_query_parameters[] = intval( $parameters['motorcycle_year'] );
 		$sql_query_parameters[] = intval( $parameters['motorcycle_year'] );
+	}
+
+	if ( !empty( $parameters['motorcycle_make'] ) || !empty( $parameters['motorcycle_model'] ) || !empty( $parameters['motorcycle_year'] ) ) {
+		$sql_query .= ") OR {$prefix}product_compatible_motorcycle_types.id is NULL)";
 	}
 
 	if ( !empty( $parameters['category'] ) ) {
