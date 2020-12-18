@@ -277,7 +277,7 @@ function crb_get_woocommerce_products( $parameters, $pagination = false ) {
 
 	// Add 'ORDER BY' and 'LIMIT' only if we are not on the pagination query
 	if ( !$pagination ) {
-		$sql_query .= " GROUP BY {$prefix}posts.id";
+		// $sql_query .= " GROUP BY {$prefix}posts.id";
 
 		// If there is not 'orderby' in the get parameters set the order of the products by date
 		// also if we have 'orderby' in the get parameters and it is equal to 'date' set the order by date
@@ -305,11 +305,12 @@ function crb_get_woocommerce_products( $parameters, $pagination = false ) {
 
 		$sql_query .= " LIMIT %d, %d";
 		$sql_query_parameters[] = $first_product_on_page;
-		$sql_query_parameters[] = $last_product_on_page;
+		$sql_query_parameters[] = $products_per_page;
 	}
 
 	// Do not prepare sql query with parameters if there are not parameters to be prepared
 	$sql_query_prepared = $sql_query;
+
 
 	// Prepare sql query with parameters if there are defined parameters in the array
 	if ( !empty( $sql_query_parameters ) ) {
@@ -317,7 +318,7 @@ function crb_get_woocommerce_products( $parameters, $pagination = false ) {
 	}
 
 	if ( $pagination ) {
-		$products_count = $products_count = $wpdb->get_var( $sql_query_prepared );
+		$products_count = $wpdb->get_var( $sql_query_prepared );
 		
 		$pages_count = intval($products_count / 16) + ($products_count % 16 == 0 ? 0 : 1);
 		
