@@ -114,7 +114,7 @@ function crb_add_on_hover_shop_loop_image() {
 		return;
 	}
 
-	if ( !array_key_exists( 1, $images_ids ) ) {
+	if ( !array_key_exists( 0, $images_ids ) ) {
 		return;
 	}
 
@@ -407,11 +407,13 @@ function crb_set_custom_product_title( $data ) {
 		return $data;
 	}
 
-	// If the current product title is different from the generated 
+	// If the current product title is different from the generated
 	// update the post title and permalink with the generated one
 	if ( get_the_title() != $product_title ) {
+		$post_id = get_the_ID();
+
 		$data['post_title'] = $product_title;
-		$data['post_name'] = sanitize_title( $product_title );
+		$data['post_name'] = wp_unique_post_slug( sanitize_title( $product_title ), $post_id, 'publish', 'product', 0 );
 	}
 
 	return $data;
