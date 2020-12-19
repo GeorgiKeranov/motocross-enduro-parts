@@ -25,7 +25,7 @@ $motorcycle_types = crb_get_all_motorcycle_types();
 
 				<div class="section__search">
 					<?php if ( !empty( $section['search_field_title'] ) ) : ?>
-						<h3><?php echo esc_html( $section['search_field_title'] ) ?></h3>
+						<h2><?php echo esc_html( $section['search_field_title'] ) ?></h2>
 					<?php endif; ?>
 
 					<div class="form-search">
