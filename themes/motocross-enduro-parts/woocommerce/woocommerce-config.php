@@ -208,6 +208,8 @@ function crb_get_woocommerce_products( $parameters, $pagination = false ) {
 	// This string will store the dynamic sql query and we will not add directly here the user input
 	$sql_query .= " FROM {$prefix}posts";
 
+	$sql_query .= " LEFT JOIN {$prefix}postmeta ON ({$prefix}posts.ID = {$prefix}postmeta.post_id)";
+
 	if ( !empty( $parameters['motorcycle_make'] ) || !empty( $parameters['motorcycle_model'] ) || !empty( $parameters['motorcycle_year'] ) ) {
 		$sql_query .= " LEFT JOIN {$prefix}product_compatible_motorcycle_types ON {$prefix}posts.id = {$prefix}product_compatible_motorcycle_types.post_id";
 	}
@@ -222,7 +224,11 @@ function crb_get_woocommerce_products( $parameters, $pagination = false ) {
 		$sql_query .= " LEFT JOIN {$prefix}wc_product_meta_lookup ON {$prefix}posts.ID = {$prefix}wc_product_meta_lookup.product_id";	
 	}
 
+	// Search only for posts that are from post type product and they are published
 	$sql_query .= " WHERE {$prefix}posts.post_type = 'product' AND {$prefix}posts.post_status = 'publish'";
+
+	// Search only for products that are in stock
+	$sql_query .= " AND ({$prefix}postmeta.meta_key = '_stock_status' AND {$prefix}postmeta.meta_value = 'instock')";
 
 	if ( !empty( $parameters['motorcycle_make'] ) || !empty( $parameters['motorcycle_model'] ) || !empty( $parameters['motorcycle_year'] ) ) {
 		$sql_query .= " AND ( (";
