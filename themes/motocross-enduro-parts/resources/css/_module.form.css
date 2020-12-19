@@ -7,12 +7,14 @@
 [class^="form"] button { color: #000; }
 
 [class^="form"] input,
-[class^="form"] select { border: 1px solid #000; border-radius: 20px; font-size: 25px; }
+[class^="form"] select { border: 1px solid #000; border-radius: 20px; font-size: 25px; background-color: #fff; }
 
 [class^="form"] input { padding: 10px 20px; }
 
 [class^="form"] select { padding: 10px 60px 10px 20px; appearance: none; text-indent: 1px; text-overflow: ''; background-image: url(../images/select-down-arrow.svg); background-repeat: no-repeat; background-size: 50px 50px; background-position: right 10px center; }
 [class^="form"] select::-ms-expand { display: none; }
+
+[class^="form"] select[disabled] { opacity: .7; }
 
 /* Tablet Portrait */
 
@@ -80,6 +82,8 @@ $breakpoint-mobile-portrait {
 	.form-compatible-motorcycle .form__inner { flex-direction: column; margin: 0; }
 
 	.form-compatible-motorcycle select { width: 100%; margin: 5px 0; }
+
+	.form-compatible-motorcycle .btn-make-search { font-size: 17px; padding: 2px 10px; margin-top: 10px; }
 }
 
 /* ------------------------------------------------------------ *\
