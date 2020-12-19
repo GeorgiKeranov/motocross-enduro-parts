@@ -16,10 +16,16 @@
 /* Tablet Portrait */
 
 $breakpoint-tablet-portrait {
-	.nav ul { flex-direction: column; justify-content: center; align-items: center; text-align: center; height: 100%; }
+	.nav ul { flex-direction: column; justify-content: center; align-items: center; height: 100%; margin: 0; }
 	
-	.nav ul li { width: 100%; margin-top: 40px; }
+	.nav ul li { width: 100%; margin-top: 20px; }
 	
-	.nav a { font-size: 25px; }
-	.nav a:before { top: 33px; }
+	.nav a { font-size: 25px; margin: 0 auto; }
+	.nav a:before { top: 30px; }
+}
+
+/* Mobile Portrait */
+
+$breakpoint-mobile-portrait {
+	.nav a { font-size: 20px; }
 }

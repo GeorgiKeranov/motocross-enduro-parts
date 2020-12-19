@@ -45,8 +45,8 @@ $breakpoint-small-desktop {
 	
 	.slider-testimonials h2 { font-size: 30px; }
 
-	.slider-testimonials .slick-prev { left: 30px; }
-	.slider-testimonials .slick-next { right: 30px; }
+	.slider-testimonials .slick-prev { left: 5px; }
+	.slider-testimonials .slick-next { right: 5px; }
 
 	.slider-testimonials .slider__slide-text p { font-size: 20px; }
 
