@@ -83,7 +83,7 @@ $breakpoint-mobile-portrait {
 
 	.form-compatible-motorcycle select { width: 100%; margin: 5px 0; }
 
-	.form-compatible-motorcycle .btn-make-search { font-size: 17px; padding: 2px 10px; margin-top: 10px; }
+	.form-compatible-motorcycle .btn-make-search { font-size: 18px; padding: 2px 10px; margin-top: 10px; }
 }
 
 /* ------------------------------------------------------------ *\
@@ -129,4 +129,15 @@ $breakpoint-mobile {
 	.form-contact.wpforms-container-full { text-align: center; }
 
 	.form-contact.wpforms-container-full .wpforms-form button[type=submit] { width: 100%; }
+}
+
+/* Mobile Portrait */
+
+$breakpoint-mobile-portrait {
+	.form-contact.wpforms-container-full .wpforms-form input,
+	.form-contact.wpforms-container-full .wpforms-form textarea { font-size: 18px !important; padding: 6px 15px !important; }
+
+	.form-contact.wpforms-container-full .wpforms-form button[type=submit] { font-size: 18px; padding: 5px 20px; }
+
+	.form-contact.wpforms-container-full .wpforms-form .wpforms-title { font-size: 19px; }
 }

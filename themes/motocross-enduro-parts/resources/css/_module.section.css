@@ -211,10 +211,11 @@ $breakpoint-mobile {
 	.section-contact .section__form,
 	.section-contact .section__details { width: 100%; }
 
-	.section-contact .section__details { padding-left: 0; margin-bottom: 25px; order: -1; border-bottom: 1px solid #c8c7c7; }
+	.section-contact .section__details { padding: 0; margin: 0 0 30px; order: -1; border-bottom: 2px solid #e7a161; }
 
-	.section-contact .section__details-text { max-width: 400px; margin: 0 auto 10px; border: 0; }
+	.section-contact .section__details-text { max-width: 400px; margin: 30px 0; border: 0; padding: 0; }
 
+	.section-contact .section__details-contacts { border-bottom: 2px solid #e7a161; padding-bottom: 30px; }
 	.section-contact .section__details-contacts [class^="icotext"] { font-size: 22px; font-weight: 500; }
 
 	.section-contact .section__details-contacts .ico-phone,
@@ -229,9 +230,7 @@ $breakpoint-mobile-portrait {
 	.section-contact .section__details-contacts .ico-phone,
 	.section-contact .section__details-contacts .ico-mail { width: 25px; height: 25px; }
 
-	.section-contact .section__details-contacts { padding-bottom: 0; }
-
-	.form-contact.wpforms-container-full .wpforms-form .wpforms-title { font-size: 20px; }
+	.section-contact div.wpforms-container-full .wpforms-form .wpforms-field { padding: 5px 0; }
 }
 
 /* ------------------------------------------------------------ *\
@@ -242,7 +241,7 @@ $breakpoint-mobile-portrait {
 
 .section-columns + .section-columns { margin-top: 10px; }
 
-.section-columns .section__column { width: 50%; }
+.section-columns .section__col + .section__col { text-align: right; }
 
 /* ------------------------------------------------------------ *\
 	Section Default
