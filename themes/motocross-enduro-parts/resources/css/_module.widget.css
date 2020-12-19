@@ -55,7 +55,7 @@
 .widget_product_categories_widget .current-cat a:before,
 .widget_product_categories_widget li a:hover:before { background-color: #e7a161; border-color: transparent; }
 
-.widget_product_categories_widget select { width: 100%; font-size: 18px; border: 1px solid #ddd; border-radius: 8px; padding: 5px 40px 5px 15px; appearance: none; text-indent: 1px; background-image: url(../images/select-down-arrow.svg); background-repeat: no-repeat; background-size: 30px 30px; background-position: right 10px center; }
+.widget_product_categories_widget select { width: 100%; font-size: 18px; border: 1px solid #ddd; background-color: #fff; border-radius: 8px; padding: 5px 40px 5px 15px; appearance: none; text-indent: 1px; background-image: url(../images/select-down-arrow.svg); background-repeat: no-repeat; background-size: 30px 30px; background-position: right 10px center; }
 
 .widget#product_categories_widget-3 { display: none; }
 
