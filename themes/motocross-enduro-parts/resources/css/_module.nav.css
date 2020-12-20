@@ -21,11 +21,12 @@ $breakpoint-tablet-portrait {
 	.nav ul li { width: 100%; margin-top: 20px; }
 	
 	.nav a { font-size: 25px; margin: 0 auto; }
-	.nav a:before { top: 30px; }
+	.nav a:before { top: 36px; }
 }
 
 /* Mobile Portrait */
 
 $breakpoint-mobile-portrait {
 	.nav a { font-size: 20px; }
+	.nav a:before { top: 30px; }
 }
