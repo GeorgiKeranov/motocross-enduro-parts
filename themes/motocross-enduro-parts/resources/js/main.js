@@ -488,3 +488,13 @@ window.onpopstate = function(event) {
 		getProductsFromPreviousPage(formData);
 	}
 }
+
+$('.nav a').click(function(e) {
+  e.preventDefault();
+
+  let linkUrl = $(this).attr('href');
+
+  setTimeout(function() {
+  	window.location = linkUrl
+  }, 300);
+});
