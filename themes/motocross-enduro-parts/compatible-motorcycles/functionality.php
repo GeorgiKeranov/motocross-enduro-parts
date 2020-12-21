@@ -41,7 +41,7 @@ function crb_add_compatible_motorcycles_metabox() {
  * Render html and javascript that will be inside the metabox
  */
 function crb_get_compatible_motorcycles_scripts_markup( $post ) {
-	include_once( CRB_THEME_DIR . 'compatible-motorcycles\metaboxes-html.php' );
+	include_once( CRB_THEME_DIR . 'compatible-motorcycles' . DIRECTORY_SEPARATOR . 'metaboxes-html.php' );
 }
 
 /**
