@@ -234,27 +234,30 @@ $breakpoint-mobile-portrait {
 .woocommerce-cart .wc-proceed-to-checkout a.checkout-button { background-color: #e7a161; border: 2px solid #e7a161; transition: .3s; margin: 0; }
 .woocommerce-cart .wc-proceed-to-checkout a.checkout-button:hover { background-color: #fff; color: #e7a161; }
 
-.woocommerce-cart table.cart img { max-width: 80px; width: auto; }
-
 .woocommerce-cart a.remove { margin: 0 auto; font-size: 25px; transition: .3s; color: #fff !important; background-color: #B00B1E; }
 .woocommerce-cart a.remove:hover { color: #B00B1E !important; background-color: #fff; }
-
-.woocommerce-cart table.cart td { font-weight: 500; }
-
-.woocommerce-cart table.cart .product-quantity { text-align: center; }
 
 .woocommerce-cart .restore-item { color: #8fae1b; transition: .3s; }
 .woocommerce-cart .restore-item:hover { opacity: .4; }
 
-.woocommerce-cart table.shop_table { border: 0; }
+.woocommerce-cart table.cart .product-quantity { text-align: center; }
 
+.woocommerce-cart table.cart td { font-weight: 500; }
+.woocommerce-cart table.cart img { max-width: 80px; width: auto; }
 .woocommerce-cart table.cart th { font-size: 20px; font-weight: 600; padding: 20px 12px; }
 
+.woocommerce-cart table.shop_table { border: 0; }
 .woocommerce-cart table.shop_table td { border-top: 2px solid #ddd; padding: 15px 12px; }
 .woocommerce-cart table.shop_table td.product-subtotal { font-weight: 700; }
 
 .woocommerce-cart table.shop_table th.product-thumbnail,
 .woocommerce-cart table.cart .product-thumbnail { min-width: 0; }
+
+.woocommerce-cart table.cart td.actions .coupon { float: right; }
+.woocommerce-cart table.cart td.actions .coupon .input-text { width: auto; }
+.woocommerce-cart table.cart td.actions .coupon button { background-color: #e7a161; color: #fff; border: 2px solid #e7a161; padding: .448em 1em; transition: .3s; }
+.woocommerce-cart table.cart td.actions .coupon button:hover { background-color: #fff; color: #e7a161; }
+.woocommerce-cart table.cart td.actions button[name="update_cart"] { display: none; }
 
 .woocommerce-cart .cart-collaterals .cart_totals { background-color: #f3f3f3; padding: 30px 20px; border: 2px solid #e7a161; }
 .woocommerce-cart .cart-collaterals .cart_totals h2 { font-weight: 500; font-size: 25px; text-transform: uppercase; text-align: center; }
