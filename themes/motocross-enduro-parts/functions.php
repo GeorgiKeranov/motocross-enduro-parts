@@ -163,3 +163,11 @@ add_action( 'init', 'crb_remove_schedule_delete' );
 function crb_remove_schedule_delete() {
   remove_action( 'wp_scheduled_delete', 'wp_scheduled_delete' );
 }
+
+/**
+ * Remove inline css for the admin bar
+ */
+add_action('get_header', 'crb_remove_admin_login_header');
+function crb_remove_admin_login_header() {
+	remove_action('wp_head', '_admin_bar_bump_cb');
+}

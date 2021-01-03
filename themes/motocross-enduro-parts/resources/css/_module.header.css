@@ -41,3 +41,9 @@ $breakpoint-tablet-portrait {
 
 	.menu-active .header .header__nav { visibility: visible; opacity: 1; }
 }
+
+@media screen and (max-width: 782px) {
+	html #wpadminbar { display: none; }
+	.admin-bar .header { margin-top: 0; }
+}
+

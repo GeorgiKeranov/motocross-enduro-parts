@@ -4,8 +4,16 @@
 
 .wrapper { margin-top: 104px; width: 100%; min-height: calc(100vh - 104px); display: flex; flex-direction: column; }
 
+.admin-bar .wrapper { margin-top: 136px; min-height: calc(100vh - 136px); }
+
 /* Tablet Portrait */
 
 $breakpoint-tablet-portrait {
 	.wrapper { margin-top: 71px; min-height: calc(100vh - 71px); }
+
+	.admin-bar .wrapper { margin-top: 103px; max-height: calc(100vh - 103px); }
+}
+
+@media screen and (max-width: 782px) {
+	.admin-bar .wrapper { margin-top: 71px; min-height: calc(100vh - 71px); }
 }
