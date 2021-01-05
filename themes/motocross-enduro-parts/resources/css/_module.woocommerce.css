@@ -228,6 +228,8 @@ $breakpoint-mobile-portrait {
 	.woocommerce .woocommerce-info,
 	.woocommerce .woocommerce-message,
 	.woocommerce .woocommerce-error { text-align: center; }
+
+	.woocommerce div.woocommerce__shop .woocommerce-product-details__short-description ul { display: inline-block; text-align: left; }
 }
 
 /* ------------------------------------------------------------ *\
