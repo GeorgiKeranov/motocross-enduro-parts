@@ -33,6 +33,8 @@ class Product_Categories_Widget extends WP_Widget {
 			'exclude' => 16
 		) );
 
+		$selected_category = !empty( $_GET['category'] ) ? $_GET['category'] : 0;
+
 		if ( empty( $product_categories ) ) {
 			return;
 		}
@@ -48,7 +50,7 @@ class Product_Categories_Widget extends WP_Widget {
 				<option value="" default>Избиране на категория</option>
 
 				<?php foreach ( $product_categories as $category ) : ?>
-					<option value="<?php echo $category->term_id ?>"><?php echo esc_html( $category->name ) ?></option>					
+					<option value="<?php echo $category->term_id ?>" <?php echo $selected_category == $category->term_id ? ' selected' : '' ?>><?php echo esc_html( $category->name ) ?></option>					
 				<?php endforeach; ?>
 			</select>
 		<?php else :
@@ -60,7 +62,6 @@ class Product_Categories_Widget extends WP_Widget {
 			}
 
 			$is_shop = is_shop();
-			$selected_category = !empty( $_GET['category'] ) ? $_GET['category'] : 0;
 			?>
 			
 			<ul class="product-categories js-category-desktop-get-products-ajax">
