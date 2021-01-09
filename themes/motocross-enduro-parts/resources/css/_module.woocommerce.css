@@ -51,11 +51,12 @@
 .woocommerce #respond input#submit.loading::after,
 .woocommerce a.button.loading::after,
 .woocommerce button.button.loading::after,
-.woocommerce input.button.loading::after { color: #000; z-index: 2; left: 16px; top: 3px; width: 23px; }
+.woocommerce input.button.loading::after { color: #000; z-index: 2; left: 46%; top: 3px; width: 23px; }
+
 .woocommerce ul.products li.product .button { margin-top: 0; width: 100%; text-align: center; }
 .woocommerce ul.products li.product .button.added { display: none; }
 
-.woocommerce a.added_to_cart { background: #4CC355 url(../images/icon-shopping-cart.svg) no-repeat; background-size: 22px 22px; background-position: left 10px center; color: #fff; font-weight: 600; padding: 8px 10px 8px 40px; font-size: 13px; border-radius: 3px; transition: .3s; }
+.woocommerce a.added_to_cart { background: #4CC355 url(../images/icon-shopping-cart.svg) no-repeat; background-size: 22px 22px; background-position: left 10px center; color: #fff; font-weight: 600; padding: 8px 40px; font-size: 13px; border-radius: 3px; transition: .3s; width: 100%; text-align: center; }
 
 .woocommerce a.added_to_cart:hover { opacity: .5; }
 
