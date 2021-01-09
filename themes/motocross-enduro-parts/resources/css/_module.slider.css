@@ -14,10 +14,10 @@
 .slider-testimonials .slider__clip { padding: 0 100px; }
 
 .slider-testimonials .slick-prev,
-.slider-testimonials .slick-next { position: absolute; top: 50%; transform: translateY(-50%); border: none; width: 43px; height: 43px; background-size: contain; background-repeat: no-repeat; background-position: center; background-color: transparent; transition: .3s; }
+.slider-testimonials .slick-next { position: absolute; top: 50%; transform: translateY(-50%); background-color: transparent; border: 0; transition: .3s; color: #e7a161; font-size: 60px; }
 
-.slider-testimonials .slick-prev { left: 0; background-image: url(../images/left-arrow.png); }
-.slider-testimonials .slick-next { right: 0; background-image: url(../images/right-arrow.png); }
+.slider-testimonials .slick-prev { left: 0; }
+.slider-testimonials .slick-next { right: 0; }
 
 .slider-testimonials .slick-prev:hover { transform: translate(-10px, -50%); }
 .slider-testimonials .slick-next:hover { transform: translate(10px, -50%); }
@@ -89,10 +89,7 @@ $breakpoint-mobile-portrait {
 	.slider-testimonials .slider__inner { padding: 10px 10px 40px; }
 
 	.slider-testimonials .slick-prev,
-	.slider-testimonials .slick-next { top: 40%; }
-
-	.slider-testimonials .slick-prev { left: 20px; }
-	.slider-testimonials .slick-next { right: 20px; }
+	.slider-testimonials .slick-next { display: none !important; }
 
 	.slider-testimonials .slick-dots { top: 100%; }
 }
