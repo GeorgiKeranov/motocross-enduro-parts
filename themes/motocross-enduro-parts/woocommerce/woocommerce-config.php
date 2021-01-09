@@ -309,7 +309,7 @@ function crb_get_woocommerce_products( $parameters, $pagination = false ) {
 		// If there is not 'orderby' in the get parameters set the order of the products by date
 		// also if we have 'orderby' in the get parameters and it is equal to 'date' set the order by date
 		if ( empty( $parameters['orderby'] ) || $parameters['orderby'] === 'date' ) {
-			$sql_query .= " ORDER BY {$prefix}posts.post_date DESC";
+			$sql_query .= " ORDER BY {$prefix}posts.post_modified DESC";
 		}
 
 		if ( !empty( $parameters['orderby'] ) && $parameters['orderby'] === 'price' ) {
