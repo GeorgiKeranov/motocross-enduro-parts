@@ -379,17 +379,17 @@ $breakpoint-mobile {
 .woocommerce-checkout #billing_email_field,
 .woocommerce-checkout #billing_phone_field,
 .woocommerce-checkout #billing_city_field,
-.woocommerce-checkout #billing_postcode_field { width: 47%; overflow: visible; clear: none; }
+.woocommerce-checkout #billing_state_field { width: 47%; overflow: visible; clear: none; }
 
 .woocommerce-checkout #billing_email_field,
-.woocommerce-checkout #billing_city_field { float: left; }
+.woocommerce-checkout #billing_state_field { float: left; }
 
 .woocommerce-checkout #billing_phone_field,
-.woocommerce-checkout #billing_postcode_field { float: right; }
+.woocommerce-checkout #billing_city_field { float: right; }
 
 .woocommerce-checkout .woocommerce-error { display: none; }
 
-.woocommerce-checkout #payment #place_order { float: none; background-color: #e7a161; color: #fff; border: 2px solid #e7a161; transition: .3s; font-size: 18px; font-weight: 600; padding: 10px 40px; margin-bottom: 0; }
+.woocommerce-checkout #payment #place_order { float: none; background-color: #e7a161; color: #fff; border: 2px solid #e7a161; transition: .3s; font-size: 18px; font-weight: 600; padding: 10px 40px; margin-bottom: 0; width: 100%; }
 .woocommerce-checkout #payment #place_order:hover { background-color: #fff; color: #e7a161; }
 
 .woocommerce-checkout .woocommerce-billing-fields .form-row { margin-bottom: 15px; }
@@ -458,9 +458,7 @@ $breakpoint-mobile-portrait {
 	.woocommerce-checkout #payment div.payment_box p { font-size: 15px; }
 
 	.woocommerce-checkout #billing_email_field,
-	.woocommerce-checkout #billing_phone_field,
-	.woocommerce-checkout #billing_city_field,
-	.woocommerce-checkout #billing_postcode_field { float: none; width: 100%; }
+	.woocommerce-checkout #billing_phone_field { float: none; width: 100%; }
 
 	.woocommerce-checkout form .form-row-first,
 	.woocommerce-checkout form .form-row-last { width: 49% }

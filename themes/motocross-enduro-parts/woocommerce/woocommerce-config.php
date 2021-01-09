@@ -126,6 +126,9 @@ function crb_remove_all_quantity_fields( $return, $product ) {
 }
 
 function crb_change_checkout_fields( $fields ) {
+	// Remove post code field
+	unset( $fields['billing']['billing_postcode']);
+
 	// Reorder fields
 	$fields['billing']['billing_email']['priority'] = 30;
 	$fields['billing']['billing_phone']['priority'] = 31;
