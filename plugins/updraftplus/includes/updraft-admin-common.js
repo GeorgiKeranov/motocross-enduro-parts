@@ -1308,7 +1308,18 @@ function updraft_iframe_modal(getwhat, title) {
 	var width = 780;
 	var height = 500;
 	jQuery('#updraft-iframe-modal-innards').html('<iframe width="100%" height="430px" src="'+ajaxurl+'?action=updraft_ajax&subaction='+getwhat+'&nonce='+updraft_credentialtest_nonce+'"></iframe>');
-	jQuery('#updraft-iframe-modal').dialog('option', 'title', title).dialog('option', 'width', width).dialog('option', 'height', height).dialog('open');
+	jQuery('#updraft-iframe-modal').dialog({
+		title: title, resizeOnWindowResize: true, scrollWithViewport: true, resizeAccordingToViewport: true, useContentSize: false,
+		open: function(event, ui) {
+			jQuery(this).dialog('option', 'width', width),
+			jQuery(this).dialog('option', 'minHeight', 260);
+			if (jQuery(window).height() > height) {
+				jQuery(this).dialog('option', 'height', height);
+			} else {
+				jQuery(this).dialog('option', 'height', jQuery(window).height()-30);
+			}
+		}
+	}).dialog('open');
 }
 
 function updraft_html_modal(showwhat, title, width, height) {
@@ -1318,7 +1329,18 @@ function updraft_html_modal(showwhat, title, width, height) {
 		updraft_html_modal_buttons[updraftlion.close] = function() {
  jQuery(this).dialog("close"); };
 	}
-	jQuery('#updraft-iframe-modal').dialog('option', 'title', title).dialog('option', 'width', width).dialog('option', 'height', height).dialog('option', 'buttons', updraft_html_modal_buttons).dialog('open');
+	jQuery('#updraft-iframe-modal').dialog({
+		title: title, buttons: updraft_html_modal_buttons, resizeOnWindowResize: true, scrollWithViewport: true, resizeAccordingToViewport: true, useContentSize: false,
+		open: function(event, ui) {
+			jQuery(this).dialog('option', 'width', width),
+			jQuery(this).dialog('option', 'minHeight', 260);
+			if (jQuery(window).height() > height) {
+				jQuery(this).dialog('option', 'height', height);
+			} else {
+				jQuery(this).dialog('option', 'height', jQuery(window).height()-30);
+			}
+		}
+	}).dialog('open');
 }
 
 function updraftplus_diskspace() {
@@ -2870,7 +2892,7 @@ jQuery(function($) {
 			operator_options: updraftlion.conditional_logic.operator_options,
 		};
 		var html = template(context);
-		jQuery(html).hide().insertAfter('.' + method + '_add_instance_container').first().show('slow');
+		jQuery(html).hide().insertAfter(jQuery('.' + method + '_add_instance_container').first()).show('slow');
 	}
 
 	/**
@@ -3305,7 +3327,17 @@ jQuery(function($) {
 		 jQuery(this).dialog("close");
 	};
 	jQuery("#updraft-message-modal").dialog({
-		autoOpen: false, height: 350, width: 520, modal: true,
+		autoOpen: false, resizeOnWindowResize: true, scrollWithViewport: true, resizeAccordingToViewport: true, useContentSize: false,
+		open: function(event, ui) {
+			$(this).dialog('option', 'width', 520);
+			$(this).dialog('option', 'minHeight', 260);
+			if ($(window).height() > 360 ) {
+				$(this).dialog('option', 'height', 360);
+			} else {
+				$(this).dialog('option', 'height', $(window).height()-30);
+			}
+		},
+		modal: true,
 		buttons: updraft_message_modal_buttons
 	});
 	
@@ -3415,7 +3447,11 @@ jQuery(function($) {
 	updraft_delete_modal_buttons[updraftlion.cancel] = function() {
  jQuery(this).dialog("close"); };
 	jQuery("#updraft-delete-modal").dialog({
-		autoOpen: false, height: 322, width: 430, modal: true,
+		autoOpen: false, resizeOnWindowResize: true, scrollWithViewport: true, resizeAccordingToViewport: true, useContentSize: false,
+		open: function(event, ui) {
+			$(this).css('minHeight', 83);
+		},
+		modal: true,
 		buttons: updraft_delete_modal_buttons
 	});
 
@@ -3638,7 +3674,12 @@ jQuery(function($) {
 	});
 
 	jQuery("#updraft-backupnow-inpage-modal").dialog({
-		autoOpen: false, height: 380, width: 580, modal: true
+		autoOpen: false, modal: true, resizeOnWindowResize: true, scrollWithViewport: true, resizeAccordingToViewport: true, useContentSize: false,
+		open: function(event, ui) {
+			$(this).dialog('option', 'width', 580);
+			$(this).dialog('option', 'minHeight', 261);
+			$(this).dialog('option', 'height', 380);
+		},
 	});
 	
 	var backupnow_modal_buttons = {};
@@ -3710,7 +3751,13 @@ jQuery(function($) {
 	jQuery(this).dialog("close"); };
 
 	jQuery("#updraft-backupnow-modal").dialog({
-		autoOpen: false, height: 472, width: 610, modal: true,
+		autoOpen: false, resizeOnWindowResize: true, scrollWithViewport: true, resizeAccordingToViewport: true, useContentSize: false,
+		open: function(event, ui) {
+			$(this).dialog('option', 'width', 610);
+			$(this).dialog('option', 'minHeight', 300);
+			$(this).dialog('option', 'height', 472);
+		},
+		modal: true,
 		buttons: backupnow_modal_buttons,
 		create: function () {
 			$(this).closest(".ui-dialog")
@@ -3720,7 +3767,16 @@ jQuery(function($) {
 	});
 
 	jQuery("#updraft-poplog").dialog({
-		autoOpen: false, height: 600, width: '75%', modal: true,
+		autoOpen: false, modal: true, resizeOnWindowResize: true, scrollWithViewport: true, resizeAccordingToViewport: true, useContentSize: false,
+		open: function(event, ui) {
+			$(this).dialog('option', 'width', 860);
+			$(this).dialog('option', 'minHeight', 260);
+			if ($(window).height() > 600) {
+				$(this).dialog('option', 'height', 600);
+			} else {
+				$(this).dialog('option', 'height', $(window).height()-50);
+			}
+		},
 	});
 	
 	jQuery('#updraft-navtab-settings-content .enableexpertmode').on('click', function() {
@@ -3807,12 +3863,19 @@ jQuery(function($) {
 	});
 	
 	jQuery('#updraft_exclude_modal').dialog({
-		autoOpen: false,
-		modal: true,
-		width: 520,
-		height: 'auto',
+		autoOpen: false, modal: true, resizeOnWindowResize: true, scrollWithViewport: true, resizeAccordingToViewport: true, useContentSize: false,
 		open: function(event,ui) {
 			$(this).parent().trigger('focus');
+			$(this).dialog('option', 'width', 520);
+			$(this).dialog('option', 'minHeight', 260);
+			if ($(window).height() > 579) {
+				$(this).css('height', 'auto');
+			} else if ($(window).height() < 580 && $(window).height() > 410) {
+				$(this).dialog('option', 'height', 410);
+				$(this).css('height', 'auto');
+			} else {
+				$(this).dialog('option', 'height', $(window).height()-20);
+			}
 		}
 	});
 	
@@ -4304,7 +4367,20 @@ jQuery(function($) {
 	};
 
 	jQuery("#updraft-upload-modal").dialog({
-		autoOpen: false, height: 322, width: 430, modal: true,
+		autoOpen: false, modal: true, resizeOnWindowResize: true, scrollWithViewport: true, resizeAccordingToViewport: true, useContentSize: false,
+		open: function(event, ui) {
+			$(this).parent().focus();
+			$(this).dialog('option', 'width', 308);
+			if (jQuery(window).height() > 460) {
+				$(this).dialog('option', 'height', 218);
+				$(this).css('height', 'auto');
+			} else if (jQuery(window).height() > 250 && jQuery(window).height() < 461) {
+				$(this).dialog('option', 'height', 460);
+				$(this).css('height', 'auto');
+			} else {
+				$(this).dialog('option', 'height', jQuery(window).height() - 20);
+			}
+		},
 		buttons: updraft_upload_modal_buttons
 	});
 
@@ -5165,11 +5241,12 @@ jQuery(function($) {
  jQuery(this).dialog("close"); };
 
 			jQuery('#updraft-authenticate-modal').dialog({autoOpen: true,
-				modal: true,
-				resizable: false,
-				draggable: false,
-				buttons: updraft_authenticate_modal_buttons,
-				width:'auto'}).dialog('open');
+				modal: true, resizable: false, draggable: false, resizeOnWindowResize: true, scrollWithViewport: true, resizeAccordingToViewport: true, useContentSize: false,
+				open: function(event, ui) {
+					$(this).dialog('option', 'width', 860);
+					$(this).dialog('option', 'height', 260);
+				},
+				buttons: updraft_authenticate_modal_buttons}).dialog('open');
 		}
 	}
 
@@ -5509,10 +5586,8 @@ jQuery(function($) {
 	function updraftcentral_cloud_login_modal() {
 		var form_template = $('#updraftcentral_cloud_login_form');
 		if (form_template.length) {
-			$('#updraft-iframe-modal-innards').html(form_template.html());
 
-			var modal = $('#updraft-iframe-modal').dialog('option', 'title', updraftlion.updraftcentral_cloud).dialog('option', 'width', 520).dialog('option', 'height', 450).dialog('option', 'buttons', {});
-			modal.dialog('open');
+			updraft_html_modal(form_template.html(), updraftlion.updraftcentral_cloud, 520, 400);
 
 			var consent_container = modal.find('.updraftcentral-data-consent');
 			var name = consent_container.find('input').attr('name');
