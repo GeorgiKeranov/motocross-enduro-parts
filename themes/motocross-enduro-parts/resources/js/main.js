@@ -182,6 +182,18 @@ if ($('.post-type-archive-product').length) {
 	}
 }
 
+let $singleProductPage = $('.woocommerce.single-product');
+if ( $singleProductPage.length ) {
+	let $mobileFilter = $('.js-mobile-filter');
+	if ($mobileFilter.length) {
+		$mobileFilter.on('click', function(e) {
+			e.preventDefault();
+
+			goToProductsPage();
+		});
+	}
+}
+
 function getProductsWithAjax(page = 1) {
 	if (isLoading) {
 		return;
@@ -236,6 +248,21 @@ function getProductsWithAjax(page = 1) {
 	    }
 	});
 }
+
+function goToProductsPage() {
+	let $form = $('.js-form-get-products-ajax');
+	let goToUrl = $form.attr('action');
+	
+	let formData = getFormDataShopPage(1);
+	let getParams = $.param(formData);
+
+	if ( getParams !== '' ) {
+		goToUrl += '?' + getParams;
+	}
+
+	window.location.href = goToUrl;
+}
+
 
 function getProductsFromPreviousPage(formData) {
 	isLoading = true;

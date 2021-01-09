@@ -528,3 +528,16 @@ $breakpoint-mobile-portrait {
 
 	.woocommerce .woocommerce-ordering { border-top: 0; flex-wrap: wrap; }
 }
+
+/* ------------------------------------------------------------ *\
+	Woocommerce Product
+\* ------------------------------------------------------------ */
+
+.woocommerce.single-product .form-compatible-motorcycle .form__actions .btn-remove-all-filters { display: none; }
+.woocommerce.single-product .section-search-parts--alt .form-compatible-motorcycle .btn-make-search { margin: 0 auto; }
+
+/* Mobile Portrait */
+
+$breakpoint-mobile-portrait {
+	.woocommerce.single-product .woocommerce-columns .js-mobile-remove-all-filters { display: none; }
+}
