@@ -30,6 +30,8 @@ add_action( 'woocommerce_order_status_cancelled', 'crb_instock_products_from_can
 
 add_action( 'woocommerce_before_single_product', 'crb_add_product_title_for_mobile_devices', 10 );
 
+add_action( 'woocommerce_single_product_summary', 'crb_add_money_back_guarantee', 25 );
+
 add_action( 'wp_insert_post_data', 'crb_set_custom_product_title', 20, 3 );
 
 add_action( 'wp_ajax_nopriv_get_products_html', 'crb_get_products_html_by_ajax' );
@@ -536,3 +538,7 @@ function crb_get_products_html_by_ajax() {
 function crb_remove_product_editor() {
 	remove_post_type_support( 'product', 'editor' );
 }
+
+function crb_add_money_back_guarantee() { ?>
+	<p class="money-back-guarantee"><strong>Гарантирано връщане на парите при проблем!</br>Всички части се пращат с преглед преди заплащане!</strong></p>
+<?php }

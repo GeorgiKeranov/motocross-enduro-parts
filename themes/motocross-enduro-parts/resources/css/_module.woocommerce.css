@@ -117,6 +117,8 @@
 .woocommerce div.product div.summary .posted_in a { color: #e7a161; font-weight: 500; transition: .3s; }
 .woocommerce div.product div.summary .posted_in a:hover { opacity: .5; }
 
+.woocommerce div.product div.summary .money-back-guarantee { color: #c51313; margin-bottom: 10px; }
+
 .woocommerce form .form-row #billing_country_field { display: none; }
 
 .woocommerce .col2-set .col-1 { float: none; width: 100%; }
