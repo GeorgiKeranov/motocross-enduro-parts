@@ -50,9 +50,9 @@ Container::make( 'post_meta', __( 'Page Builder', 'crb' ) )
 			) )
 
 			/**
-			 * Slider Section
+			 * Slider Testimonials
 			 */
-			->add_fields( 'slider-section', __( 'Slider Section', 'crb' ), array(
+			->add_fields( 'slider-testimonials', __( 'Slider Testimonials', 'crb' ), array(
 				Field::make( 'text', 'title', __( 'Title', 'crb' ) ),
 				Field::make( 'complex', 'slides', __( 'Slides', 'crb' ) )
 					->set_layout( 'tabbed-horizontal' )
@@ -61,6 +61,19 @@ Container::make( 'post_meta', __( 'Page Builder', 'crb' ) )
 						Field::make( 'textarea', 'text', 'Text' ),
 						Field::make( 'text', 'author', 'Author' ),
 					) ),
+			) )
+
+			/**
+			 * Slider Promo Products
+			 */
+			->add_fields( 'slider-promo-products', __( 'Slider Promo Products', 'crb' ), array(
+				Field::make( 'text', 'title', __( 'Title', 'crb' ) ),
+				Field::make( 'text', 'btn_text', __( 'Button Text', 'crb' ) )
+					->set_width( 40 ),
+				Field::make( 'text', 'btn_url', __( 'Button Url', 'crb' ) )
+					->set_width( 40 ),
+				Field::make( 'checkbox', 'btn_target', __( 'Open Button In New Tab', 'crb' ) )
+					->set_width( 20 ),
 			) )
 	) );
 

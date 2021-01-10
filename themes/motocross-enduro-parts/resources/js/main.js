@@ -13,7 +13,38 @@ $('.slider-testimonials .slider__slides').slick({
 	appendArrows: $('.slider-testimonials .slider__actions'),
 	infinite: true,
 	autoplay: true,
+	autoplaySpeed: 5000,
+});
+
+$('.slider-promo-products .slider__slides').slick({
+	prevArrow: '<button type="button" class="slick-prev">🡸</button>',
+	nextArrow: '<button type="button" class="slick-next">🡺</button>',
+	dots: true,
+	infinite: true,
+	autoplay: true,
 	autoplaySpeed: 3000,
+	slidesToShow: 4,
+	slidesToScroll: 1,
+	responsive: [
+		{
+		  breakpoint: 1024,
+		  settings: {
+			slidesToShow: 3,
+		  }
+		},
+		{
+		  breakpoint: 900,
+		  settings: {
+			slidesToShow: 2,
+		  }
+		},
+		{
+		  breakpoint: 420,
+		  settings: {
+			slidesToShow: 1,
+		  }
+		}
+	]
 });
 
 $('.header .header__menu-toggle').on('click', function(e) {
@@ -227,25 +258,25 @@ function getProductsWithAjax(page = 1) {
 	}, 300);
 
 	$.ajax({
-	    type: 'GET',
-	    url: url,
-	    data: $.param(formData),
-	    success: function(result) {
-	    	if (result['success']) {
-	    		let responseHtml = $(result['data']).html();
+		type: 'GET',
+		url: url,
+		data: $.param(formData),
+		success: function(result) {
+			if (result['success']) {
+				let responseHtml = $(result['data']).html();
 
-	    		$productsWrapper.removeClass('products-wrapper__loading');
-	    		$productsWrapper.append(responseHtml);
-	    	}
-	    },
-	    error: function(msg) {
-	    	$productsWrapper.removeClass('products-wrapper__loading');
+				$productsWrapper.removeClass('products-wrapper__loading');
+				$productsWrapper.append(responseHtml);
+			}
+		},
+		error: function(msg) {
+			$productsWrapper.removeClass('products-wrapper__loading');
 
-	    	console.log(msg);
-	    },
-	    complete: function() {
+			console.log(msg);
+		},
+		complete: function() {
 			isLoading = false;
-	    }
+		}
 	});
 }
 
@@ -289,25 +320,25 @@ function getProductsFromPreviousPage(formData) {
 	}, 300);
 
 	$.ajax({
-	    type: 'GET',
-	    url: url,
-	    data: $.param(formData),
-	    success: function(result) {
-	    	if (result['success']) {
-	    		let responseHtml = $(result['data']).html();
+		type: 'GET',
+		url: url,
+		data: $.param(formData),
+		success: function(result) {
+			if (result['success']) {
+				let responseHtml = $(result['data']).html();
 
-	    		$productsWrapper.removeClass('products-wrapper__loading');
-	    		$productsWrapper.append(responseHtml);
-	    	}
-	    },
-	    error: function(msg) {
-	    	$productsWrapper.removeClass('products-wrapper__loading');
+				$productsWrapper.removeClass('products-wrapper__loading');
+				$productsWrapper.append(responseHtml);
+			}
+		},
+		error: function(msg) {
+			$productsWrapper.removeClass('products-wrapper__loading');
 
-	    	console.log(msg);
-	    },
-	    complete: function() {
+			console.log(msg);
+		},
+		complete: function() {
 			isLoading = false;
-	    }
+		}
 	});
 }
 
@@ -522,6 +553,6 @@ $('.nav a').click(function(e) {
   let linkUrl = $(this).attr('href');
 
   setTimeout(function() {
-  	window.location = linkUrl
+	window.location = linkUrl
   }, 300);
 });
