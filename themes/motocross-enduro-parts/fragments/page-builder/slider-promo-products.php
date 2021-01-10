@@ -5,7 +5,12 @@ $products = new WP_Query( array(
 	'meta_query' => array(
 		array(
 			'key' => '_sale_price',
-			'compare' => 'EXISTS', //TODO test if we add sale price to product then remove it. WIll the _sale_price exist
+			'compare' => 'EXISTS',
+		),
+		array(
+			'key' => '_stock_status',
+			'compare' => '=',
+			'value' => 'instock'
 		)
 	)
 ) );
