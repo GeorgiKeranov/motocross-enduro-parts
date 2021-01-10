@@ -27,7 +27,7 @@ $is_selected_motorcycle_model = $is_selected_motorcycle_make && !empty( $selecte
 						<div class="form-search">
 							<input type="text" name="search" placeholder="Търсене на части" value="<?php echo !empty( $_GET['search'] ) ? $_GET['search'] : '' ?>">
 
-							<button type="submit"><?php crb_render_fragment( 'svgs/icon-search' ) ?></button>
+							<button type="submit"><?php echo file_get_contents( get_bloginfo('stylesheet_directory') . '/resources/images/icon-search.svg' ) ?></button>
 						</div><!-- /.form-search -->
 					</div><!-- /.section__search -->
 

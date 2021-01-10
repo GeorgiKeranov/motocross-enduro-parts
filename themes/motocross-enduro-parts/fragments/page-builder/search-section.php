@@ -31,7 +31,7 @@ $motorcycle_types = crb_get_all_motorcycle_types();
 					<div class="form-search">
 						<input type="text" name="search" placeholder="<?php echo esc_html( $section['search_field_placeholder'] ) ?>">
 
-						<button type="submit"><?php crb_render_fragment( 'svgs/icon-search' ) ?></button>
+						<button type="submit"><?php echo file_get_contents( get_bloginfo('stylesheet_directory') . '/resources/images/icon-search.svg' ) ?></button>
 					</div>
 
 					<?php if ( !empty( $motorcycle_types ) ) : ?>
