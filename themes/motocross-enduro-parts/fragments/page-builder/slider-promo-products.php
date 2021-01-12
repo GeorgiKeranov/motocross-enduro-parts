@@ -54,7 +54,7 @@ $products = new WP_Query( array(
 								<?php endif; ?>
 							</a>
 
-							<a href="?add-to-cart=<?php echo $product_id ?>" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="<?php echo $product_id ?>" rel="nofollow">Купи</a>
+							<a href="<?php echo $permalink ?>" class="btn-preview" data-product_id="<?php echo $product_id ?>" rel="nofollow">Виж повече</a>
 						</div><!-- /.section__product -->
 					</div><!-- /.slider__slide -->
 				<?php endforeach; ?>
