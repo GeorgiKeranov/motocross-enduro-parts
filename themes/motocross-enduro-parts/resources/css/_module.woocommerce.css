@@ -340,7 +340,7 @@ $breakpoint-mobile {
 	.woocommerce-cart .cart-collaterals .cart_totals tr.woocommerce-shipping-totals td { display: flex; justify-content: space-between; }
 	.woocommerce-cart .cart-collaterals .cart_totals tr.woocommerce-shipping-totals td:before { padding-right: 15px; }
 
-	.woocommerce-cart .wc-proceed-to-checkout a.checkout-button { padding: 10px 15px; }
+	.woocommerce-cart .wc-proceed-to-checkout a.checkout-button { padding: 10px; font-size: 16px; }
 }
 
 /* ------------------------------------------------------------ *\
