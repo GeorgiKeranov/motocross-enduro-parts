@@ -200,4 +200,6 @@ $breakpoint-mobile-portrait {
 	.slider-promo-products a.added_to_cart { position: relative; bottom: auto; left: auto; right: auto; margin-top: 10px; font-size: 14px; padding: 5px 8px; }
 
 	.slider-promo-products a.added_to_cart { background-size: 22px 22px; }
+
+	.slider-promo-products .add_to_cart_button.loading:after { font-size: 20px; top: 2px; }
 }
