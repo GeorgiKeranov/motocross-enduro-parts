@@ -22,7 +22,7 @@ $('.slider-promo-products .slider__slides').slick({
 	nextArrow: '<button type="button" class="slick-next">🡺</button>',
 	dots: true,
 	infinite: true,
-	// autoplay: true,
+	autoplay: true,
 	autoplaySpeed: 2000,
 	slidesToShow: 4,
 	slidesToScroll: 1,
