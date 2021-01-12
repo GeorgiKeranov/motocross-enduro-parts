@@ -39,8 +39,7 @@ $('.slider-promo-products .slider__slides').slick({
 		  settings: {
 			slidesToShow: 2,
 		  }
-		},
-		
+		}
 	]
 });
 
