@@ -175,7 +175,7 @@ $breakpoint-mobile-portrait {
 	.slider-promo-products .slider__slides { margin-bottom: 60px; }
 	.slider-promo-products .slider__slide-image { display: inline-block; }
 	.slider-promo-products .slider__slide-product { padding-bottom: 0; }
-	.slider-promo-products .slider__actions a { font-size: 19px; padding: 10px 20px; }
+	.slider-promo-products .slider__actions a { font-size: 19px; padding: 10px 20px; width: 100%; }
 	
 	.slider-promo-products .slick-dotted { padding-bottom: 12px; }
 	
