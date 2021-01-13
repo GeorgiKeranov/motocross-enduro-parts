@@ -75,6 +75,17 @@ Container::make( 'post_meta', __( 'Page Builder', 'crb' ) )
 				Field::make( 'checkbox', 'btn_target', __( 'Open Button In New Tab', 'crb' ) )
 					->set_width( 20 ),
 			) )
+
+			->add_fields( 'cta-section', __( 'Call To Action Section', 'crb' ), array(
+				Field::make( 'image', 'background_image', __( 'Background Image', 'crb' ) ),
+				Field::make( 'textarea', 'text', __( 'Text', 'crb' ) ),
+				Field::make( 'text', 'btn_text', __( 'Button Text', 'crb' ) )
+					->set_width( 40 ),
+				Field::make( 'text', 'btn_url', __( 'Button Url', 'crb' ) )
+					->set_width( 40 ),
+				Field::make( 'checkbox', 'btn_target', __( 'Open Button In New Tab', 'crb' ) )
+					->set_width( 20 ),
+			) )
 	) );
 
 Container::make( 'post_meta', __( 'Заглавие на продукт', 'crb' ) )

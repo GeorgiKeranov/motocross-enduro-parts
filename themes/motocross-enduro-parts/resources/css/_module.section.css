@@ -287,3 +287,40 @@ $breakpoint-mobile-portrait {
 	.section-404 h1 { font-size: 30px; }
 	.section-404 p { font-size: 18px; }
 }
+
+/* ------------------------------------------------------------ *\
+	Section CTA
+\* ------------------------------------------------------------ */
+
+.section-cta { position: relative; padding: 100px 0; background-position: center; background-size: cover; background-repeat: no-repeat; }
+
+.section-cta:before { content: ''; display: inline-block; position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 10; background-color: #000; opacity: .5; }
+
+.section-cta .section__content { position: relative; z-index: 20; text-align: center; color: #fff; }
+
+.section-cta h2 { font-size: 35px; font-weight: 700; margin-bottom: 50px; }
+
+.section-cta a { display: inline-block; font-size: 20px; background-color: #e7a161; border: 2px solid #e7a161; color: #fff; transition: .3s; padding: 10px 40px; font-weight: 700; line-height: 1; border-radius: 20px; }
+.section-cta a:hover { background-color: #fff; color: #e7a161; }
+
+/* Small Desktop */
+
+$breakpoint-small-desktop {
+	.section-cta h2 { font-size: 30px; }
+}
+
+/* Tablet Portrait */
+
+$breakpoint-tablet-portrait {
+	.section-cta h2 { font-size: 27px; }	
+}
+
+/* Mobile */
+
+$breakpoint-mobile {
+	.section-cta { padding: 50px 0; }
+
+	.section-cta h2 { font-size: 19px; margin-bottom: 30px; }
+
+	.section-cta a { font-size: 17px; padding: 10px 20px; width: 100%; }
+}
