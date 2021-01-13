@@ -49,6 +49,22 @@ $('.header .header__menu-toggle').on('click', function(e) {
 	$('body').toggleClass('menu-active');
 });
 
+const winH = $win.height();
+//Check if element is visible
+$('.section-fade').each(function() {
+    const $element = $(this);
+
+    $win.on('scroll load', function() {
+        if ($element.offset().top <= $doc.scrollTop() + winH) {
+            setTimeout(function() {
+                $element.addClass('visible');
+            }, 1);
+        } else {
+            $element.removeClass('visible');
+        }
+    });
+});
+
 // Slide down/up the filters by button on shop page in mobile devices.
 let isAnimating = false;
 $('.section-search-parts--alt .section__filter-mobile').on('click', function(e) {
@@ -210,7 +226,7 @@ if ($('.post-type-archive-product').length) {
 }
 
 let $singleProductPage = $('.woocommerce.single-product');
-if ( $singleProductPage.length ) {
+if ($singleProductPage.length) {
 	let $mobileFilter = $('.js-mobile-filter');
 	if ($mobileFilter.length) {
 		$mobileFilter.on('click', function(e) {
@@ -283,7 +299,7 @@ function goToProductsPage() {
 	let formData = getFormDataShopPage(1);
 	let getParams = $.param(formData);
 
-	if ( getParams !== '' ) {
+	if (getParams !== '') {
 		goToUrl += '?' + getParams;
 	}
 

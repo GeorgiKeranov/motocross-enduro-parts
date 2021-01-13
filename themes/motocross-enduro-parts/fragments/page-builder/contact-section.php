@@ -12,7 +12,7 @@ if ( empty( $has_fields ) ) {
 }
 ?>
 
-<div class="section-contact">
+<div class="section-contact section-fade">
 	<div class="shell">
 		<div class="section__inner">
 			<div class="section__form">

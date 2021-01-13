@@ -7,7 +7,7 @@
 	$copyright = carbon_get_theme_option( 'crb_footer_copyright' );
 	?>
 
-	<footer class="footer">
+	<footer class="footer section-fade">
 		<div class="footer__body">
 			<div class="shell">
 				<div class="footer__body-flex">

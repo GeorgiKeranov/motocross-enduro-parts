@@ -11,7 +11,7 @@ if ( empty( $has_content ) ) {
 
 ?>
 
-<div class="slider-testimonials">
+<div class="slider-testimonials section-fade">
 	<div class="shell">
 		<div class="slider__inner">
 			<?php if ( !empty( $section['title'] ) ) : ?>

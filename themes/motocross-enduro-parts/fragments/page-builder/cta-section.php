@@ -2,7 +2,7 @@
 $background_image = wp_get_attachment_url( $section['background_image'], 'full-width' );
 ?>
 
-<div class="section-cta" style="background-image: url(<?php echo $background_image ?>)">
+<div class="section-cta section-fade" style="background-image: url(<?php echo $background_image ?>)">
 	<div class="shell">
 		<div class="section__content">
 			<h2><?php echo nl2br( esc_html( $section['text'] ) ) ?></h2>

@@ -324,3 +324,10 @@ $breakpoint-mobile {
 
 	.section-cta a { font-size: 17px; padding: 10px 20px; width: 100%; }
 }
+
+/* ------------------------------------------------------------ *\
+	Section Fade
+\* ------------------------------------------------------------ */
+
+.section-fade { position: relative; top: 100px; opacity: 0; transition: all .9s; }
+.section-fade.visible { top: 0; opacity: 1; }
