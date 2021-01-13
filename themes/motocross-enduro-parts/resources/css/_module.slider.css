@@ -205,4 +205,7 @@ $breakpoint-mobile-portrait {
 	.slider-promo-products a.added_to_cart { background-size: 22px 22px; }
 
 	.slider-promo-products .add_to_cart_button.loading:after { font-size: 20px; top: 2px; }
+
+	.slider-promo-products .slider__slide-product > a:first-child:hover { opacity: 1; }
+	.slider-promo-products .slider__slide-product > a:first-child:active { opacity: .4; }
 }
