@@ -17,6 +17,10 @@ $('.slider-testimonials .slider__slides').slick({
 	pauseOnHover: false
 });
 
+$('.slider-testimonials .slider__slides').on('touchcancel touchmove', e => {
+      $('.slider-testimonials .slider__slides').slick('slickPlay');
+});
+
 $('.slider-promo-products .slider__slides').slick({
 	prevArrow: '<button type="button" class="slick-prev">🡸</button>',
 	nextArrow: '<button type="button" class="slick-next">🡺</button>',
@@ -41,6 +45,10 @@ $('.slider-promo-products .slider__slides').slick({
 		  }
 		}
 	]
+});
+
+$('.slider-promo-products .slider__slides').on('touchcancel touchmove', e => {
+      $('.slider-promo-products .slider__slides').slick('slickPlay');
 });
 
 $('.header .header__menu-toggle').on('click', function(e) {
