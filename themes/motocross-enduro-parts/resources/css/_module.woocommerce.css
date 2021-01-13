@@ -208,7 +208,7 @@ $breakpoint-mobile {
 
 	.woocommerce div.product div.images.woocommerce-product-gallery { margin-bottom: 15px; }
 	.woocommerce div.product div.images.woocommerce-product-gallery .flex-viewport { margin-bottom: 10px; }
-	.woocommerce div.woocommerce__shop .product .price { margin-bottom: 5px; }
+	.woocommerce div.woocommerce__shop .product .price { margin-bottom: 10px; }
 }
 
 /* Mobile Portrait */

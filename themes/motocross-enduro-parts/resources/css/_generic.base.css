@@ -71,8 +71,8 @@ $breakpoint-tablet-portrait {
 /* Mobile Portrait */
 
 $breakpoint-mobile-portrait {
-	h1 { font-size: 23px; }
-	h2 { font-size: 20px; }
+	h1 { font-size: 21px; }
+	h2 { font-size: 19px; }
 	h3 { font-size: 17px; }
 	h4 { font-size: 15px; }		
 }
