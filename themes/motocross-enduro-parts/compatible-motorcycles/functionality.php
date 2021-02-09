@@ -101,7 +101,7 @@ function crb_save_product_compatible_motorcycles( $post_id, $post, $update ) {
 function crb_get_product_compatible_motorycles( $product_id ) {
 	global $wpdb;
 
-	$results = $wpdb->get_results( "SELECT * FROM {$wpdb->base_prefix}product_compatible_motorcycle_types WHERE post_id = $product_id" );
+	$results = $wpdb->get_results( "SELECT * FROM {$wpdb->base_prefix}product_compatible_motorcycle_types WHERE post_id = $product_id ORDER BY make ASC, model ASC, year_from ASC" );
 
 	if ( empty( $results ) ) {
 		return array();
