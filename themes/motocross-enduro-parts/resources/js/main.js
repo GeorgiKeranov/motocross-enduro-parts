@@ -124,7 +124,7 @@ $('.section-search-parts--alt .section__filter-mobile').on('click', function(e) 
 
 let isLoading = false;
 
-if ($('.section-search-parts--alt').length) {
+if ($('.section-search-parts--alt').length && $('.single-product').length == 0 ) {
 	let $form = $('.js-form-get-products-ajax');
 	if ($form.length) {
 		let page = $form.attr('action');
