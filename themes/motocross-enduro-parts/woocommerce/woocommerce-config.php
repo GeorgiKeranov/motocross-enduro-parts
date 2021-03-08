@@ -207,7 +207,7 @@ function crb_get_woocommerce_products( $parameters, $pagination = false ) {
 	$sql_query_parameters = array();
 
 	if ( $pagination ) {
-		$sql_query = "SELECT COUNT(*)";
+		$sql_query = "SELECT COUNT(DISTINCT {$prefix}posts.id)";
 	}
 
 	// This string will store the dynamic sql query and we will not add directly here the user input
