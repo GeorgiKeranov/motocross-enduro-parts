@@ -88,8 +88,31 @@ Container::make( 'post_meta', __( 'Page Builder', 'crb' ) )
 			) )
 	) );
 
-Container::make( 'post_meta', __( 'Заглавие на продукт', 'crb' ) )
+function crb_get_motorcycles() {
+	$motorcycles = new WP_Query( array(
+		'post_type' => 'crb_motorcycle',
+		'posts_per_page' => -1,
+		'orderby' => 'title',
+		'order' => 'ASC',
+	) );
+
+	$motorcycles_data = array( 0 => 'Изберете мотора от който идва тази част' );
+
+	if ( !$motorcycles->have_posts() ) {
+		return $motorcycles_data;
+	}
+
+	foreach ( $motorcycles->posts as $motorcycle ) {
+		$motorcycles_data[$motorcycle->ID] = $motorcycle->post_title;
+	}
+
+	return $motorcycles_data;
+}
+
+Container::make( 'post_meta', __( 'Опции', 'crb' ) )
 	->show_on_post_type( 'product' )
 	->add_fields( array(
 		Field::make( 'text', 'crb_part_name', __( 'Име на част', 'crb' ) ),
+		Field::make( 'select', 'crb_part_disassembled_from_motorcycle', __( 'Часта е разглобена от мотор:', 'crb' ) )
+			->set_options( 'crb_get_motorcycles' ),
 	) );
