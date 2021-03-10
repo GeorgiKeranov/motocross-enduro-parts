@@ -146,10 +146,15 @@ function wpforms_settings_license_callback( $args ) {
 		return $output;
 	}
 
-	$key  = wpforms_setting( 'key', '', 'wpforms_license' );
-	$type = wpforms_get_license_type();
+	$license      = (array) get_option( 'wpforms_license', [] );
+	$key          = ! empty( $license['key'] ) ? $license['key'] : '';
+	$type         = ! empty( $license['type'] ) ? $license['type'] : '';
+	$is_valid_key = ! empty( $key ) &&
+	                ( isset( $license['is_expired'] ) && $license['is_expired'] === false ) &&
+	                ( isset( $license['is_disabled'] ) && $license['is_disabled'] === false ) &&
+	                ( isset( $license['is_invalid'] ) && $license['is_invalid'] === false );
 
-	$output  = '<input type="password" id="wpforms-setting-license-key" value="' . esc_attr( $key ) . '" />';
+	$output  = '<input type="password" id="wpforms-setting-license-key" value="' . esc_attr( $key ) . '"' . disabled( true, $is_valid_key, false ) . ' />';
 	$output .= '<button id="wpforms-setting-license-key-verify" class="wpforms-btn wpforms-btn-md wpforms-btn-orange">' . esc_html__( 'Verify Key', 'wpforms-lite' ) . '</button>';
 
 	// Offer option to deactivate the key.

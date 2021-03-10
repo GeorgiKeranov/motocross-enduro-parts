@@ -1388,6 +1388,7 @@ class WPForms_Frontend {
 			'val_email_suggestion_title' => esc_attr__( 'Click to accept this suggestion.', 'wpforms-lite' ),
 			'val_email_restricted'       => wpforms_setting( 'validation-email-restricted', esc_html__( 'This email address is not allowed.', 'wpforms-lite' ) ),
 			'val_number'                 => wpforms_setting( 'validation-number', esc_html__( 'Please enter a valid number.', 'wpforms-lite' ) ),
+			'val_number_positive'        => wpforms_setting( 'validation-number-positive', esc_html__( 'Please enter a valid positive number.', 'wpforms-lite' ) ),
 			'val_confirm'                => wpforms_setting( 'validation-confirm', esc_html__( 'Field values do not match.', 'wpforms-lite' ) ),
 			'val_fileextension'          => wpforms_setting( 'validation-fileextension', esc_html__( 'File type is not allowed.', 'wpforms-lite' ) ),
 			'val_filesize'               => wpforms_setting( 'validation-filesize', esc_html__( 'File exceeds max size allowed. File was not uploaded.', 'wpforms-lite' ) ),
@@ -1544,7 +1545,7 @@ class WPForms_Frontend {
 	 */
 	public function missing_assets_error_js() {
 
-		if ( ! wpforms_current_user_can() ) {
+		if ( ! wpforms_current_user_can() || wpforms_is_amp() ) {
 			return;
 		}
 

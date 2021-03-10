@@ -54,7 +54,7 @@ var WPFormsBuilderEducation = window.WPFormsBuilderEducation || ( function( docu
 
 			$( document ).on(
 				'click',
-				'.wpforms-add-fields-button, .wpforms-panel-sidebar-section, .wpforms-builder-settings-block-add, .wpforms-field-option-group-toggle',
+				'.wpforms-add-fields-button, .wpforms-panel-sidebar-section, .wpforms-builder-settings-block-add, .wpforms-field-option-group-toggle, .wpforms-field-option-row',
 				function( event ) {
 
 					var $this = $( this );
@@ -64,11 +64,13 @@ var WPFormsBuilderEducation = window.WPFormsBuilderEducation || ( function( docu
 						event.preventDefault();
 						event.stopImmediatePropagation();
 
-						if ( $this.hasClass( 'wpforms-add-fields-button' ) ) {
-							app.upgradeModal( $this.text() + ' ' + wpforms_builder.field, $this.data( 'license' ) );
-						} else {
-							app.upgradeModal( $this.data( 'name' ), $this.data( 'license' ) );
-						}
+						app.upgradeModal( {
+							feature: $this.hasClass( 'wpforms-add-fields-button' ) ?
+								$this.text() + ' ' + wpforms_builder.field :
+								$this.data( 'name' ),
+							license: $this.data( 'license' ),
+							message: $this.data( 'message' ),
+						} );
 					}
 				}
 			);
@@ -101,43 +103,45 @@ var WPFormsBuilderEducation = window.WPFormsBuilderEducation || ( function( docu
 		 *
 		 * @since 1.5.1
 		 *
-		 * @param {string} feature Feature name.
-		 * @param {string} type Feature license type: pro or elite.
+		 * @param {object} args Arguments.
 		 */
-		upgradeModal: function( feature, type ) {
+		upgradeModal: function( args ) {
 
 			// Provide a default value.
-			if ( typeof type === 'undefined' || type.length === 0 ) {
-				type = 'pro';
+			if ( typeof args.license === 'undefined' || args.license.length === 0 ) {
+				args.license = 'pro';
 			}
 
 			// Make sure we received only supported type.
-			if ( $.inArray( type, [ 'pro', 'elite' ] ) < 0 ) {
+			if ( $.inArray( args.license, [ 'pro', 'elite' ] ) < 0 ) {
 				return;
 			}
 
-			var message    = wpforms_builder_lite.upgrade[type].message.replace( /%name%/g, feature ),
-				upgradeURL = wpforms_builder_lite.upgrade[type].url + '&utm_content=' + encodeURIComponent( feature.trim() );
+			var message = args.message && args.message.length ?
+					args.message :
+					wpforms_builder_lite.upgrade[ args.license ].message.replace( /%name%/g, args.feature ),
+				upgradeURL = wpforms_builder_lite.upgrade[ args.license ].url + '&utm_content=' + encodeURIComponent( args.feature.trim() );
 
 			$.alert( {
-				title   : feature + ' ' + wpforms_builder_lite.upgrade[type].title,
+				title   : args.feature + ' ' + wpforms_builder_lite.upgrade[args.license].title,
 				icon    : 'fa fa-lock',
 				content : message,
 				boxWidth: '550px',
 				onOpenBefore: function() {
-					this.$btnc.after( '<div class="discount-note">' + wpforms_builder_lite.upgrade[type].bonus + wpforms_builder_lite.upgrade[type].doc + '</div>' );
+
+					this.$btnc.after( '<div class="discount-note">' + wpforms_builder_lite.upgrade[args.license].bonus + wpforms_builder_lite.upgrade[args.license].doc + '</div>' );
 					this.$body.find( '.jconfirm-content' ).addClass( 'lite-upgrade' );
 				},
 				buttons : {
 					confirm: {
-						text    : wpforms_builder_lite.upgrade[type].button,
+						text    : wpforms_builder_lite.upgrade[args.license].button,
 						btnClass: 'btn-confirm',
 						keys    : [ 'enter' ],
 						action: function() {
 							window.open( upgradeURL, '_blank' );
 							$.alert( {
 								title   : false,
-								content : wpforms_builder_lite.upgrade[type].modal,
+								content : wpforms_builder_lite.upgrade[args.license].modal,
 								icon    : 'fa fa-info-circle',
 								type    : 'blue',
 								boxWidth: '565px',

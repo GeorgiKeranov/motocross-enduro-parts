@@ -153,7 +153,7 @@ function wpforms_admin_scripts() {
 		'provider_delete_error'           => esc_html__( 'Could not disconnect this account.', 'wpforms-lite' ),
 		'provider_auth_error'             => esc_html__( 'Could not authenticate with the provider.', 'wpforms-lite' ),
 		'save_refresh'                    => esc_html__( 'Save and Refresh', 'wpforms-lite' ),
-		'server_error'                    => esc_html__( 'Unfortunately, there was an server connection error.', 'wpforms-lite' ),
+		'server_error'                    => esc_html__( 'Unfortunately there was a server connection error.', 'wpforms-lite' ),
 		'settings_form_style_base'        => sprintf(
 			wp_kses(
 				/* translators: %s - WPForms.com docs page URL. */
@@ -194,6 +194,7 @@ function wpforms_admin_scripts() {
 		'choicesjs_no_choices'            => esc_html__( 'No choices to choose from', 'wpforms-lite' ),
 		'choicesjs_item_select'           => esc_html__( 'Press to select', 'wpforms-lite' ),
 		'debug'                           => wpforms_debug(),
+		'edit_license'                    => esc_html__( 'To edit the License Key, please first click the Deactivate Key button. Please note that deactivating this key will remove access to updates, addons, and support.', 'wpforms-lite' ),
 	);
 	$strings = apply_filters( 'wpforms_admin_strings', $strings );
 

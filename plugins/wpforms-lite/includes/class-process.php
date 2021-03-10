@@ -468,9 +468,13 @@ class WPForms_Process {
 		}
 
 		// Get lead and verify it is attached to the form we received with it.
-		$entry = wpforms()->entry->get( $output['entry_id'] );
+		$entry = wpforms()->entry->get( $output['entry_id'], [ 'cap' => false ] );
 
-		if ( $output['form_id'] != $entry->form_id ) {
+		if ( empty( $entry->form_id ) ) {
+			return false;
+		}
+
+		if ( $output['form_id'] !== $entry->form_id ) {
 			return false;
 		}
 

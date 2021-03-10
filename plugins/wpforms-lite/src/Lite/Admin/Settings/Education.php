@@ -2,6 +2,8 @@
 
 namespace WPForms\Lite\Admin\Settings;
 
+use WPForms\Admin\Settings\Geolocation;
+
 /**
  * Settings changes and enhancements to educate Lite users on what is
  * available in WPForms Pro.
@@ -37,6 +39,11 @@ class Education {
 			\add_filter( 'wpforms_admin_strings', array( $this, 'js_strings' ) );
 			\add_action( 'admin_enqueue_scripts', array( $this, 'enqueues' ) );
 			\add_action( 'wpforms_settings_providers', array( $this, 'providers' ), 10000, 1 );
+		}
+
+		// Geolocation API related hooks.
+		if ( \wpforms_is_admin_page( 'settings', 'geolocation' ) ) {
+			\add_action( 'wpforms_settings_init', [ $this, 'geolocation_settings' ] );
 		}
 	}
 
@@ -148,5 +155,15 @@ class Education {
 				\esc_html( $descr )
 			);
 		}
+	}
+
+	/**
+	 * Add Geolocation settings page.
+	 *
+	 * @since 1.6.5
+	 */
+	public function geolocation_settings() {
+
+		( new Geolocation() )->hooks();
 	}
 }

@@ -27,11 +27,13 @@ class Education {
 	public function hooks() {
 
 		if ( wp_doing_ajax() ) {
-			add_action( 'wp_ajax_wpforms_dyk_dismiss', array( $this, 'dyk_ajax_dismiss' ) );
+			add_action( 'wp_ajax_wpforms_dyk_dismiss', [ $this, 'dyk_ajax_dismiss' ] );
 
-			add_action( 'wp_ajax_wpforms_update_field_captcha', array( $this, 'captcha_field_callback' ) );
+			add_action( 'wp_ajax_wpforms_update_field_captcha', [ $this, 'captcha_field_callback' ] );
 
-			add_action( 'wpforms_field_options_after_advanced-options', array( $this, 'field_conditional_logic' ), 10, 2 );
+			add_action( 'wpforms_field_options_bottom_advanced-options', [ $this, 'geolocation_options' ], 10, 2 );
+
+			add_action( 'wpforms_field_options_after_advanced-options', [ $this, 'field_conditional_logic' ], 10, 2 );
 		}
 
 		// Only proceed for the form builder.
@@ -39,25 +41,27 @@ class Education {
 			return;
 		}
 
-		add_action( 'wpforms_field_options_after_advanced-options', array( $this, 'field_conditional_logic' ), 10, 2 );
+		add_action( 'wpforms_field_options_bottom_advanced-options', [ $this, 'geolocation_options' ], 10, 2 );
 
-		add_filter( 'wpforms_lite_builder_strings', array( $this, 'js_strings' ) );
+		add_action( 'wpforms_field_options_after_advanced-options', [ $this, 'field_conditional_logic' ], 10, 2 );
 
-		add_action( 'wpforms_builder_enqueues_before', array( $this, 'enqueues' ) );
+		add_filter( 'wpforms_lite_builder_strings', [ $this, 'js_strings' ] );
 
-		add_action( 'wpforms_setup_panel_after', array( $this, 'templates' ) );
+		add_action( 'wpforms_builder_enqueues_before', [ $this, 'enqueues' ] );
 
-		add_filter( 'wpforms_builder_fields_buttons', array( $this, 'fields' ), 50 );
+		add_action( 'wpforms_setup_panel_after', [ $this, 'templates' ] );
 
-		add_action( 'wpforms_builder_after_panel_sidebar', array( $this, 'settings' ), 100, 2 );
+		add_filter( 'wpforms_builder_fields_buttons', [ $this, 'fields' ], 50 );
 
-		add_action( 'wpforms_providers_panel_sidebar', array( $this, 'providers' ), 50 );
+		add_action( 'wpforms_builder_after_panel_sidebar', [ $this, 'settings' ], 100, 2 );
 
-		add_action( 'wpforms_payments_panel_sidebar', array( $this, 'payments' ), 50 );
+		add_action( 'wpforms_providers_panel_sidebar', [ $this, 'providers' ], 50 );
 
-		add_action( 'wpforms_builder_settings_notifications_after', array( $this, 'dyk_notifications' ) );
+		add_action( 'wpforms_payments_panel_sidebar', [ $this, 'payments' ], 50 );
 
-		add_action( 'wpforms_builder_settings_confirmations_after', array( $this, 'dyk_confirmations' ) );
+		add_action( 'wpforms_builder_settings_notifications_after', [ $this, 'dyk_notifications' ] );
+
+		add_action( 'wpforms_builder_settings_confirmations_after', [ $this, 'dyk_confirmations' ] );
 	}
 
 	/**
@@ -368,6 +372,51 @@ class Education {
 		);
 
 		return $fields;
+	}
+
+	/**
+	 * Display geolocation options.
+	 *
+	 * @since 1.6.5
+	 *
+	 * @param array  $field    Field data.
+	 * @param object $instance Builder instance.
+	 */
+	public function geolocation_options( $field, $instance ) {
+
+		if ( ! in_array( $field['type'], [ 'text', 'address' ], true ) ) {
+			return;
+		}
+
+		$instance->field_element(
+			'row',
+			$field,
+			[
+				'slug'    => 'enable_address_autocomplete',
+				'class'   => 'upgrade-modal',
+				'data'    => [
+					'name'    => esc_html__( 'Address Autocomplete', 'wpforms-lite' ),
+					'licence' => 'pro',
+					'message' => esc_html__( 'We\'re sorry, Address Autocomplete is part of the Geolocation Addon and not available on your plan. Please upgrade to the PRO plan to unlock all these awesome features.', 'wpforms-lite' ),
+				],
+				'content' => $instance->field_element(
+					'checkbox',
+					$field,
+					[
+						'slug'  => 'enable_address_autocomplete',
+						'value' => 0,
+						'desc'  => sprintf(
+							'%s<span class="wpforms-field-option-education-pro-badge"></span>',
+							esc_html__( 'Enable Address Autocomplete', 'wpforms-lite' )
+						),
+						'attrs' => [
+							'disabled' => 'disabled',
+						],
+					],
+					false
+				),
+			]
+		);
 	}
 
 	/**

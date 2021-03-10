@@ -310,8 +310,8 @@ class WPForms_Builder {
 		wp_enqueue_script(
 			'dom-purify',
 			WPFORMS_PLUGIN_URL . 'assets/js/purify.min.js',
-			array(),
-			'2.1.1'
+			[],
+			'2.2.6'
 		);
 
 		if ( wp_is_mobile() ) {

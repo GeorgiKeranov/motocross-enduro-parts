@@ -256,13 +256,33 @@ class SMTP {
 			return;
 		}
 
-		$button_format = '<button class="button %3$s" data-plugin="%1$s" data-action="%4$s">%2$s</button>';
+		$button_format       = '<button class="button %3$s" data-plugin="%1$s" data-action="%4$s">%2$s</button>';
+		$button_allowed_html = [
+			'button' => [
+				'class'       => true,
+				'data-plugin' => true,
+				'data-action' => true,
+			],
+		];
+
 		if (
 			! $this->output_data['plugin_installed'] &&
 			! $this->output_data['pro_plugin_installed'] &&
 			! wpforms_can_install( 'plugin' )
 		) {
-			$button_format = '<a class="link" href="%1$s" target="_blank" rel="nofollow noopener">%2$s <span aria-hidden="true" class="dashicons dashicons-external"></span></a>';
+			$button_format       = '<a class="link" href="%1$s" target="_blank" rel="nofollow noopener">%2$s <span aria-hidden="true" class="dashicons dashicons-external"></span></a>';
+			$button_allowed_html = [
+				'a'    => [
+					'class'  => true,
+					'href'   => true,
+					'target' => true,
+					'rel'    => true,
+				],
+				'span' => [
+					'class'       => true,
+					'aria-hidden' => true,
+				],
+			];
 		}
 
 		$button = sprintf( $button_format, esc_attr( $step['plugin'] ), esc_html( $step['button_text'] ), esc_attr( $step['button_class'] ), esc_attr( $step['button_action'] ) );
@@ -283,7 +303,7 @@ class SMTP {
 			esc_attr__( 'Step 1', 'wpforms-lite' ),
 			esc_html( $step['heading'] ),
 			esc_html( $step['description'] ),
-			wp_kses_post( $button )
+			wp_kses( $button, $button_allowed_html )
 		);
 	}
 

@@ -3362,7 +3362,6 @@ ul.updraft-restore--stages li.active {
 	border-top: 1px solid #EEE;
 	padding: 20px;
 	text-align: center;
-	position: -webkit-sticky;
 	position: sticky;
 	bottom: 0;
 	background: #FFF;

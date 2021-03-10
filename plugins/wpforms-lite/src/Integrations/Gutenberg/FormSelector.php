@@ -128,6 +128,10 @@ class FormSelector implements IntegrationInterface {
 			'panel_notice_link' => \esc_html__( 'Check out our complete guide!', 'wpforms-lite' ),
 		);
 
+		if ( version_compare( $GLOBALS['wp_version'], '5.1.1', '<=' ) ) {
+			array_pop( $i18n['form_keywords'] );
+		}
+
 		\wp_enqueue_script(
 			'wpforms-gutenberg-form-selector',
 			// The unminified version is not supported by the browser.

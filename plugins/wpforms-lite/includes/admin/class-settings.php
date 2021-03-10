@@ -197,6 +197,11 @@ class WPForms_Settings {
 				'form'   => false,
 				'submit' => false,
 			],
+			'geolocation'  => [
+				'name'   => esc_html__( 'Geolocation', 'wpforms-lite' ),
+				'form'   => false,
+				'submit' => false,
+			],
 			'misc'         => [
 				'name'   => esc_html__( 'Misc', 'wpforms-lite' ),
 				'form'   => true,
@@ -414,6 +419,12 @@ class WPForms_Settings {
 					'name'    => esc_html__( 'Number', 'wpforms-lite' ),
 					'type'    => 'text',
 					'default' => esc_html__( 'Please enter a valid number.', 'wpforms-lite' ),
+				],
+				'validation-number-positive'       => [
+					'id'      => 'validation-number-positive',
+					'name'    => esc_html__( 'Number Positive', 'wpforms-lite' ),
+					'type'    => 'text',
+					'default' => esc_html__( 'Please enter a valid positive number.', 'wpforms-lite' ),
 				],
 				'validation-confirm'               => [
 					'id'      => 'validation-confirm',

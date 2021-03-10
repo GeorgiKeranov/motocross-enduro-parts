@@ -709,12 +709,13 @@ abstract class WPForms_Field {
 			// Row.
 			case 'row':
 				$output = sprintf(
-					'<div class="wpforms-field-option-row wpforms-field-option-row-%s %s" id="wpforms-field-option-row-%d-%s" data-field-id="%d">%s</div>',
+					'<div class="wpforms-field-option-row wpforms-field-option-row-%s %s" id="wpforms-field-option-row-%d-%s" data-field-id="%d" %s>%s</div>',
 					$slug,
 					$class,
 					$id,
 					$slug,
 					$id,
+					$attrs,
 					$args['content']
 				);
 				break;

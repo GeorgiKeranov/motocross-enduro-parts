@@ -69,7 +69,7 @@ class Connect {
 
 		// Check for permissions.
 		if ( ! \current_user_can( 'install_plugins' ) ) {
-			\wp_send_json_error( [ 'message' => \esc_html__( 'Sorry, you do not have permission to install plugins.', 'wpforms-lite' ) ] );
+			\wp_send_json_error( [ 'message' => \esc_html__( 'You are not allowed to install plugins.', 'wpforms-lite' ) ] );
 		}
 
 		$key = ! empty( $_POST['key'] ) ? \sanitize_text_field( \wp_unslash( $_POST['key'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification
@@ -79,7 +79,7 @@ class Connect {
 		}
 
 		if ( wpforms()->pro ) {
-			\wp_send_json_error( [ 'message' => \esc_html__( 'Only the Lite version can upgrade.', 'wpforms-lite' ) ] );
+			\wp_send_json_error( [ 'message' => \esc_html__( 'Only the Lite version can be upgraded.', 'wpforms-lite' ) ] );
 		}
 
 		// Verify pro version is not installed.
@@ -96,7 +96,7 @@ class Connect {
 
 			\wp_send_json_success(
 				[
-					'message' => \esc_html__( 'WPForms Pro was already installed and has not been activated.', 'wpforms-lite' ),
+					'message' => \esc_html__( 'WPForms Pro is installed but not activated.', 'wpforms-lite' ),
 					'reload'  => true,
 				]
 			);
@@ -146,7 +146,7 @@ class Connect {
 	 */
 	public function process() {
 
-		$error = esc_html__( 'Could not install an upgrade. Please download from wpforms.com and install manually.', 'wpforms-lite' );
+		$error = esc_html__( 'There was an error while installing an upgrade. Please download the plugin from wpforms.com and install it manually.', 'wpforms-lite' );
 
 		// Verify params present (oth & download link).
 		$post_oth = ! empty( $_REQUEST['oth'] ) ? \sanitize_text_field( \wp_unslash( $_REQUEST['oth'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification
@@ -200,7 +200,7 @@ class Connect {
 		// Check for file system permissions.
 		if ( false === $creds || ! \WP_Filesystem( $creds ) ) {
 			\wp_send_json_error(
-				\esc_html__( 'Could not install an upgrade. Please check file system permissions and try again. Also you can download plugin from wpforms.com and install it manually.', 'wpforms-lite' )
+				\esc_html__( 'There was an error while installing an upgrade. Please check file system permissions and try again. Also, you can download the plugin from wpforms.com and install it manually.', 'wpforms-lite' )
 			);
 		}
 
@@ -256,7 +256,7 @@ class Connect {
 			} else {
 				// Reactivate the lite plugin if pro activation failed.
 				\activate_plugin( \plugin_basename( WPFORMS_PLUGIN_FILE ), '', false, true );
-				\wp_send_json_error( \esc_html__( 'Pro version installed but needs to be activated from the Plugins page inside your WordPress admin.', 'wpforms-lite' ) );
+				\wp_send_json_error( \esc_html__( 'Pro version installed but needs to be activated on the Plugins page inside your WordPress admin.', 'wpforms-lite' ) );
 			}
 		}
 

@@ -19,7 +19,12 @@ var WPFormsLogger = window.WPFormsLogger || ( function( document, window, $ ) {
 		 */
 		init: function() {
 
-			app.bindPopup();
+			$( app.ready );
+		},
+
+		ready: function() {
+
+			$( app.bindPopup() );
 		},
 
 		/**
@@ -29,7 +34,7 @@ var WPFormsLogger = window.WPFormsLogger || ( function( document, window, $ ) {
 		 */
 		bindPopup: function() {
 
-			$( '.wp-list-table.logs' ).on( 'click', '.js-single-log-target', function( e ) {
+			$( '.wpforms-list-table--logs .wp-list-table' ).on( 'click', '.js-single-log-target', function( e ) {
 
 				e.preventDefault();
 

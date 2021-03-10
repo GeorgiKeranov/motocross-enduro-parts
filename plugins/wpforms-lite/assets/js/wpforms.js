@@ -266,6 +266,12 @@ var wpforms = window.wpforms || ( function( document, window, $ ) {
 					return ! ( value.indexOf( element.inputmask.opts.placeholder ) + 1 );
 				}, wpforms_settings.val_empty_blanks );
 
+				// Validate Payment item value on zero.
+				$.validator.addMethod( 'required-positive-number', function( value, element ) {
+
+					return value > 0;
+				}, wpforms_settings.val_number_positive );
+
 				// Validate US Phone Field.
 				$.validator.addMethod( 'us-phone-field', function( value, element ) {
 					if ( value.match( /[^\d()\-+\s]/ ) ) {
@@ -773,17 +779,21 @@ var wpforms = window.wpforms || ( function( document, window, $ ) {
 
 			// Mailcheck suggestion.
 			$( document ).on( 'blur', '.wpforms-field-email input', function() {
-				var $t = $( this ),
-					id = $t.attr( 'id' );
 
-				$t.mailcheck( {
-					suggested: function( el, suggestion ) {
-						$( '#' + id + '_suggestion' ).remove();
-						var sugg = '<a href="#" class="mailcheck-suggestion" data-id="' + id + '" title="' + wpforms_settings.val_email_suggestion_title + '">' + suggestion.full + '</a>';
-						sugg = wpforms_settings.val_email_suggestion.replace( '{suggestion}', sugg );
-						$( el ).parent().append( '<label class="wpforms-error mailcheck-error" id="' + id + '_suggestion">' + sugg + '</label>' );
+				var $input = $( this ),
+					id = $input.attr( 'id' );
+
+				$input.mailcheck( {
+					suggested: function( $el, suggestion ) {
+
+						suggestion = '<a href="#" class="mailcheck-suggestion" data-id="' + id + '" title="' + wpforms_settings.val_email_suggestion_title + '">' + suggestion.full + '</a>';
+						suggestion = wpforms_settings.val_email_suggestion.replace( '{suggestion}', suggestion );
+
+						$el.closest( '.wpforms-field' ).find( '#' + id + '_suggestion' ).remove();
+						$el.parent().append( '<label class="wpforms-error mailcheck-error" id="' + id + '_suggestion">' + suggestion + '</label>' );
 					},
 					empty: function() {
+
 						$( '#' + id + '_suggestion' ).remove();
 					},
 				} );
@@ -791,11 +801,14 @@ var wpforms = window.wpforms || ( function( document, window, $ ) {
 
 			// Apply Mailcheck suggestion.
 			$( document ).on( 'click', '.wpforms-field-email .mailcheck-suggestion', function( e ) {
-				var $t = $( this ),
-					id = $t.attr( 'data-id' );
+
+				var $suggestion = $( this ),
+					$field = $suggestion.closest( '.wpforms-field' ),
+					id = $suggestion.data( 'id' );
+
 				e.preventDefault();
-				$( '#' + id ).val( $t.text() );
-				$t.parent().remove();
+				$field.find( '#' + id ).val( $suggestion.text() );
+				$suggestion.parent().remove();
 			} );
 
 		},
@@ -934,14 +947,20 @@ var wpforms = window.wpforms || ( function( document, window, $ ) {
 
 			// Payments: Sanitize/format user input amounts.
 			$( document ).on( 'focusout', '.wpforms-payment-user-input', function() {
-				var $this     = $( this ),
-					amount    = $this.val(),
-					sanitized = app.amountSanitize( amount ),
+				var $this  = $( this ),
+					amount = $this.val();
+
+				if ( ! amount ) {
+					return amount;
+				}
+
+				var sanitized = app.amountSanitize( amount ),
 					formatted = app.amountFormat( sanitized );
+
 				$this.val( formatted );
 			} );
 
-			// Payments: Update Total field(s) when conditials are processed.
+			// Payments: Update Total field(s) when conditionals are processed.
 			$( document ).on( 'wpformsProcessConditionals', function( e, el ) {
 				app.amountTotal( el, true );
 			} );

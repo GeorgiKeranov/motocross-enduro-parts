@@ -48,7 +48,7 @@ $pages_exists = (int) wp_count_posts( 'page' )->publish > 0;
 				<p class="secondary">
 					<?php
 					printf(
-						wp_kses( /* translators: %s - Video tutorial toggle class. */
+						wp_kses( /* translators: %1$s - Video tutorial toggle CSS classes, %2$s - shortcode toggle CSS classes. */
 							__( 'You can also <a href="#" class="%1$s">embed your form manually</a> or <a href="#" class="%2$s">use a shortcode</a>', 'wpforms-lite' ),
 							[
 								'a' => [

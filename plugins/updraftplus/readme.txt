@@ -3,7 +3,7 @@ Contributors: Backup with UpdraftPlus, DavidAnderson, DNutbourne, aporter, snigh
 Tags: backup, restore, database backup, wordpress backup, cloud backup, s3, dropbox, google drive, onedrive, ftp, backups
 Requires at least: 3.2
 Tested up to: 5.6
-Stable tag: 1.16.46
+Stable tag: 1.16.47
 Author URI: https://updraftplus.com
 Donate link: https://david.dw-perspective.org.uk/donate
 License: GPLv3 or later
@@ -167,6 +167,21 @@ Unfortunately not; since this is free software, there’s no warranty and no gua
 The <a href="https://updraftplus.com/news/">UpdraftPlus backup blog</a> is the best place to learn in more detail about any important changes.
 
 N.B. Paid versions of UpdraftPlus Backup / Restore have a version number which is 1 higher in the first digit, and has an extra component on the end, but the changelog below still applies. i.e. changes listed for 1.16.32.x of the free version correspond to changes made in 2.16.32.x of the paid version.
+
+= 1.16.47 - 25/Jan/2021 =
+
+* FEATURE: added the ability to anonymise personal data in database backups from the "Backup Now" dialog (Premium / add-on)
+* FEATURE: Add page management module for UpdraftCentral
+* FIX: 1.16.42 Introduced a regression (truncation) when listing files from Dropbox when there were multiple pages of results
+* TWEAK: Force host-style bucket access when backing up via S3 generic to Alibabacloud
+* TWEAK: Remove unneeded Google SDK files from our fork of the SDK taking the size from 6MB to 800KB
+* TWEAK: Incorrect jQuery UI dialog extended filename
+* TWEAK: Change some class names to improve compatibility with other plugins using the Google SDK and auto-loading their version unconditionally
+* TWEAK: Update the delete file Dropbox API call to version 2
+* TWEAK: Change the S3 test settings form names to match the saved setting names
+* TWEAK: Check the Content-Type on the response from an S3-compatible provider slightly less strictly, improving compatibility with at least one otherwise-working implementation
+* TWEAK: Update the Dropbox SDK to use scopes
+* TWEAK: Handle hosts that have removed disk_free_space() (now that on PHP 8 disabling functions removes them)
 
 = 1.16.46 - 05/Jan/2021 =
 
@@ -1214,4 +1229,4 @@ Reliance upon any non-English translation is at your own risk; UpdraftPlus can g
 We recognise and thank those mentioned at https://updraftplus.com/acknowledgements/ for code and/or libraries used and/or modified under the terms of their open source licences.
 
 == Upgrade Notice ==
-* 1.16.46: Some PHP 8.0 deprecation-related fixes. A recommended update for all.
+* 1.16.47: Various compatibility tweaks and improvements. A recommended update for all.

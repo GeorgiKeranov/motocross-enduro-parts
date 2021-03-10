@@ -937,7 +937,7 @@ class WPForms_Tools {
 		}
 
 		$tmp_name = isset( $_FILES['file']['tmp_name'] ) ? sanitize_text_field( $_FILES['file']['tmp_name'] ) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash -- wp_unslash() breaks upload on Windows.
-		$forms    = json_decode( file_get_contents( $tmp_name ), true );
+		$forms    = json_decode( \WPForms\Helpers\File::remove_utf8_bom( file_get_contents( $tmp_name ) ), true );
 
 		if ( empty( $forms ) || ! is_array( $forms ) ) {
 			wp_die(

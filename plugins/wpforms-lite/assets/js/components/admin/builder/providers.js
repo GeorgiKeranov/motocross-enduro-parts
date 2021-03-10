@@ -652,6 +652,12 @@ WPForms.Admin.Builder.Providers = WPForms.Admin.Builder.Providers || ( function(
 						$row.remove();
 					} );
 
+				// CONNECTION: Generated.
+				$( '#wpforms-panel-providers' ).on( 'connectionGenerated', function() {
+
+					wpf.initTooltips();
+				} );
+
 				// CONNECTION: Rendered.
 				$( '#wpforms-panel-providers' ).on( 'connectionRendered', function( e, provider, connectionId ) {
 

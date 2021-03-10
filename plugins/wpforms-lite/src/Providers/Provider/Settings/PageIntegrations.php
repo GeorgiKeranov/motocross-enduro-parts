@@ -98,11 +98,28 @@ abstract class PageIntegrations implements PageIntegrationsInterface {
 						<?php
 						if ( ! empty( $accounts ) ) {
 							foreach ( $accounts as $key => $account ) {
+								if ( empty( $key ) ) {
+									continue;
+								}
+
+								$account_label = '<em>' . esc_html__( 'No Label', 'wpforms-lite' ) . '</em>';
+
+								if ( ! empty( $account['label'] ) ) {
+									$account_label = esc_html( $account['label'] );
+								}
+
+								$account_connected = esc_html__( 'N/A', 'wpforms-lite' );
+
+								if ( ! empty( $account['date'] ) ) {
+									$account_connected = date_i18n( get_option( 'date_format' ), $account['date'] );
+								}
+
 								echo '<li class="wpforms-clear">';
-								echo '<span class="label">' . \esc_html( $account['label'] ) . '</span>';
+								echo '<span class="label">' . $account_label . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+
 								/* translators: %s - Connection date. */
-								echo '<span class="date">' . \sprintf( \esc_html__( 'Connected on: %s', 'wpforms-lite' ), \date_i18n( \get_option( 'date_format' ), $account['date'] ) ) . '</span>';
-								echo '<span class="remove"><a href="#" data-provider="' . \esc_attr( $this->core->slug ) . '" data-key="' . $key . '">' . \esc_html__( 'Disconnect', 'wpforms-lite' ) . '</a></span>';
+								echo '<span class="date">' . sprintf( esc_html__( 'Connected on: %s', 'wpforms-lite' ), esc_html( $account_connected ) ) . '</span>';
+								echo '<span class="remove"><a href="#" data-provider="' . esc_attr( $this->core->slug ) . '" data-key="' . esc_attr( $key ) . '">' . esc_html__( 'Disconnect', 'wpforms-lite' ) . '</a></span>';
 								echo '</li>';
 							}
 						}

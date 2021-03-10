@@ -790,6 +790,7 @@ function wpforms_countries() {
 		'BM' => esc_html__( 'Bermuda', 'wpforms-lite' ),
 		'BT' => esc_html__( 'Bhutan', 'wpforms-lite' ),
 		'BO' => esc_html__( 'Bolivia (Plurinational State of)', 'wpforms-lite' ),
+		'BQ' => esc_html__( 'Bonaire, Saint Eustatius and Saba', 'wpforms-lite' ),
 		'BA' => esc_html__( 'Bosnia and Herzegovina', 'wpforms-lite' ),
 		'BW' => esc_html__( 'Botswana', 'wpforms-lite' ),
 		'BV' => esc_html__( 'Bouvet Island', 'wpforms-lite' ),
@@ -1254,24 +1255,24 @@ function wpforms_light_or_dark( $color, $dark = '#000000', $light = '#FFFFFF' ) 
  *
  * @return array
  */
-function wpforms_get_hierarchical_object( $args = array(), $flat = false ) {
+function wpforms_get_hierarchical_object( $args = [], $flat = false ) { // phpcs:ignore Generic.Metrics.CyclomaticComplexity.MaxExceeded
 
 	if ( empty( $args['taxonomy'] ) && empty( $args['post_type'] ) ) {
-		return array();
+		return [];
 	}
 
-	$children   = array();
-	$parents    = array();
+	$children   = [];
+	$parents    = [];
 	$ref_parent = '';
 	$ref_name   = '';
 
 	if ( ! empty( $args['post_type'] ) ) {
 
-		$defaults   = array(
+		$defaults   = [
 			'posts_per_page' => - 1,
 			'orderby'        => 'title',
 			'order'          => 'ASC',
-		);
+		];
 		$args       = wp_parse_args( $args, $defaults );
 		$items      = get_posts( $args );
 		$ref_parent = 'post_parent';
@@ -1280,9 +1281,11 @@ function wpforms_get_hierarchical_object( $args = array(), $flat = false ) {
 
 	} elseif ( ! empty( $args['taxonomy'] ) ) {
 
-		$defaults   = array(
+		$defaults   = [
 			'hide_empty' => false,
-		);
+			'orderby'    => 'name',
+			'order'      => 'ASC',
+		];
 		$args       = wp_parse_args( $args, $defaults );
 		$items      = get_terms( $args );
 		$ref_parent = 'parent';
@@ -1291,7 +1294,7 @@ function wpforms_get_hierarchical_object( $args = array(), $flat = false ) {
 	}
 
 	if ( empty( $items ) || is_wp_error( $items ) ) {
-		return array();
+		return [];
 	}
 
 	foreach ( $items as $item ) {
@@ -1305,22 +1308,74 @@ function wpforms_get_hierarchical_object( $args = array(), $flat = false ) {
 	}
 
 	$children_count = count( $children );
+
 	while ( $children_count >= 1 ) {
 		foreach ( $children as $child ) {
 			_wpforms_get_hierarchical_object_search( $child, $parents, $children, $ref_parent );
+
 			// $children is modified by reference, so we need to recount to make sure we met the limits.
 			$children_count = count( $children );
 		}
 	}
 
+	// Sort nested child objects alphabetically using natural order, applies only
+	// to ordering by entry title or term name.
+	if ( in_array( $args['orderby'], [ 'title', 'name' ], true ) ) {
+		_wpforms_sort_hierarchical_object( $parents, $args['orderby'], $args['order'] );
+	}
+
 	if ( $flat ) {
-		$parents_flat = array();
+		$parents_flat = [];
+
 		_wpforms_get_hierarchical_object_flatten( $parents, $parents_flat, $ref_name );
 
 		return $parents_flat;
 	}
 
 	return $parents;
+}
+
+/**
+ * Sort a nested array of objects.
+ *
+ * @since 1.6.5
+ *
+ * @param array  $objects An array of objects to sort.
+ * @param string $orderby The object field to order by.
+ * @param string $order   Order direction.
+ */
+function _wpforms_sort_hierarchical_object( &$objects, $orderby, $order ) {
+
+	// Map WP_Query/WP_Term_Query orderby to WP_Post/WP_Term property.
+	$map = [
+		'title' => 'post_title',
+		'name'  => 'name',
+	];
+
+	foreach ( $objects as $object ) {
+		if ( ! isset( $object->children ) ) {
+			continue;
+		}
+
+		uasort(
+			$object->children,
+			static function ( $a, $b ) use ( $map, $orderby, $order ) {
+
+				/**
+				 * This covers most cases and works for most languages. For some – e.g. European languages
+				 * that use extended latin charset (Polish, German etc) it will sort the objects into 2
+				 * groups – base and extended, properly sorted within each group. Making it even more
+				 * robust requires either additional PHP extensions to be installed on the server
+				 * or using heavy (and slow) conversions and computations.
+				 */
+				return $order === 'ASC' ?
+					strnatcasecmp( $a->{$map[ $orderby ]}, $b->{$map[ $orderby ]} ) :
+					strnatcasecmp( $b->{$map[ $orderby ]}, $a->{$map[ $orderby ]} );
+			}
+		);
+
+		_wpforms_sort_hierarchical_object( $object->children, $orderby, $order );
+	}
 }
 
 /**
@@ -1781,9 +1836,15 @@ function wpforms_get_capability_manage_options() {
  *
  * @return bool
  */
-function wpforms_current_user_can( $caps = array(), $id = 0 ) {
+function wpforms_current_user_can( $caps = [], $id = 0 ) {
 
-	$user_can = wpforms()->get( 'access' )->current_user_can( $caps , $id );
+	$access = wpforms()->get( 'access' );
+
+	if ( ! method_exists( $access, 'current_user_can' ) ) {
+		return false;
+	}
+
+	$user_can = $access->current_user_can( $caps , $id );
 
 	return apply_filters( 'wpforms_current_user_can', $user_can, $caps, $id );
 }
@@ -1810,7 +1871,7 @@ function wpforms_datetime_format( $date, $format = '', $gmt_offset = false ) {
 	}
 
 	if ( $gmt_offset ) {
-		$date += intval( get_option( 'gmt_offset' ) ) * 3600;
+		$date += (int) ( get_option( 'gmt_offset' ) * HOUR_IN_SECONDS );
 	}
 
 	return date_i18n( $format, $date );
@@ -2243,6 +2304,7 @@ function wpforms_get_activated_timestamp( $type = '' ) {
  * Detect if AJAX frontend form submit is being processed.
  *
  * @since 1.5.8.2
+ * @since 1.6.5 Added filterable frontend ajax actions list as a fallback to missing referer cases.
  *
  * @return bool
  */
@@ -2254,14 +2316,35 @@ function wpforms_is_frontend_ajax() {
 	}
 
 	// It targets admin-ajax.php.
-	if ( isset( $_SERVER['SCRIPT_FILENAME'] ) && basename( sanitize_text_field( wp_unslash( $_SERVER['SCRIPT_FILENAME'] ) ) ) !== 'admin-ajax.php' ) {
+	if (
+		isset( $_SERVER['SCRIPT_FILENAME'] ) &&
+		basename( sanitize_text_field( wp_unslash( $_SERVER['SCRIPT_FILENAME'] ) ) ) !== 'admin-ajax.php'
+	) {
 		return false;
 	}
 
-	$ref = wp_get_raw_referer();
+	$ref    = wp_get_raw_referer();
+	$action = isset( $_POST['action'] ) ? sanitize_key( $_POST['action'] ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing
 
+	// It has a frontend AJAX action name if there's no referer.
 	if ( ! $ref ) {
-		return false;
+
+		$frontend_actions = [
+			'wpforms_submit',
+			'wpforms_file_upload_speed_test',
+			'wpforms_upload_chunk_init',
+			'wpforms_upload_chunk',
+			'wpforms_file_chunks_uploaded',
+			'wpforms_remove_file',
+			'wpforms_restricted_email',
+			'wpforms_form_locker_unique_answer',
+			'wpforms_form_abandonment',
+		];
+
+		// This hook is running on "plugins_loaded", mind the hooks order when using it.
+		$frontend_actions = (array) apply_filters( 'wpforms_is_frontend_ajax_frontend_actions', $frontend_actions );
+
+		return in_array( $action, $frontend_actions, true );
 	}
 
 	$path       = wp_parse_url( $ref, PHP_URL_PATH );
@@ -2271,8 +2354,6 @@ function wpforms_is_frontend_ajax() {
 	if ( strpos( $path, $admin_path ) !== false ) {
 		return false;
 	}
-
-	$action = isset( $_POST['action'] ) ? sanitize_key( $_POST['action'] ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing
 
 	// It's a WPForms request.
 	if ( strpos( $action, 'wpforms' ) !== 0 ) {
