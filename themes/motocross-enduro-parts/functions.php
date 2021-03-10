@@ -84,6 +84,9 @@ if ( ! function_exists( 'crb_setup_theme' ) ) {
 		# Add functionality for compatible motorcycles
 		include_once( CRB_THEME_DIR . 'compatible-motorcycles/functionality.php' );
 
+		# Add functionality for motorcycles
+		include_once( CRB_THEME_DIR . 'options/motorcycles.php' );
+
 		# Register custom widgets
 		include_once( CRB_THEME_DIR . 'options/product-categories-widget.php' );
 
