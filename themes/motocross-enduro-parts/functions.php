@@ -93,6 +93,9 @@ if ( ! function_exists( 'crb_setup_theme' ) ) {
 		# Add functionality to attach parts to motorcycles in admin page
 		include_once( CRB_THEME_DIR . 'options/attach-parts-to-motorcycles.php' );
 
+		# Add admin page for sales by motorcycle
+		include_once( CRB_THEME_DIR . 'options/sales-by-motorcycles.php' );
+
 		# Register custom widgets
 		include_once( CRB_THEME_DIR . 'options/product-categories-widget.php' );
 
