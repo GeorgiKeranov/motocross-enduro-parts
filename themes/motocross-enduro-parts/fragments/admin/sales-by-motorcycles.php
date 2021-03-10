@@ -1,5 +1,5 @@
 <?php 
-$total_sales_by_motorcycle = crb_get_total_sales_by_motorcycles();
+$total_sales_and_future_sales_by_motorcycle = crb_get_total_sales_and_future_sales_by_motorcycles();
 ?>
 
 <div class="wrap">
@@ -16,15 +16,21 @@ $total_sales_by_motorcycle = crb_get_total_sales_by_motorcycles();
 									<th>Мотор</th>
 
 									<th>Общо продажби за целият период</th>
+
+									<th>Общо оставащи части за продажба</th>
 								</tr>
 							</thead>
 							
-							<?php if ( !empty( $total_sales_by_motorcycle ) ) :
-								$total_sales_all_motorcycles = 0; ?>
+							<?php if ( !empty( $total_sales_and_future_sales_by_motorcycle ) ) :
+								$total_sales_all_motorcycles = 0;
+								$total_future_sales_all_motorcycles = 0;
+								?>
 
 								<tbody>
-									<?php foreach ( $total_sales_by_motorcycle as $motorcycle_id => $motorcycle_data ) :
-										$total_sales_all_motorcycles += $motorcycle_data['total_sales']; ?>
+									<?php foreach ( $total_sales_and_future_sales_by_motorcycle as $motorcycle_id => $motorcycle_data ) :
+										$total_sales_all_motorcycles += $motorcycle_data['total_sales'];
+										$total_future_sales_all_motorcycles += $motorcycle_data['total_future_sales'];
+										?>
 										
 										<tr>
 											<td>
@@ -32,7 +38,11 @@ $total_sales_by_motorcycle = crb_get_total_sales_by_motorcycles();
 											</td>
 
 											<td>
-												<?php echo esc_html( $motorcycle_data['total_sales'] ) . 'лв'; ?>
+												<?php echo $motorcycle_data['total_sales'] . 'лв'; ?>
+											</td>
+
+											<td>
+												<?php echo $motorcycle_data['total_future_sales'] . 'лв'; ?>
 											</td>
 										</tr>
 									<?php endforeach; ?>
@@ -44,6 +54,10 @@ $total_sales_by_motorcycle = crb_get_total_sales_by_motorcycles();
 
 										<td>
 											<?php echo $total_sales_all_motorcycles . 'лв'; ?>
+										</td>
+
+										<td>
+											<?php echo $total_future_sales_all_motorcycles . 'лв'; ?>
 										</td>
 									</tr>
 								</tbody>
