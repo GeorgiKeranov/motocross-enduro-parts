@@ -87,6 +87,12 @@ if ( ! function_exists( 'crb_setup_theme' ) ) {
 		# Add functionality for motorcycles
 		include_once( CRB_THEME_DIR . 'options/motorcycles.php' );
 
+		# Add functionality to attach parts to motorcycles in admin page
+		include_once( CRB_THEME_DIR . 'options/autofill-disassembled-motorcycle.php' );
+
+		# Add functionality to attach parts to motorcycles in admin page
+		include_once( CRB_THEME_DIR . 'options/attach-parts-to-motorcycles.php' );
+
 		# Register custom widgets
 		include_once( CRB_THEME_DIR . 'options/product-categories-widget.php' );
 
