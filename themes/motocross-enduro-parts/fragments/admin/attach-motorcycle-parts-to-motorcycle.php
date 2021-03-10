@@ -9,7 +9,7 @@ $motorcycles_parts = new WP_Query( array(
 <div class="wrap">
 	<h1>Добави разглобени части към мотор</h1>
 	
-	<form>
+	<form method="post" action>
 		<div id="poststuff">
 			<div id="post-body" class="metabox-holder columns-2">
 				<div id="post-body-content">
