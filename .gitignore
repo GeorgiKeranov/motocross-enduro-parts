@@ -6,3 +6,6 @@
 /themes/default*
 /uploads
 /db_backups
+/cache
+/updraft
+autoptimize_404_handler.php
