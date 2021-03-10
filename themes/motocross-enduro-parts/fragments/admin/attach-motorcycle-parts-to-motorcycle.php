@@ -20,7 +20,7 @@ $motorcycles_parts = new WP_Query( array(
 									<thead>
 										<tr>
 											<th>
-												<input type="checkbox">
+												<input type="checkbox" class="check-uncheck-all">
 											</th>
 
 											<th>Име на част</th>
@@ -118,4 +118,61 @@ $motorcycles_parts = new WP_Query( array(
 
 	.table-parts a { text-decoration: none; transition: .5s; line-height: 1.2; }
 	.table-parts a:hover { opacity: .5; }
+
+	.table-parts tbody .checkbox-selected td { background-color: #c4ddff; }
 </style>
+
+<script type="text/javascript">
+	(function() {
+		let $checkboxes = jQuery('.table-parts tbody input[name="selected_parts[]"]');
+
+		if (!$checkboxes.length) {
+			return;
+		}
+
+		$checkboxes.on('change', function() {
+			let $this = jQuery(this);
+			let $tableRow = $this.closest('tr');
+
+			let isChecked = $this.is(':checked');
+
+			if (isChecked) {
+				$tableRow.addClass('checkbox-selected');
+				return;
+			}
+
+			$tableRow.removeClass('checkbox-selected');
+		});
+
+		let lastClickedCheckbox = false;
+		$checkboxes.on('click', function(e) {
+			let $this = jQuery(this);
+			let isChecked = $this.is(':checked');
+			let isShiftKeyClicked = e.shiftKey;
+
+			if (lastClickedCheckbox && isShiftKeyClicked)  {
+				let thisCheckboxIndex = $checkboxes.index($this);
+				let lastClickedCheckboxIndex = $checkboxes.index(lastClickedCheckbox);
+
+				let firstCheckboxIndex = Math.min(thisCheckboxIndex, lastClickedCheckboxIndex);
+				let lastCheckboxIndex = Math.max(thisCheckboxIndex, lastClickedCheckboxIndex) + 1;
+
+				let checkCheckboxes = lastClickedCheckbox.is(':checked');
+				
+				let $checkboxesForChange = $checkboxes.slice(firstCheckboxIndex, lastCheckboxIndex);
+				
+				$checkboxesForChange.prop('checked', checkCheckboxes).change();
+			}
+
+			lastClickedCheckbox = $this;
+		});
+
+		jQuery('.check-uncheck-all').on('click', function() {
+			let $this = jQuery(this);
+
+			let isChecked = $this.is(':checked');
+
+			$checkboxes.prop('checked', isChecked).change();
+		});
+	})();
+</script>
