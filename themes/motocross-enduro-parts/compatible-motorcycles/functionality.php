@@ -87,7 +87,7 @@ function crb_save_product_compatible_motorcycles( $post_id, $post, $update ) {
 		$existing_compatible_motorcycles = $_POST['existing_compatible_motorcycles'];
 
 		foreach ( $existing_compatible_motorcycles as $motorcycle ) {
-			$sucess = $wpdb->update( $table_name, array(
+			$wpdb->update( $table_name, array(
 				'post_id' => $post_id,
 				'make' => $motorcycle['make'],
 				'model' => $motorcycle['model'],
