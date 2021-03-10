@@ -1,7 +1,7 @@
 <?php
 
-add_action( 'admin_menu', 'crb_add_motorcycle_pages' );
-function crb_add_motorcycle_pages() {
+add_action( 'admin_menu', 'crb_add_attach_parts_to_motorcycles_page' );
+function crb_add_attach_parts_to_motorcycles_page() {
 	add_submenu_page( 
 		'edit.php?post_type=crb_motorcycle',
 		__( 'Attach Parts To Motorcycles', 'crb' ),
