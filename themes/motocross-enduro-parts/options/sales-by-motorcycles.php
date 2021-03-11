@@ -12,6 +12,27 @@ function crb_add_sales_by_motorcycles_page() {
 	);
 }
 
+add_action( 'wp_ajax_nopriv_get_motorcycle_sales_by_months_in_year', 'crb_get_motorcycle_sales_by_months_in_year_by_ajax' );
+add_action( 'wp_ajax_get_motorcycle_sales_by_months_in_year', 'crb_get_motorcycle_sales_by_months_in_year_by_ajax' );
+function crb_get_motorcycle_sales_by_months_in_year_by_ajax() {
+	if ( !wp_doing_ajax() ) {
+		wp_send_json_error( 'You don\'t have admin privileges' );
+	}
+
+	$year = current_time('Y');
+	if ( !empty( $_GET['year'] ) ) {
+		$year = $_GET['year'];
+	}
+
+	ob_start();
+
+	crb_render_fragment( 'admin/motorcycles-sales-by-months-in-year', array( 'year' => $year ), true );
+
+	$html = ob_get_clean();
+
+	wp_send_json_success( $html );
+}
+
 function crb_sales_by_motorcycles() {
 	crb_render_fragment( 'admin/sales-by-motorcycles' );
 }

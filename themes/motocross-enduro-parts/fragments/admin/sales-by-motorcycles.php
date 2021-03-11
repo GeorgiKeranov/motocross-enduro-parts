@@ -82,12 +82,16 @@
 						<div class="choose-year">
 							<label for="year-sales">Избери година</label>
 
-							<select name="year-sales" id="year-sales">
+							<select name="year-sales" id="year-sales" data-ajax-url="<?php echo admin_url( 'admin-ajax.php' ) ?>">
 								<?php foreach ( $years_with_orders as $year ) : ?>
 									<option value="<?php echo $year ?>"<?php echo $year == $current_year ? ' selected' : '' ?>><?php echo $year ?></option>
 								<?php endforeach ?>
 							</select>
 						</div><!-- /.choose-year -->
+
+						<div class="ajax-image">
+							<img src="<?php bloginfo('stylesheet_directory'); ?>/resources/images/ajax-loader.gif">
+						</div><!-- /.ajax-image -->
 
 						<?php crb_render_fragment( 'admin/motorcycles-sales-by-months-in-year' ); ?>
 					</div><!-- /.postbox -->
@@ -113,14 +117,55 @@
 
 	.table-parts tbody .checkbox-selected td { background-color: #c4ddff; }
 
+	.table-parts--alt { margin-top: 15px; }
+
 	.table-parts--alt th:first-child,
 	.table-parts--alt td:first-child { width: 15%; }
 
-	.choose-year { margin-bottom: 15px; }
-
 	.choose-year label { font-size: 19px; margin-right: 10px; }
+
+	.ajax-image { text-align: center; display: none; }
+
+	.ajax-image--loading { display: block; }
 </style>
 
 <script type="text/javascript">
-	
+	(function() {
+		jQuery('.choose-year select').on('change', function(){
+			let $this = jQuery(this);
+			let $tableParts = jQuery('.table-parts--alt');
+			let $ajaxImage = jQuery('.ajax-image');
+
+			$this.attr('disabled', 'disabled');
+			$tableParts.empty();			
+			$ajaxImage.addClass('ajax-image--loading');
+
+			let url = $this.data('ajax-url');
+			let year = $this.val();
+
+			jQuery.ajax({
+				type: 'GET',
+				url: url,
+				data: {
+					action: 'get_motorcycle_sales_by_months_in_year',
+					year: year
+				},
+				success: function(result) {
+					if (result['success']) {
+						let responseHtml = jQuery(result['data']).html();
+
+						$this.removeAttr('disabled');
+						$ajaxImage.removeClass('ajax-image--loading');
+						$tableParts.append(responseHtml);
+					}
+				},
+				error: function(msg) {
+					$this.removeAttr('disabled');
+					$ajaxImage.removeClass('ajax-image--loading');
+
+					console.log(msg);
+				}
+			});
+		});
+	})();
 </script>
