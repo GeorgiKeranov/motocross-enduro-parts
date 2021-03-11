@@ -106,7 +106,7 @@ $motorcycles_parts = new WP_Query( array(
 
 	.table-parts tbody tr:first-child td { padding-top: 6px; }
 
-	.table-parts td { padding: 4px 0 4px; margin: 0; }
+	.table-parts td { padding: 4px 0 4px; margin: 0; vertical-align: top; }
 
 	.table-parts th { padding: 6px 0 6px; font-weight: 500; border-bottom: 1px solid #c3c4c7; margin-bottom: 5px; }
 
