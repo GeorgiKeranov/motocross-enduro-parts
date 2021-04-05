@@ -5,13 +5,19 @@
 .nav ul { display: flex; margin: 0 -20px; }
 .nav li { margin: 0 20px; display: flex; align-items: center; }
 
-.nav a { display: inline-block; position: relative; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 17px; overflow: hidden; padding: 3px 0; }
-.nav a:before { content: ''; display: block; position: absolute; top: 26px; left: 0; right: 0; width: 0; border-bottom: 2px solid #ffb26b; transition: width .3s; }
+.nav a { display: inline-block; position: relative; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 17px; overflow: hidden; padding: 0 0 3px; }
+.nav a:before { content: ''; display: block; position: absolute; bottom: 0; left: 0; right: 0; width: 0; border-bottom: 2px solid #ffb26b; transition: width .3s; }
 
 .nav a { text-decoration: none; }
 
 .nav a:hover:before,
 .nav .current_page_item a:before { width: 100%; }
+
+/* Small Desktop */
+
+$breakpoint-small-desktop {
+	.nav a { font-size: 15px; }
+}
 
 /* Tablet Portrait */
 
@@ -21,12 +27,10 @@ $breakpoint-tablet-portrait {
 	.nav ul li { width: 100%; margin-top: 20px; }
 	
 	.nav a { font-size: 25px; margin: 0 auto; }
-	.nav a:before { top: 36px; }
 }
 
 /* Mobile Portrait */
 
 $breakpoint-mobile-portrait {
 	.nav a { font-size: 20px; }
-	.nav a:before { top: 30px; }
 }

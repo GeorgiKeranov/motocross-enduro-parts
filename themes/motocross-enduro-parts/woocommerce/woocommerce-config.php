@@ -11,6 +11,8 @@ remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wra
 remove_action( 'woocommerce_before_shop_loop', 'woocommerce_output_all_notices', 10 );
 remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
 
+remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
+
 /**
  * Add Actions
  */
@@ -31,6 +33,8 @@ add_action( 'woocommerce_order_status_cancelled', 'crb_instock_products_from_can
 add_action( 'woocommerce_before_single_product', 'crb_add_product_title_for_mobile_devices', 10 );
 
 add_action( 'woocommerce_single_product_summary', 'crb_add_money_back_guarantee', 25 );
+
+add_action( 'woocommerce_after_shop_loop_item', 'crb_add_btn_to_related_products', 10 );
 
 add_action( 'wp_insert_post_data', 'crb_set_custom_product_title', 20, 3 );
 
@@ -541,4 +545,12 @@ function crb_remove_product_editor() {
 
 function crb_add_money_back_guarantee() { ?>
 	<p class="money-back-guarantee"><strong>Гарантирано връщане на парите при проблем!</br>Всички части се пращат с преглед преди заплащане!</strong></p>
+<?php }
+
+function crb_add_btn_to_related_products() {
+	global $product;
+	$id = $product->get_id();
+	$permalink = get_the_permalink( $id ); ?>
+	
+	<a href="<?php echo $permalink ?>" class="button">Виж повече</a>
 <?php }

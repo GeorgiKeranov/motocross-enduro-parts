@@ -70,9 +70,9 @@ $breakpoint-mobile-portrait {
 $breakpoint-small-desktop {
 	.slider-testimonials { padding: 30px 0; }
 	
-	.slider-testimonials h2 { font-size: 30px; }
+	.slider-testimonials .slider__title { margin-bottom: 10px; }
 
-	.slider-testimonials .slider__slide-text p { font-size: 19px; }
+	.slider-testimonials h2 { font-size: 30px; }
 
 	.slider-testimonials .slider__inner { padding: 20px 0; }
 }
@@ -83,6 +83,8 @@ $breakpoint-tablet-portrait {
 	.slider-testimonials { margin-left: 0; margin-right: 0; }
 
 	.slider-testimonials h2 { font-size: 28px; }
+
+	.slider-testimonials .slider__slide-text p { font-size: 19px; }
 
 	.slider-testimonials .slider__clip { padding: 0 80px; }
 

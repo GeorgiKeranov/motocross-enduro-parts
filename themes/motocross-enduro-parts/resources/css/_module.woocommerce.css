@@ -11,7 +11,7 @@
 .woocommerce .widget_price_filter .price_slider_amount .button:hover { background-color: #fff; color: #e7a161; }
 
 .woocommerce ul.products { display: flex; flex-wrap: wrap; margin: 0 -20px; }
-.woocommerce ul.products li.product { float: none; margin: 20px 0; padding: 0 20px; width: 25%; }
+.woocommerce ul.products li.product { float: none; margin: 20px 0 10px; padding: 0 20px; width: 25%; }
 
 .woocommerce .woocommerce-result-count { display: none; }
 
@@ -34,11 +34,17 @@
 .woocommerce div.woocommerce__shop .product .price bdi,
 .woocommerce div.woocommerce__shop .product span.price bdi { font-weight: 600; }
 
-.woocommerce div.woocommerce__shop .product .button { margin: 0; background-color: #e7a161; border: 2px solid #e7a161; color: #fff; transition: .3s; padding: 7px 10px; width: 50%; }
+.woocommerce div.woocommerce__shop .product .button { margin: 0; background-color: #e7a161; border: 2px solid #e7a161; color: #fff; transition: .3s; padding: 7px 10px; width: 100%; }
 .woocommerce div.woocommerce__shop .product .button:hover { background-color: #fff; color: #e7a161; }
+
+.woocommerce div.woocommerce__shop .product .single_add_to_cart_button { border-color: #33a370; background-color: #33a370; font-size: 18px; }
+.woocommerce div.woocommerce__shop .product .single_add_to_cart_button:hover { color: #33a370; }
 
 .woocommerce div.woocommerce__shop .product .price { font-size: 30px; }
 .woocommerce div.woocommerce__shop .product .price del { font-size: 20px; }
+
+.woocommerce-message { border-top-color: #33a370; }
+.woocommerce-message::before { color: #33a370; }
 
 .woocommerce #respond input#submit::after,
 .woocommerce a.button::after,
@@ -64,7 +70,7 @@
 .woocommerce ul.products li.product .woocommerce-loop-product__title,
 .woocommerce ul.products li.product h3 { font-weight: 600; }
 
-.woocommerce ul.products li.product .woocommerce-loop-product__link { display: inline-block; }
+.woocommerce ul.products li.product .woocommerce-loop-product__link { display: inline-block; height: calc(100%-32px); }
 .woocommerce ul.products li.product .woocommerce-loop-product__link h2 { transition: .3s; }
 .woocommerce ul.products li.product .woocommerce-loop-product__link:hover h2 { opacity: .5; color: #e7a161; }
 
@@ -153,8 +159,8 @@
 .woocommerce .products-wrapper__loading { text-align: center; }
 .woocommerce .products-wrapper__loading:before { content: ''; display: inline-block; margin: 20px auto; width: 100px; height: 100px; background-image: url(../images/ajax-loader.gif); background-repeat: no-repeat; background-size: contain; }
 
-.single-product .woocommerce-message .button { background-color: #8fae1b; color: #fff; text-align: center; border: 2px solid #8fae1b; max-width: 260px; transition: .3s; }
-.single-product .woocommerce-message .button:hover { background-color: #fff; color: #8fae1b; }
+.single-product .woocommerce-message .button { background-color: #33a370; color: #fff; text-align: center; border: 2px solid #33a370; max-width: 260px; transition: .3s; }
+.single-product .woocommerce-message .button:hover { background-color: #fff; color: #33a370; }
 
 .single-product .woocommerce-error .button { background-color: #b81c23; color: #fff; text-align: center; border: 2px solid #b81c23; transition: .3s; }
 .single-product .woocommerce-error .button:hover { background-color: #fff; color: #b81c23; }
@@ -163,6 +169,8 @@
 
 $breakpoint-small-desktop {
 	.woocommerce .widget_price_filter .price_slider_wrapper .ui-widget-content { margin-bottom: 0; }
+
+	.woocommerce div.product .product_title { font-size: 21px; }
 }
 
 /* Tablet Portrait */
@@ -260,7 +268,7 @@ $breakpoint-mobile-portrait {
 .woocommerce-cart a.remove { margin: 0 auto; font-size: 25px; transition: .3s; color: #fff !important; background-color: #B00B1E; }
 .woocommerce-cart a.remove:hover { color: #B00B1E !important; background-color: #fff; }
 
-.woocommerce-cart .restore-item { color: #8fae1b; transition: .3s; }
+.woocommerce-cart .restore-item { color: #33a370; transition: .3s; }
 .woocommerce-cart .restore-item:hover { opacity: .4; }
 
 .woocommerce-cart table.cart .product-quantity { text-align: center; }

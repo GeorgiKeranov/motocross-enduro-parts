@@ -45,5 +45,5 @@ if ( !empty( $gallery_images_ids ) ) {
 		<?php endif; ?>
 	</a>
 
-	<a href="?add-to-cart=<?php echo $product_id ?>" data-quantity="1" class="button product_type_simple add_to_cart_button ajax_add_to_cart" data-product_id="<?php echo $product_id ?>" rel="nofollow">Купи</a>
+	<a href="<?php echo $permalink ?>" class="button">Виж повече</a>
 </li>
