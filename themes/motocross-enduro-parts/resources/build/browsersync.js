@@ -11,7 +11,7 @@ const argv = require('yargs').argv;
  * Prepare the configuration.
  */
 const config = {
-	host: '192.168.0.100',
+	host: '192.168.1.100',
 	port: 3000,
 	open: 'external',
 	files: [
@@ -36,7 +36,7 @@ const config = {
 			fn: (snippet, match) => `${snippet}${match}`
 		}
 	},
-	proxy: '192.168.0.100',
+	proxy: '192.168.1.100',
 	reloadThrottle: 100
 };
 
