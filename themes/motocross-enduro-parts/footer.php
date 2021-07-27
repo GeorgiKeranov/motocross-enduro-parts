@@ -35,7 +35,7 @@
 		<div class="footer__copyright">
 			<div class="shell">
 				<?php if ( !empty( $copyright ) ) : ?>
-					<p><?php echo esc_html( $copyright ) ?></p>
+					<p><?php echo do_shortcode( esc_html( $copyright ) ) ?></p>
 				<?php endif; ?>
 			</div><!-- /.shell -->
 		</div><!-- /.footer__bottom -->
