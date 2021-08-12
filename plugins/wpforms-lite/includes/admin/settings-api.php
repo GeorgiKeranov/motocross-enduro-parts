@@ -154,7 +154,9 @@ function wpforms_settings_license_callback( $args ) {
 	                ( isset( $license['is_disabled'] ) && $license['is_disabled'] === false ) &&
 	                ( isset( $license['is_invalid'] ) && $license['is_invalid'] === false );
 
-	$output  = '<input type="password" id="wpforms-setting-license-key" value="' . esc_attr( $key ) . '"' . disabled( true, $is_valid_key, false ) . ' />';
+	$output  = '<span class="wpforms-setting-license-wrapper">';
+	$output .= '<input type="password" id="wpforms-setting-license-key" value="' . esc_attr( $key ) . '"' . disabled( true, $is_valid_key, false ) . ' />';
+	$output .= '</span>';
 	$output .= '<button id="wpforms-setting-license-key-verify" class="wpforms-btn wpforms-btn-md wpforms-btn-orange">' . esc_html__( 'Verify Key', 'wpforms-lite' ) . '</button>';
 
 	// Offer option to deactivate the key.

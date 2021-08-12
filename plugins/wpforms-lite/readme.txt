@@ -2,8 +2,8 @@
 Contributors: wpforms, jaredatch, smub, slaFFik
 Tags: contact form, contact form plugin, forms, form builder, custom form, contact button, contact me, custom contact form, form manager, form, forms builder, forms creator, captcha, recaptcha, Akismet, email form, web form, feedback form, payment form, survey form, donation form, email submit form, message form, mailchimp, mailchimp form, aweber, aweber form, paypal, paypal form, stripe, stripe form, getresponse, getresponse form, email subscription, contact form widget, user registration form, wordpress registration, wordpress login form, feedback
 Requires at least: 4.9
-Tested up to: 5.6
-Stable tag: 1.6.5
+Tested up to: 5.7
+Stable tag: 1.6.6
 Requires PHP: 5.5
 License: GNU General Public License v2.0 or later
 
@@ -417,6 +417,23 @@ Thank you
 Syed Balkhi
 
 == Changelog ==
+
+= 1.6.6 =
+- Added: WordPress 5.7 new color scheme compatibility.
+- Changed: Allow using 0/false values in choices label for Checkboxes, Multiple Choice, Dropdown fields.
+- Changed: Better AJAX form submit error messages handling for the Email field.
+- Changed: Refactored Tools page with all of its subpages for easier long-term support.
+- Changed: Updated the WPForms > About Us page.
+- Changed: Updated DOMPurify lib to 2.2.7.
+- Changed: Replaced jQuery.ready() function usage with a recommended way since jQuery 3.0.
+- Fixed: HTML layout is broken on the Analytics page for some site languages.
+- Fixed: Incorrect permission checks for different places in the dashboard and the Form Builder.
+- Fixed: RTL support for Name, Email fields.
+- Fixed: Speed up the Form Builder rendering by loading certain scripts only when the Embed functionality is triggered.
+- Fixed: The `iframe` HTML element was not rendered incorrectly in the Twenty Twenty theme.
+- Fixed: The Checkboxes and Multiple Choice fields CSS issues in Twenty Twenty-One theme.
+- Fixed: WPForms Challenge was drunk in the Firefox browser.
+- Fixed: reCAPTCHA doesn't render in a popup when the same form exists in another place.
 
 = 1.6.5 =
 - Changed: Updated DOMPurify lib to 2.2.6.

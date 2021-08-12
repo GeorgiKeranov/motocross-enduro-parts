@@ -336,5 +336,4 @@ class Lifecycle extends Framework\Plugin\Lifecycle {
 		}
 	}
 
-
 }

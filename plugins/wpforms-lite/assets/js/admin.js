@@ -213,7 +213,7 @@
 		},
 
 		/**
-		 * Initilize checkbox mulit-select columns.
+		 * Initialize checkbox multi-select columns.
 		 *
 		 * @since 1.4.2
 		 */
@@ -1187,19 +1187,18 @@
 				WPFormsAdmin.licenseVerify( $( this ) );
 			} );
 
-			// Show message for license fields.
-			$( document ).on( 'click', '#wpforms-setting-row-license-key', function( event ) {
-
-				var $target = $( event.target );
+			// Show message for license field.
+			$( document ).on( 'click', '.wpforms-setting-license-wrapper', function( event ) {
 
 				event.preventDefault();
 
-				// Return early if it's not the "License Key" input field.
-				if ( $target.prop( 'id' ) !== 'wpforms-setting-license-key' ) {
+				var $keyField = $( '#wpforms-setting-license-key' );
+
+				if ( ! $keyField.length ) {
 					return;
 				}
 
-				if ( ! $target.prop( 'disabled' ) ) {
+				if ( ! $keyField.prop( 'disabled' ) ) {
 					return;
 				}
 

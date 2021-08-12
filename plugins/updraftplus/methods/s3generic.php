@@ -102,7 +102,7 @@ class UpdraftPlus_BackupModule_s3generic extends UpdraftPlus_BackupModule_s3 {
 	 * The function require because It should override parent class's UpdraftPlus_BackupModule_s3::transform_options_for_template() functionality with no operation.
 	 *
 	 * @param array $opts
-	 * @return array - Modified handerbar template options
+	 * @return Array - Modified handerbar template options
 	 */
 	public function transform_options_for_template($opts) {
 		return $opts;
@@ -122,7 +122,7 @@ class UpdraftPlus_BackupModule_s3generic extends UpdraftPlus_BackupModule_s3 {
 	/**
 	 * Get handlebar partial template string for endpoint of s3 compatible remote storage method. Other child class can extend it.
 	 *
-	 * @return string the partial template string
+	 * @return String the partial template string
 	 */
 	protected function get_partial_configuration_template_for_endpoint() {
 		return '<tr class="'.$this->get_css_classes().'">

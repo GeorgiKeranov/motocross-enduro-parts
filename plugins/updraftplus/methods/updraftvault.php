@@ -13,8 +13,8 @@ class UpdraftPlus_BackupModule_updraftvault extends UpdraftPlus_BackupModule_s3 
 	/**
 	 * This function makes testing easier, rather than having to change the URLs in multiple places
 	 *
-	 * @param  boolean|string $which_page specifies which page to get the URL for
-	 * @return string
+	 * @param  Boolean|string $which_page specifies which page to get the URL for
+	 * @return String
 	 */
 	private function get_url($which_page = false) {
 		$base = defined('UPDRAFTPLUS_VAULT_SHOP_BASE') ? UPDRAFTPLUS_VAULT_SHOP_BASE : 'https://updraftplus.com/shop/';
@@ -78,7 +78,7 @@ class UpdraftPlus_BackupModule_updraftvault extends UpdraftPlus_BackupModule_s3 
 	 *
 	 * @param Boolean $force_refresh - if set, and if relevant, don't use cached credentials, but get them afresh
 	 *
-	 * @return array An array containing the Amazon S3 credentials (accesskey, secretkey, etc.)
+	 * @return Array An array containing the Amazon S3 credentials (accesskey, secretkey, etc.)
 	 *				 along with some configuration values.
 	 */
 	public function get_config($force_refresh = false) {
@@ -445,7 +445,7 @@ class UpdraftPlus_BackupModule_updraftvault extends UpdraftPlus_BackupModule_s3 
 	 * Modifies handerbar template options
 	 *
 	 * @param array $opts
-	 * @return array - Modified handerbar template options
+	 * @return Array - Modified handerbar template options
 	 */
 	public function transform_options_for_template($opts) {
 		if (!empty($opts['token']) || !empty($opts['email'])) {
@@ -475,7 +475,7 @@ class UpdraftPlus_BackupModule_updraftvault extends UpdraftPlus_BackupModule_s3 
 	 * Gives settings keys which values should not passed to handlebarsjs context.
 	 * The settings stored in UD in the database sometimes also include internal information that it would be best not to send to the front-end (so that it can't be stolen by a man-in-the-middle attacker)
 	 *
-	 * @return array - Settings array keys which should be filtered
+	 * @return Array - Settings array keys which should be filtered
 	 */
 	public function filter_frontend_settings_keys() {
 		return array(
@@ -550,9 +550,9 @@ class UpdraftPlus_BackupModule_updraftvault extends UpdraftPlus_BackupModule_s3 
 	/**
 	 * This function will return the S3 quota Information
 	 *
-	 * @param  string|integer $format n numeric, returns an integer or false for an error (never returns an error)
+	 * @param  String|integer $format n numeric, returns an integer or false for an error (never returns an error)
 	 * @param  integer        $quota  S3 quota information
-	 * @return string|integer
+	 * @return String|integer
 	 */
 	protected function s3_get_quota_info($format = 'numeric', $quota = 0) {
 		$ret = '';
@@ -609,7 +609,7 @@ class UpdraftPlus_BackupModule_updraftvault extends UpdraftPlus_BackupModule_s3 
 	/**
 	 * Build the links to recount used vault quota and to purchase more quota
 	 *
-	 * @return string 
+	 * @return String 
 	 */
 	private function get_quota_recount_links() {
 		return ' - <a href="'.esc_attr($this->get_url('get_more_quota')).'">'.__('Get more quota', 'updraftplus').'</a> - <a href="'.UpdraftPlus::get_current_clean_url().'" id="updraftvault_recountquota">'.__('Refresh current status', 'updraftplus').'</a>';
@@ -646,8 +646,8 @@ class UpdraftPlus_BackupModule_updraftvault extends UpdraftPlus_BackupModule_s3 
 	/**
 	 * This method also gets called directly, so don't add code that assumes that it's definitely an AJAX situation
 	 *
-	 * @param  boolean $echo_results check to see if the results need to be echoed
-	 * @return array
+	 * @param  Boolean $echo_results check to see if the results need to be echoed
+	 * @return Array
 	 */
 	public function ajax_vault_disconnect($echo_results = true) {
 		$vault_settings = $this->get_options();
@@ -688,9 +688,9 @@ class UpdraftPlus_BackupModule_updraftvault extends UpdraftPlus_BackupModule_s3 
 	/**
 	 * This is called from the UD admin object
 	 *
-	 * @param  boolean       $echo_results    A Flag to see if results need to be echoed or returned
-	 * @param  boolean|array $use_credentials Check if Vault needs to use credentials
-	 * @return array
+	 * @param  Boolean       $echo_results    A Flag to see if results need to be echoed or returned
+	 * @param  Boolean|array $use_credentials Check if Vault needs to use credentials
+	 * @return Array
 	 */
 	public function ajax_vault_connect($echo_results = true, $use_credentials = false) {
 	
@@ -720,9 +720,9 @@ class UpdraftPlus_BackupModule_updraftvault extends UpdraftPlus_BackupModule_s3 
 	/**
 	 * Returns either true (in which case the Vault token will be stored), or false|WP_Error
 	 *
-	 * @param  string $email    Vault Email
-	 * @param  string $password Vault Password
-	 * @return boolean|WP_Error
+	 * @param  String $email    Vault Email
+	 * @param  String $password Vault Password
+	 * @return Boolean|WP_Error
 	 */
 	private function vault_connect($email, $password) {
 
