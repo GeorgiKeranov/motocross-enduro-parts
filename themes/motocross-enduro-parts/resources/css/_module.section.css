@@ -278,12 +278,16 @@ $breakpoint-mobile-portrait {
 
 .section-404 { padding: 100px 0; text-align: center; background-color: #e7a161; }
 
-.section-404 .section__inner { padding: 80px 20px; border-radius: 30px; background-color: #fff; }
+.section-404 .section__inner { padding: 40px 20px; border-radius: 30px; background-color: #fff; }
 
-.section-404 h1 { font-size: 50px; color: #e7a161; }
+.section-404 h1 { font-size: 160px; margin-bottom: 10px; line-height: 1; color: #e7a161; }
 .section-404 p { font-size: 25px; }
 .section-404 a { color: #e7a161; text-decoration: underline; transition: .3s; }
 .section-404 a:hover { opacity: .5; }
+
+.section-404 .btn { display: inline-block; padding: 15px 20px; text-decoration: none; border: 2px solid #e7a161; background-color: #e7a161; color: #fff; font-size: 19px; font-weight: 700; border-radius: 40px; transition: background-color .5s, color .5s; text-transform: uppercase; line-height: 1; transition: background .3s, color .3s; }
+
+.section-404 .btn:hover { opacity: 1; background-color: #fff; color: #e7a161; }
 
 /* Mobile */
 
