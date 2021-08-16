@@ -104,6 +104,7 @@ Note run this commands inside the theme folder "motocross-enduro-parts/themes/mo
 
 ![gmotoparts com_ (9)](https://user-images.githubusercontent.com/22518317/129566105-d264a123-e12c-43bb-a63d-97a4468a30f4.png)
 ![gmotoparts com_parts__orderby=date page=6 (1)](https://user-images.githubusercontent.com/22518317/129566134-55e0fa0f-fcc8-420b-84e3-ee59ee9b6955.png)
+![gmotoparts com_product_desen-karter-yamaha-yz250f-07-09_ (2)](https://user-images.githubusercontent.com/22518317/129569109-d40bdd7f-f9ce-4bac-9c76-8a7d461d99ac.png)
 ![gmotoparts com_contacts_ (1)](https://user-images.githubusercontent.com/22518317/129566140-ceec2f36-9bd8-48b8-ab9d-fda962d422ec.png)
 ![gmotoparts com_cart_ (1)](https://user-images.githubusercontent.com/22518317/129566144-8572f2dc-37c4-44ce-bbf2-8d19975b6044.png)
 ![gmotoparts com_checkout_](https://user-images.githubusercontent.com/22518317/129566152-df8bf51f-34a2-4f10-9664-315f3e968220.png)
