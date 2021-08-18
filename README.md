@@ -1,6 +1,7 @@
 # Motocross Enduro Parts
 
-Custom Wordpress with WooCommerce theme built for people who buy second hand motorcycles with some kind of problem and sell the good parts from them. The theme is responsive and it is fully customizable from the Wordpress admin panel via custom fields.
+Custom Wordpress with WooCommerce theme built for people who buy second hand motorcycles and sell them on parts.\
+The theme is responsive and it is fully customizable from the Wordpress admin panel via custom fields.
 
 You can check how this theme looks on this site - https://gmotoparts.com
 
