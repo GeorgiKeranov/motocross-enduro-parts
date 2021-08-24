@@ -10,7 +10,7 @@ if ( empty( $has_fields ) ) {
 }
 ?>
 
-<div class="section-intro" style="background-image: url(<?php echo wp_get_attachment_url( $section['background_image'], 'full-width' ) ?>)">
+<div class="section-intro" style="background-image: url(<?php echo wp_get_attachment_image_url( $section['background_image'], 'full-width' ) ?>)">
 	<div class="shell">
 		<?php if ( !empty( $section['title'] ) ) : ?>
 			<h1><?php echo esc_html( $section['title'] ) ?></h1>

@@ -1,5 +1,5 @@
 <?php 
-$background_image = wp_get_attachment_url( $section['background_image'], 'full-width' );
+$background_image = wp_get_attachment_image_url( $section['background_image'], 'full-width' );
 ?>
 
 <div class="section-cta section-fade" style="background-image: url(<?php echo $background_image ?>)">

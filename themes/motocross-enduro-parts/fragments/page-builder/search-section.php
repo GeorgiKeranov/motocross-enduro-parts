@@ -10,7 +10,7 @@ $motorcycle_types = crb_get_all_motorcycle_types();
 ?>
 
 <div class="section-search-parts">
-	<div class="section__overlay" style="background-image: url(<?php echo wp_get_attachment_url( $section['background_image'], 'full-width' ) ?>)">
+	<div class="section__overlay" style="background-image: url(<?php echo wp_get_attachment_image_url( $section['background_image'], 'full-width' ) ?>)">
 		<div class="section__overlay-black"></div><!-- /.section__overlay-black -->
 	</div><!-- /.section__overlay -->
 	
