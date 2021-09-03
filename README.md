@@ -46,7 +46,7 @@ You can check how this theme looks on this site - https://gmotoparts.com
   - When you change the order status to complete the parts from it are automatically hidden on the site because they are sold.
   - You can add promo codes for discounts.
   - You can check sales for every month by each motorcycle.
-  - Every motorcycle can be checked for total sales and remaining parts for sale.
+  - Every motorcycle can be checked for the total sales and the remaining parts for sale.
 
 ---------------------
 
