@@ -183,3 +183,8 @@ add_action('get_header', 'crb_remove_admin_login_header');
 function crb_remove_admin_login_header() {
 	remove_action('wp_head', '_admin_bar_bump_cb');
 }
+
+/**
+ * Stop the email notifications for automatic plugin updates
+ */
+add_filter( 'auto_plugin_update_send_email', '__return_false' );
