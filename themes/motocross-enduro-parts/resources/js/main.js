@@ -7,8 +7,8 @@ const $doc = $(document);
 // jQuery.ready is no longer needed
 
 $('.slider-testimonials .slider__slides').slick({
-	prevArrow: '<button type="button" class="slick-prev">🡸</button>',
-	nextArrow: '<button type="button" class="slick-next">🡺</button>',
+	prevArrow: '<button type="button" class="slick-prev">❮</button>',
+	nextArrow: '<button type="button" class="slick-next">❯</button>',
 	dots: true,
 	appendArrows: $('.slider-testimonials .slider__actions'),
 	infinite: true,
@@ -22,8 +22,8 @@ $('.slider-testimonials .slider__slides').on('touchcancel touchmove', e => {
 });
 
 $('.slider-promo-products .slider__slides').slick({
-	prevArrow: '<button type="button" class="slick-prev">🡸</button>',
-	nextArrow: '<button type="button" class="slick-next">🡺</button>',
+	prevArrow: '<button type="button" class="slick-prev">❮</button>',
+	nextArrow: '<button type="button" class="slick-next">❯</button>',
 	dots: true,
 	infinite: true,
 	autoplay: true,
