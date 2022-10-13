@@ -81,12 +81,12 @@ Use this shortcode to display the current year.
 
 `motocross-enduro-parts` requires the following dependencies:
 
-- [Yarn](https://yarnpkg.com/) or [Node.js](https://nodejs.org/)
+- [Yarn](https://yarnpkg.com/)
 - [Composer](https://getcomposer.org/)
 
 ### Setup
 
-To use this theme you need to install the necessary Node.js and Composer dependencies in the theme folder "motocross-enduro-parts/themes/motocross-enduro-parts":
+To use this theme you need to install the Composer and Yarn packages:
 
 ```sh
 $ composer install
