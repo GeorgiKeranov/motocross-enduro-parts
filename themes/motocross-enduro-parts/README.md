@@ -1,21 +1,25 @@
 ## Dependencies
-1. Latest version of [NodeJS](http://nodejs.org/) (min v6.0.0)
+1. Use Node 12 LTS for this theme. The build toolchain is legacy and is not compatible with Node 24.
 2. Latest version of one of the following package managers
 
 - [NPM](https://www.npmjs.com/) (min v5.3.0)
 - [Yarn](https://yarnpkg.com/) (min v0.20.4)
 
 ## Install
-In the root directory of the project run:
+Use a compatible Node version first, then install dependencies in the root directory of the project:
 
 ```
-npm install
+nvm install 12.22.12
+nvm use 12.22.12
+yarn install
 ```
 
 or
 
 ```
-yarn install
+nvm install 12.22.12
+nvm use 12.22.12
+npm install
 ```
 
 ## Development

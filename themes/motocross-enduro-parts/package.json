@@ -4,7 +4,10 @@
     "description": "Starter for WP projects",
     "author": "Anonoumous",
     "engines": {
-        "node": ">=6.9.1"
+        "node": "12.x"
+    },
+    "resolutions": {
+        "fsevents": "^2.3.3"
     },
     "scripts": {
         "start": "gulp --gulpfile resources/build/gulp.js",
